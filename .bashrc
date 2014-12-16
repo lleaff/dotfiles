@@ -1,5 +1,5 @@
 function __gccs() {
-	for f in $1; do gcc $f -o ${f%.*} -pedantic; done
+	for f in $1; do gcc $f -std=c99 -pedantic -o ${f%.*}; done
 }
 alias gccs=__gccs
 
