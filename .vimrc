@@ -1,10 +1,12 @@
-" To enable the saving and restoring of screen positions.
-let g:screen_size_restore_pos = 1
+if has('gui_running')
+	" To enable the saving and restoring of screen positions.
+	let g:screen_size_restore_pos = 1
 
-" To save and restore screen for each Vim instance.
-" This is useful if you routinely run more than one Vim instance.
-" For all Vim to use the same settings, change this to 0.
-let g:screen_size_by_vim_instance = 1
+	" To save and restore screen for each Vim instance.
+	" This is useful if you routinely run more than one Vim instance.
+	" For all Vim to use the same settings, change this to 0.
+	let g:screen_size_by_vim_instance = 1
+endif
 
 if has('win32')
 	set showtabline=2 "always show tab bar
@@ -148,7 +150,7 @@ if has("gui_running")
 		set guifont=Meslo\ LG\ S\ DZ\ Regular:h10:cANSI
 
 		colorscheme lleaff-chalk | set background=dark
-		autocmd FileType c colorscheme Dracula | set background=dark
+		autocmd FileType c colorscheme base16-ocean | set background=dark
 		autocmd FileType javascript colorscheme base16-mocha | set background=dark
 	endif
 endif
@@ -186,16 +188,13 @@ let g:airline_symbols.whitespace = 'Ξ'
 "###############Settings###############
 "######################################
 
-if has("win32")
+if has("gui_win32")
 	source ~/.vim/mswin-partial.vim
 endif
 
-:au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
+au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
 
-" Original window size and position
-set lines=70
-set columns=116  
-winpos 0 0 
+let &path.="src/include,/usr/incude/AL,"
 
 syntax enable "Turn on syntax highlighting
 set number "Show line numbers
@@ -211,6 +210,11 @@ set listchars=tab:>-,eol:↵
 set noerrorbells visualbell t_vb=				" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
+
+" Original window size and position
+set lines=70
+set columns=116  
+winpos 0 0 
 
 "===========Restore window pos and curosr
 
