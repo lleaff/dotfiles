@@ -6,6 +6,9 @@
 .vim/plugged
 .vim/ycm.git
 
+###temp files
+*.swp
+
 ###OS X
 
 .DS_Store
