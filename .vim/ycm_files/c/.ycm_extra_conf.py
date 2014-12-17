@@ -93,6 +93,9 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+#standard libs for gcc in QT sdk on Windows
+'-isystem',
+'D:\Qt\Tools\mingw482_32\i686-w64-mingw32\include',
 ]
 
 
