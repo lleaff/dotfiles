@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
 "###########################################
 Plug 'tpope/vim-sensible' "Configurations everyone agree on
 
-Plug 'yegappan/mru' "Most Recently Used files, use :MRU command
+"Plug 'yegappan/mru' "Most Recently Used files, use :MRU command
 
 Plug 'scrooloose/syntastic' "Syntax checking plugin
 let g:syntastic_check_on_open=1
@@ -42,13 +42,13 @@ endif
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 "Plug 'jistr/vim-nerdtree-tabs' "NERDTree independant of tabs
-Plug 'ctrlpvim/ctrlp.vim' "Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
+Plug 'ctrlpvim/ctrlp.vim' ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
+command MRU CtrlPMRU
 
-Plug 'ChoiZ/taglist.vim' "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
+Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
 
 Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 
-Plug 'fanchangyong/a.vim' "Switch between source and header files in C/C++ code (:A, :AT (new tab))
 
 "Plug 'bling/vim-airline' "status bar/tabline modification ====> dslkdfj <====
 
@@ -66,6 +66,9 @@ Plug 'wincent/command-t' "Fuzzy file finding
 
 Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 "=========Languages specific=========
+
+Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
+
 "===JavaScript
 Plug 'marijnh/tern_for_vim' "JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm install -g jshint))
 Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
@@ -80,9 +83,9 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating, compiling, and more.
-Plug 'moll/vim-node' "Node.js tools and utilities										 ^
-Plug 'guileen/vim-node-dict' "node.js dictionary 										 |
-Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi  v
+Plug 'moll/vim-node' "Node.js tools and utilities										 	^
+Plug 'guileen/vim-node-dict' "node.js dictionary 										 	|
+Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi  	v
 
 Plug 'vim-scripts/cmake' "syntax update
 Plug 'vim-scripts/cmake.vim' "indent
@@ -282,19 +285,27 @@ endif
 
 
 
-"########################################
-"###############Keys remap###############
-"########################################
+"##########################################
+"###############Keys mapping###############
+"##########################################
 "
 " Remap the numpad Enter key to Esc
 "map! <kEnter> <Esc>
 "map <kEnter> <Esc>
 " doesn't work tho
 
+nnoremap <C-m> :CtrlPMRU<CR>
+
+"======Movement
 nnoremap <silent> K 5k
 vnoremap <silent> K 5k
 nnoremap <silent> J 5j
 vnoremap <silent> J 5j
+
+nnoremap j gj	"^ Move vertically by visual line
+nnoremap k gk	"v
+
+nnoremap gV `[v`] " Highlight last inserted text
 
 let mapleader=","
 
