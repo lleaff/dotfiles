@@ -20,3 +20,8 @@ indent_style = tab
 indent_size = 4
 max_char = 78
 brace_style = expand
+
+[**.c]
+[**.h]
+indent_style = tab
+indent_size = 4

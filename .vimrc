@@ -42,7 +42,7 @@ endif
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 "Plug 'jistr/vim-nerdtree-tabs' "NERDTree independant of tabs
-Plug 'ctrlpvim/ctrlp.vim' ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
+Plug 'ctrlpvim/ctrlp.vim'  ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
 command MRU CtrlPMRU
 
 Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
@@ -65,6 +65,10 @@ Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 Plug 'wincent/command-t' "Fuzzy file finding
 
 Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
+
+"Plug 'sjl/gundo.vim' "Undo tree visualization
+"nnoremap <leader>u :GundoToggle<CR>
+
 "=========Languages specific=========
 
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
@@ -207,7 +211,8 @@ set number "Show line numbers
 set foldmethod=syntax
 set foldlevel=7 "Open folds N levels when opening file
 
-set shiftwidth=2| set tabstop=2
+set smartindent
+set shiftwidth=4| set tabstop=4 "indent size
 
 set listchars=tab:>-,eol:↵
 "set list "Enables crlf glyph
@@ -215,6 +220,12 @@ set listchars=tab:>-,eol:↵
 set noerrorbells visualbell t_vb=				" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
+" syntastic
+let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
+let g:syntastic_warning_symbol = '!'	"v
+
+highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D 
+highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
 
 " Original window size and position
 set lines=70
@@ -294,8 +305,6 @@ endif
 "map <kEnter> <Esc>
 " doesn't work tho
 
-nnoremap <C-m> :CtrlPMRU<CR>
-
 "======Movement
 nnoremap <silent> K 5k
 vnoremap <silent> K 5k
@@ -342,3 +351,4 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ ':h\zs\d\+',
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
+
