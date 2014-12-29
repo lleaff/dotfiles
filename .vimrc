@@ -159,9 +159,11 @@ if has("gui_running")
 		set guifont=Meslo\ LG\ S\ DZ\ Regular:h10:cANSI
 
 		colorscheme lleaff-chalk | set background=dark
-		autocmd FileType c colorscheme base16-ocean | set background=dark
-		autocmd FileType javascript colorscheme base16-mocha | set background=dark
 	endif
+	autocmd FileType c colorscheme base16-ocean | set background=dark
+	autocmd FileType javascript colorscheme base16-mocha | set background=dark
+	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D
+	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
 endif
 
 "set foldcolumn=2

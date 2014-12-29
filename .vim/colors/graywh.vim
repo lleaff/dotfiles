@@ -13,7 +13,7 @@ let g:colors_name = "graywh"
 
 "hi IncSearch -- no settings --
 hi WildMenu guifg=#1E1E1E guibg=#CCCC00 guisp=#CCCC00 gui=NONE ctermfg=234 ctermbg=184 cterm=NONE
-hi SignColumn guifg=#FFFF66 guibg=#474747 guisp=#474747 gui=NONE ctermfg=227 ctermbg=238 cterm=NONE
+hi SignColumn guifg=#FFFF66 guibg=#282828 guisp=#282828 gui=NONE ctermfg=227 ctermbg=238 cterm=NONE
 hi SpecialComment guifg=#FF3333 guibg=NONE guisp=NONE gui=NONE ctermfg=13 ctermbg=NONE cterm=NONE
 hi Typedef guifg=#FFFF99 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=NONE cterm=NONE
 hi Title guifg=#FF66FF guibg=NONE guisp=NONE gui=bold ctermfg=207 ctermbg=NONE cterm=bold
@@ -23,7 +23,7 @@ hi Include guifg=#33FFFF guibg=NONE guisp=NONE gui=NONE ctermfg=87 ctermbg=NONE 
 hi TabLineSel guifg=#CCCCCC guibg=#1E1E1E guisp=#1E1E1E gui=bold ctermfg=252 ctermbg=234 cterm=bold
 "hi StatusLineNC -- no settings --
 "hi CTagsMember -- no settings --
-hi NonText guifg=#66FFFF guibg=#282828 guisp=#282828 gui=NONE ctermfg=87 ctermbg=235 cterm=NONE
+hi NonText guifg=#66FFFF guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=87 ctermbg=235 cterm=NONE
 "hi CTagsGlobalConstant -- no settings --
 hi DiffText guifg=NONE guibg=#333314 guisp=#333314 gui=NONE ctermfg=NONE ctermbg=58 cterm=NONE
 hi ErrorMsg guifg=#CC0000 guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=160 ctermbg=234 cterm=NONE
@@ -36,7 +36,7 @@ hi Conditional guifg=#FFFF99 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=
 hi StorageClass guifg=#FFFF99 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=NONE cterm=NONE
 hi Todo guifg=#0000CC guibg=#FFFF33 guisp=#FFFF33 gui=NONE ctermfg=20 ctermbg=227 cterm=NONE
 hi Special guifg=#FF3333 guibg=NONE guisp=NONE gui=NONE ctermfg=13 ctermbg=NONE cterm=NONE
-hi LineNr guifg=#CCCC99 guibg=#282828 guisp=#282828 gui=NONE ctermfg=187 ctermbg=235 cterm=NONE
+hi LineNr guifg=#AAAAAA guibg=#282828 guisp=#1E1E1E gui=NONE ctermfg=187 ctermbg=235 cterm=NONE
 hi StatusLine guifg=NONE guibg=NONE guisp=NONE gui=bold ctermfg=NONE ctermbg=NONE cterm=bold
 hi Normal guifg=#CCCCCC guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=252 ctermbg=234 cterm=NONE
 hi Label guifg=#FFFF99 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=NONE cterm=NONE
@@ -54,7 +54,7 @@ hi Character guifg=#FF99FF guibg=NONE guisp=NONE gui=NONE ctermfg=213 ctermbg=NO
 hi Number guifg=#FF9999 guibg=NONE guisp=NONE gui=NONE ctermfg=210 ctermbg=NONE cterm=NONE
 hi Boolean guifg=#3366FF guibg=NONE guisp=NONE gui=bold ctermfg=69 ctermbg=NONE cterm=bold
 hi Operator guifg=#FF9966 guibg=NONE guisp=NONE gui=NONE ctermfg=209 ctermbg=NONE cterm=NONE
-hi CursorLine guifg=NONE guibg=#282828 guisp=#282828 gui=NONE ctermfg=NONE ctermbg=235 cterm=NONE
+hi CursorLine guifg=NONE guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=NONE ctermbg=235 cterm=NONE
 "hi Union -- no settings --
 hi TabLineFill guifg=#CCCCCC guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=252 ctermbg=234 cterm=NONE
 hi Question guifg=#33FF33 guibg=NONE guisp=NONE gui=bold ctermfg=83 ctermbg=NONE cterm=bold
@@ -62,7 +62,7 @@ hi WarningMsg guifg=#CCCC00 guibg=NONE guisp=NONE gui=NONE ctermfg=184 ctermbg=N
 hi VisualNOS guifg=NONE guibg=NONE guisp=NONE gui=bold,underline ctermfg=NONE ctermbg=NONE cterm=bold,underline
 hi DiffDelete guifg=#CCCCCC guibg=#331414 guisp=#331414 gui=NONE ctermfg=252 ctermbg=236 cterm=NONE
 hi ModeMsg guifg=NONE guibg=NONE guisp=NONE gui=bold ctermfg=NONE ctermbg=NONE cterm=bold
-hi CursorColumn guifg=NONE guibg=#282828 guisp=#282828 gui=NONE ctermfg=NONE ctermbg=235 cterm=NONE
+hi CursorColumn guifg=NONE guibg=#1E1E1E guisp=#1E1E1E gui=NONE ctermfg=NONE ctermbg=235 cterm=NONE
 hi Define guifg=#33FFFF guibg=NONE guisp=NONE gui=NONE ctermfg=87 ctermbg=NONE cterm=NONE
 hi Function guifg=#99CCFF guibg=NONE guisp=NONE gui=NONE ctermfg=153 ctermbg=NONE cterm=NONE
 hi FoldColumn guifg=#66FFFF guibg=#474747 guisp=#474747 gui=NONE ctermfg=87 ctermbg=238 cterm=NONE
