@@ -1,7 +1,7 @@
-function __gccs() {
-	for f in $1; do gcc $f -std=c99 -pedantic -o ${f%.*}; done
+function __gccc99() {
+	for f in $1; do gcc $f -std=c99 -pedantic -Wall -o ${f%.*}; done
 }
-alias gccs=__gccs
+alias gccs=__gccc99
 
 function __gvim() {
 	for f in $1; do eval '("C://Program Files (x86)/Vim/vim74/gvim.exe" $f &)'; done
