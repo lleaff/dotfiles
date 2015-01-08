@@ -118,6 +118,7 @@ Plug 'junegunn/seoul256.vim'
 "Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'Junza/Spink' "Low color contrast brownish theme
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plug 'fugalh/desert.vim' "dark colorscheme, works in terminal
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -230,9 +231,11 @@ highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
 
 " Original window size and position
-set lines=70
-set columns=116  
-winpos 0 0 
+if has("gui_running")
+	set lines=70
+	set columns=116  
+	winpos 0 0 
+endif
 
 "===========Restore window pos and curosr
 
