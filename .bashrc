@@ -3,6 +3,7 @@ function __gccc99() {
 	for f in $1; do gcc $f -std=c99 -pedantic -Wall -o ${f%.*}; done
 }
 alias gccc99=__gccc99
+alias gccs=__gccc99
 
 ###launch gvim
 function __gvim() {
