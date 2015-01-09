@@ -14,11 +14,13 @@ alias gvim=__gvim
 function __git() {
 	case $* in
 		add* ) shift 1; command git add -v "$@" ;;
+		status* ) shift 1; command git status -s "$@" ;;
 		* ) command git "$@" ;;
 	esac
 }
 alias git=__git
 
+alias lsa="ls -a"
 
 ###ask for ssh password, keep this at the end
 eval `ssh-agent`

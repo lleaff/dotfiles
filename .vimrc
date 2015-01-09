@@ -1,4 +1,8 @@
-if has('gui_running')
+set nocompatible 
+filetype off 
+set rtp+=~/.vim/ "for Windows
+
+if has("gui_running")
 	" To enable the saving and restoring of screen positions.
 	let g:screen_size_restore_pos = 1
 
@@ -12,10 +16,6 @@ if has('win32')
 	set showtabline=2 "always show tab bar
 	language English_United States "Override environment language detection 
 endif
-
-set nocompatible 
-filetype off 
-set rtp+=~/.vim/ "for Windows
 
 "---------------------------------------------P-L-U-G-I-N-S---------------------------------------------
 "To install vim-plug:
