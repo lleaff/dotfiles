@@ -73,6 +73,8 @@ Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
 
+"===Rust
+Plug 'wting/rust.vim' "Vim support for Rust file detection and syntax highlighting
 "===JavaScript
 Plug 'marijnh/tern_for_vim' "JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm install -g jshint))
 Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
@@ -146,7 +148,7 @@ filetype plugin indent on
 
 " Colors, font
 if has("gui_running")
-	if has("gui_gtk2") 					" =========Linux
+	if has("gui_gtk2") 				" =========Linux
 		set guifont=Inconsolata\ 12
 		colorscheme base16-eighties
 		set background=dark
@@ -204,6 +206,8 @@ if has("gui_win32")
 	source ~/.vim/mswin-partial.vim
 endif
 
+au FocusLost * :wa "Save all buffers when window lose focus
+
 au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
 
 let &path.="src/include,/usr/incude/AL," "Look for header files
@@ -220,7 +224,19 @@ set shiftwidth=4| set tabstop=4 "indent size
 set listchars=tab:>-,eol:↵
 "set list "Enables crlf glyph
 
-set noerrorbells visualbell t_vb=				" Disable beeping
+set ttyfast "Scrolling stuff
+
+set gdefault "Automatically add g option to :s and stuff like that
+
+set smartcase	" ^ ignore case if search is all lowercase
+set ignorecase	" v
+
+set incsearch	" ^ highlight search results
+set showmatch	" |
+"set hlsearch	" v
+"nnoremap <leader><space> :noh<cr>
+
+set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
 " syntastic
@@ -302,7 +318,7 @@ endif
 
 
 "##########################################
-"###############Keys Mapping###############
+"###############Keys Mappings##############
 "##########################################
 "
 " Remap the numpad Enter key to Esc
@@ -316,8 +332,11 @@ vnoremap <silent> K 5k
 nnoremap <silent> J 5j
 vnoremap <silent> J 5j
 
-nnoremap j gj	"^ Move vertically by visual line
-nnoremap k gk	"v
+nnoremap j gj	" ^ Move vertically by visual line
+nnoremap k gk	" v
+
+nnoremap <tab> %
+vnoremap <tab> %
 
 nnoremap gV `[v`] " Highlight last inserted text
 
