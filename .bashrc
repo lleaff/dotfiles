@@ -23,6 +23,21 @@ alias git=__git
 
 alias lsa="ls -a"
 
+function __ftree() {
+    SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
+
+    if [ "$#" -gt 0 ] ; then
+       dirlist="$@"
+    else
+       dirlist="."
+    fi
+
+    for x in $dirlist; do
+         find "$x" -print | sed -e "$SEDMAGIC"
+    done
+}
+alias tree=__ftree
+
 ###ask for ssh password, keep this at the end
 eval `ssh-agent`
 ssh-add
