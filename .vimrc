@@ -69,6 +69,11 @@ Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 "Plug 'sjl/gundo.vim' "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
+Plug 'tpope/vim-surround' "Delete surroundings: ds*, Change surroundings: cs**, Surround: ys<move>*, Surround line: yss* (r: nocompatible)
+Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
+
+Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitple variants of a word
+
 "=========Languages specific=========
 
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
@@ -101,7 +106,6 @@ Plug 'ap/vim-css-color' "Highlight colors in CSS files
 "Plug 'nathanaelkane/vim-indent-guides' "visual indent guides with bg color, toggle with <leader>ig
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 Plug 'Raimondi/delimitMate' "Automatically add closing brackets
-Plug 'tpope/vim-surround' "Delete surroundings: ds*, Change surroundings: cs**, Surround: ys<move>*, Surround line: yss* (r: nocompatible)
 
 "=========cosmetic=========
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
@@ -167,6 +171,8 @@ if has("gui_running")
 	autocmd FileType javascript colorscheme base16-mocha | set background=dark
 	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D
 	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+
+	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
 endif
 
 "set foldcolumn=2
@@ -206,7 +212,7 @@ if has("gui_win32")
 	source ~/.vim/mswin-partial.vim
 endif
 
-au FocusLost * :wa "Save all buffers when window lose focus
+"au FocusLost * :wa "Save all buffers when window loses focus
 
 au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
 
