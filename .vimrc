@@ -38,6 +38,7 @@ if has("win32")
 	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 elseif has("unix")
 	Plug 'Valloric/YouCompleteMe'
+	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 endif
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
@@ -169,10 +170,12 @@ if has("gui_running")
 	endif
 	autocmd FileType c colorscheme base16-ocean | set background=dark
 	autocmd FileType javascript colorscheme base16-mocha | set background=dark
-	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D
-	highlight YCMErrorSign guifg=#cccccc guibg=#9D4D4D
-	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
-	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 
+	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D		" ^ Doesn't work
+	highlight YCMErrorSign guifg=#cccccc guibg=#9D4D4D				" |
+	highlight YCMErrorLine guifg=#cccccc guibg=#9D4D4D				" |
+	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 		" |
+	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 			" |
+	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
 
 	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
 endif
