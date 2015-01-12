@@ -170,7 +170,9 @@ if has("gui_running")
 	autocmd FileType c colorscheme base16-ocean | set background=dark
 	autocmd FileType javascript colorscheme base16-mocha | set background=dark
 	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D
+	highlight YCMErrorSign guifg=#cccccc guibg=#9D4D4D
 	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 
 
 	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
 endif
