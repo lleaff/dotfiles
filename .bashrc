@@ -1,9 +1,19 @@
+###autofill -o argument
+function __gccs() {
+	gcc $@ -pedantic -Wall -o ${1%.*}
+}
+alias gccs=__gccs
+
+function __g++s() {
+	g++ $@ -pedantic -Wall -o ${1%.*}
+}
+alias g++s=__g++s
+
 ###default arguments to compile c programs
 function __gccc99() {
-	for f in $1; do gcc $f -std=c99 -pedantic -Wall -o ${f%.*}; done
+	gcc $@ -std=c99 -pedantic -Wall -o ${1%.*}
 }
 alias gccc99=__gccc99
-alias gccs=__gccc99
 
 ###launch gvim
 function __gvim() {
