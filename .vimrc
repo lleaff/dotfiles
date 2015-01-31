@@ -32,13 +32,15 @@ Plug 'scrooloose/syntastic' "Syntax checking plugin
 let g:syntastic_check_on_open=1
 
 "YouCompleteMe, YCM
-if has("win32")
-	Plug $HOME . '/.vim/ycm.git' "Code completion engine
-	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
-	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
-elseif has("unix")
-	Plug 'Valloric/YouCompleteMe'
-	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+if has("gui_running")
+	if has("win32")
+		Plug $HOME . '/.vim/ycm.git' "Code completion engine
+		"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
+		autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+	elseif has("unix")
+		Plug 'Valloric/YouCompleteMe'
+		autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+	endif
 endif
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
@@ -155,7 +157,7 @@ filetype plugin indent on
 if has("gui_running")
 	if has("gui_gtk2") 				" =========Linux
 		set guifont=Inconsolata\ 12
-		colorscheme base16-eighties
+		colorscheme base16-mocha
 		set background=dark
 	elseif has("gui_macvim") 		" =========OS X
 		set guifont=Menlo\ Regular:h14
@@ -165,11 +167,10 @@ if has("gui_running")
 		set guioptions -=T "no toolbar
 		set guioptions -=m "no menubar
 		set guifont=Meslo\ LG\ S\ DZ\ Regular:h10:cANSI
-
 		colorscheme lleaff-chalk | set background=dark
 	endif
-	autocmd FileType c colorscheme base16-ocean | set background=dark
-	autocmd FileType javascript colorscheme base16-mocha | set background=dark
+	"autocmd FileType c colorscheme base16-ocean | set background=dark
+	"autocmd FileType javascript colorscheme base16-mocha | set background=dark
 	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D		" ^ Doesn't work
 	highlight YCMErrorSign guifg=#cccccc guibg=#9D4D4D				" |
 	highlight YCMErrorLine guifg=#cccccc guibg=#9D4D4D				" |
