@@ -35,13 +35,13 @@ alias git=__git
 ###simulate improved ls output with find
 function __lsm() {
 	case $* in
-		-a ) shift 1; command find "$@" ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n' ;;
-		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '*~' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n' ;;
+		-a ) shift 1; command find "$@" ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY   %s\n' ;;
+		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '*~' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY   %s\n' ;;
 	esac
 }
 alias ls=__lsm
 function __lsma() {
-	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n'
+	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY   %s\n'
 }
 alias lsa=__lsma
 #original ls under "lso" alias
