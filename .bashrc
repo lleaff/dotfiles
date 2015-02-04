@@ -1,4 +1,4 @@
-###autofill -o argument
+###autofill -o argument with first arg
 function __gccs() {
 	gcc $@ -pedantic -Wall -o ${1%.*}
 }
@@ -21,7 +21,7 @@ function __gvim() {
 }
 alias gvim=__gvim
 
-###always add -v (verbose) argument to git add
+###"git" enhancement
 function __git() {
 	case $* in
 		add* ) shift 1; command git add -v "$@" ;;
@@ -32,7 +32,23 @@ function __git() {
 }
 alias git=__git
 
-alias lsa="ls -a"
+###simulate improved ls output with find
+function __lsm() {
+	case $* in
+		-a ) shift 1; command find "$@" ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n' ;;
+		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '*~' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n' ;;
+	esac
+}
+alias ls=__lsm
+function __lsma() {
+	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf '%-53.52f%Cd.%Cm.%CY\t%s\n'
+}
+alias lsa=__lsma
+#original ls under "lso" alias
+function __lso() {
+	command ls $*
+}
+alias lso=__lso
 
 function __ftree() {
     SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
