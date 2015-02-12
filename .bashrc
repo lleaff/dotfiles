@@ -26,6 +26,7 @@ function __git() {
 	case $* in
 		add* ) shift 1; command git add -v "$@" ;;
 		status* ) shift 1; command git status -s "$@" ;;
+		pull* ) shift 1; command git pull -v "$@" ;;
 		logf* ) shift 1; command git log --stat -pretty=oneline "$@" ;; #log formatted
 		* ) command git "$@" ;;
 	esac
