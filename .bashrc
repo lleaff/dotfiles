@@ -37,7 +37,7 @@ alias git=__git
 function __lsm() {
 	case $* in
 		-a ) shift 1; command find "$@" ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
-		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '*~' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
+		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
 	esac
 }
 alias ls=__lsm
@@ -45,6 +45,14 @@ function __lsma() {
 	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
 alias lsa=__lsma
+function __lsma() {
+	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
+}
+alias lsa=__lsma
+function __lsms() {
+	find $1 ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -maxdepth 1 -printf "%f\n"
+}
+alias lss=__lsms
 #original ls under "lso" alias
 function __lso() {
 	command ls $*
