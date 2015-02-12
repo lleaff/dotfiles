@@ -79,7 +79,11 @@ Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitpl
 
 "=========Languages specific=========
 
+"===C & C++
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
+if has("win32") " Add standard library headers to path on Windows
+	let &path.="D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,"
+endif
 
 "===Rust
 Plug 'wting/rust.vim' "Vim support for Rust file detection and syntax highlighting
