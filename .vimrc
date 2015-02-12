@@ -43,10 +43,13 @@ if has("gui_running")
 	endif
 endif
 
+"===File/Buffer management
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 "Plug 'jistr/vim-nerdtree-tabs' "NERDTree independant of tabs
 Plug 'ctrlpvim/ctrlp.vim'  ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
 command MRU CtrlPMRU
+
+Plug 'tpope/vim-fugitive' " Git wrapper
 
 Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
 
@@ -78,6 +81,8 @@ Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitple variants of a word
 
 "=========Languages specific=========
+"awk, bash, c, git, latex, lua, matlab, & perl support
+Plug 'WolfgangMehner/vim-plugins'
 
 "===C & C++
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
