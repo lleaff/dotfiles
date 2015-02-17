@@ -356,8 +356,8 @@ vnoremap <silent> J 5j
 nnoremap j gj	" ^ Move vertically by visual line
 nnoremap k gk	" v
 
-nnoremap <tab> %
-vnoremap <tab> %
+nmap <tab> %
+vmap <tab> %
 
 nnoremap gV `[v`] " Highlight last inserted text
 
