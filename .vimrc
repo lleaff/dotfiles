@@ -80,6 +80,8 @@ Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 
 Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitple variants of a word
 
+"Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
+
 "=========Languages specific=========
 "awk, bash, c, git, latex, lua, matlab, & perl support
 Plug 'WolfgangMehner/vim-plugins'
