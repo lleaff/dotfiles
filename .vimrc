@@ -49,7 +49,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 Plug 'ctrlpvim/ctrlp.vim'  ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
 command MRU CtrlPMRU
 
-Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'tpope/vim-fugitive' " Git wrapper (:Gwrite (=git add), :Gcommit, :Gstatus, :Gbrowse, ...)
 
 Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
 
