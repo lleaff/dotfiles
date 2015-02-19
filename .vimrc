@@ -36,11 +36,11 @@ if has("gui_running")
 	if has("win32")
 		Plug $HOME . '/.vim/ycm.git' "Code completion engine
 		"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
-		autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 	elseif has("unix")
 		Plug 'Valloric/YouCompleteMe'
-		autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 	endif
+	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+	autocmd FileType cpp let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 endif
 
 "===File/Buffer management
@@ -49,7 +49,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 Plug 'ctrlpvim/ctrlp.vim'  ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
 command MRU CtrlPMRU
 
-Plug 'tpope/vim-fugitive' " Git wrapper (:Gwrite (=git add), :Gcommit, :Gstatus, :Gbrowse, ...)
+Plug 'tpope/vim-fugitive' " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse, ...)
 
 Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
 
@@ -58,6 +58,7 @@ Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 
 "Plug 'bling/vim-airline' "status bar/tabline modification ====> dslkdfj <====
 
+" Disabled because it doesn't work
 "Plug 'vim-scripts/restore_view.vim' " A plugin for automatically restoring files cursor position and folding
 "if has("unix")
 "	set viewoptions=cursor,folds,slash,unix
@@ -75,7 +76,7 @@ Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 "Plug 'sjl/gundo.vim' "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
-Plug 'tpope/vim-surround' "Delete surroundings: ds*, Change surroundings: cs**, Surround: ys<move>*, Surround line: yss* (r: nocompatible)
+Plug 'tpope/vim-surround' "Delete surroundings: ds*, Change surroundings: cs**, Surround: ys<move>*, Surround line: yss* (req: nocompatible)
 Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 
 Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitple variants of a word
@@ -268,6 +269,10 @@ let g:syntastic_warning_symbol = '!'	"v
 
 highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D 
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+
+"==============Status line
+" tpope's status line
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 
 " Original window size and position
 if has("gui_running")
