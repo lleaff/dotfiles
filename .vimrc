@@ -455,6 +455,8 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 " 	http://sourceforge.net/projects/cream/
 " 	https://tuxproject.de/projects/vim/			"copy over ^
 "  	Ycm {
+" 		http://sourceforge.net/projects/mingw-w64/
+" 			cp C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/bits/* C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/x86_64-w64-mingw32/bits/*
 " 		https://www.python.org/downloads/release/python-279/
 " 		http://sourceforge.net/projects/clangonwin/
 " 		https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows/downloads
