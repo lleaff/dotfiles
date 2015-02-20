@@ -166,6 +166,10 @@ filetype plugin indent on
 "###############Cosmetics###############
 "#######################################
 
+" Always show sign gutter (space left of line numbers)
+autocmd BufEnter * sign define dummy
+autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
 " Colors, font
 if has("gui_running")
 	if has("gui_gtk2") 				" =========Linux
