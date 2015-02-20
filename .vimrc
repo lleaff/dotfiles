@@ -230,11 +230,11 @@ if has("gui_win32")
 	source ~/.vim/mswin-partial.vim
 endif
 
-if has("gui_win32")
-	set shell=C:/Program\ Files\ (x86)/Git/bin/sh.exe
-	set shellcmdflag=--login\ -i
-	set shellxquote=\"
-endif
+"if has("gui_win32")
+"	set shell=C:/Program\ Files\ (x86)/Git/bin/sh.exe
+"	set shellcmdflag=--login\ -i
+"	set shellxquote=\"
+"endif
 
 "au FocusLost * :wa "Save all buffers when window loses focus
 
@@ -434,3 +434,11 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
 
+
+
+"==========================================================================
+"=========================== How to install Vim ===========================
+"==========================================================================
+" On Windows:
+"	http://sourceforge.net/projects/cream/
+"	https://tuxproject.de/projects/vim/
