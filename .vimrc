@@ -452,10 +452,11 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 "==========================================================================
 " On Windows x64 {
 " 	http://sourceforge.net/projects/cream/
-" 	https://tuxproject.de/projects/vim/			"copy over ^
-"  	Ycm {
-" 		http://sourceforge.net/projects/mingw-w64/
+" 	https://tuxproject.de/projects/vim/					"copy over ^
+"  	Ycm { 												"Always choose 64 bit version otherwise YCM will fail to run
+" 		http://sourceforge.net/projects/mingw-w64/		"install then run those two commands (adjust version number if needed) v
 " 			cp C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/bits/* C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/x86_64-w64-mingw32/bits/*
+" 			curl http://pastebin.com/raw.php?i=bZxiqYwW > C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/specs
 " 		https://www.python.org/downloads/release/python-279/
 " 		http://sourceforge.net/projects/clangonwin/
 " 		https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows/downloads
