@@ -67,7 +67,7 @@ flags = [
 #'-isystem',
 #'D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include',
 '-isystem',
-'D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include/c++',
+'C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++',
 #MinGW (Windows)
 #'-isystem',
 #'C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++', #32bit
