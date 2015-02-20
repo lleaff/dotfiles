@@ -369,7 +369,8 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-
+"=== Store swap (.swp, .swo) files in a central location
+:set directory=~/.vim/tmp
 
 "##########################################
 "###############Keys Mappings##############
