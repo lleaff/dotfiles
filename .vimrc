@@ -39,8 +39,8 @@ if has("gui_running")
 	elseif has("unix")
 		Plug 'Valloric/YouCompleteMe'
 	endif
-	autocmd FileType c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
-	autocmd FileType cpp let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+	autocmd FileType c 		let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+	autocmd FileType cpp 	let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
 endif
 
 "===File/Buffer management
@@ -120,7 +120,7 @@ Plug 'vim-scripts/cmake.vim' "indent
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
 "Plug 'nathanaelkane/vim-indent-guides' "visual indent guides with bg color, toggle with <leader>ig
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
-Plug 'Raimondi/delimitMate' "Automatically add closing brackets
+Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
 "=========cosmetic=========
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
@@ -228,6 +228,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 if has("gui_win32")
 	source ~/.vim/mswin-partial.vim
+endif
+
+if has("gui_win32")
+	set shell=C:/Program\ Files\ (x86)/Git/bin/sh.exe
+	set shellcmdflag=--login\ -i
+	set shellxquote=\"
 endif
 
 "au FocusLost * :wa "Save all buffers when window loses focus
@@ -377,7 +383,22 @@ map <C-Tab> :tabnext<CR> 					" Next tab
 nmap <C-Tab> :tabnext<CR>
 imap <C-Tab> <Esc>:tabnext<CR>i
 
-"Disable middle mouse click paste
+"******* current file directory commands WINDOWS **********************
+"%:p:h:8 gets the current file's directory and :8 is what puts it
+" into dos short form
+
+"open explorer in the current file's directory
+map ,e :!start explorer %:p:h:8<CR>
+
+"open windows command prompt in the current file's directory
+map ,c :!start cmd /k cd %:p:h:8<CR>
+
+"open cygwin bash in the current file's directory
+map ,b :!start bash --login -i -c 'cd `cygpath "%:p:h:8"`;bash'<CR>
+
+"******* end current file directory commands WINDOWS ******************
+
+"=====Disable middle mouse click paste
 noremap <MiddleMouse> <LeftMouse> | noremap! <MiddleMouse> <LeftMouse> | map <2-MiddleMouse> <LeftMouse> | imap <2-MiddleMouse> <LeftMouse> | map <3-MiddleMouse> <LeftMouse> | imap <3-MiddleMouse> <LeftMouse> | map <4-MiddleMouse> <LeftMouse> | imap <4-MiddleMouse> <LeftMouse>
 
 command -nargs=0 -bar UpdateFileAndSave if &modified
@@ -392,7 +413,7 @@ nnoremap <silent> <C-S> :<C-u>UpdateFileAndSave<CR>
 
 "nnoremap <silent> <C-W> :q<CR>
 
-" Change font size
+"=====Change font size
 nnoremap <C-Up> :silent! let &guifont = substitute(
 			\ &guifont,
 			\ ':h\zs\d\+',
