@@ -191,6 +191,8 @@ if has("gui_running")
 	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
 
 	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
+else
+	colorscheme desert
 endif
 
 "set foldcolumn=2
