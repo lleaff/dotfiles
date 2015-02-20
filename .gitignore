@@ -4,7 +4,7 @@
 !.vim/**
 .vim/bundle
 .vim/plugged
-.vim/ycm.git
+.vim/ycm_win64
 
 ###temp files
 *.swp

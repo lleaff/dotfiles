@@ -28,13 +28,12 @@ Plug 'tpope/vim-sensible' "Configurations everyone agree on
 
 "Plug 'yegappan/mru' "Most Recently Used files, use :MRU command
 
-Plug 'scrooloose/syntastic' "Syntax checking plugin
-let g:syntastic_check_on_open=1
+Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic)
 
 "YouCompleteMe, YCM
 if has("gui_running")
 	if has("win32")
-		Plug $HOME . '/.vim/ycm.git' "Code completion engine
+		Plug $HOME . '/.vim/ycm_win64' "Code completion engine
 		"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
 	elseif has("unix")
 		Plug 'Valloric/YouCompleteMe'
@@ -42,6 +41,8 @@ if has("gui_running")
 	autocmd FileType c 		let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 	autocmd FileType cpp 	let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
 endif
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 "===File/Buffer management
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
@@ -183,9 +184,9 @@ if has("gui_running")
 	endif
 	"autocmd FileType c colorscheme base16-ocean | set background=dark
 	"autocmd FileType javascript colorscheme base16-mocha | set background=dark
-	highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D		" ^ Doesn't work
-	highlight YCMErrorSign guifg=#cccccc guibg=#9D4D4D				" |
-	highlight YCMErrorLine guifg=#cccccc guibg=#9D4D4D				" |
+	highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D		" ^ Doesn't work
+	highlight YCMErrorSign guifg=#cccccc guibg=#7D4D4D				" |
+	highlight YCMErrorLine guifg=#cccccc guibg=#7D4D4D				" |
 	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 		" |
 	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 			" |
 	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
@@ -271,23 +272,28 @@ set showmatch	" |
 set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
-" syntastic
+"=== #syntastic
+let g:syntastic_check_on_open=1
+"let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11' " -stdlib=libc++'
 let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
 let g:syntastic_warning_symbol = '!'	"v
-
-highlight SyntasticErrorSign guifg=#cccccc guibg=#9D4D4D 
+"This needs to be kept near the end or it gets overwritten by smth else
+highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D 
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
 
 "==============Status line
+"Default status line: set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
 " tpope's status line
 "set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 
-" Original window size and position
-if has("gui_running")
-	set lines=70
-	set columns=116  
-	winpos 0 0 
-endif
+"=============Default window size and position
+"if has("gui_running")
+"	set lines=70
+"	set columns=116  
+"	winpos 0 0 
+"endif
 
 "===========Restore window pos and curosr
 
@@ -349,16 +355,16 @@ if has("gui_running")
   autocmd VimLeavePre * if g:screen_size_restore_pos == 1 | call ScreenSave() | endif
 endif
 
-"  ==============Restore cursor position===========
-"  " When editing a file, always jump to the last known cursor position.
-"  " Don't do it when the position is invalid or when inside an event handler
-"  " (happens when dropping a file on gvim).
-"  " Also don't do it when the mark is in the first line, that is the default
-"  " position when opening a file.
-"  autocmd BufReadPost *
-"    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-"    \   exe "normal! g`\"" |
-"    \ endif
+"==============Restore cursor position===========
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
 
 
@@ -441,6 +447,13 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 "==========================================================================
 "=========================== How to install Vim ===========================
 "==========================================================================
-" On Windows:
-"	http://sourceforge.net/projects/cream/
-"	https://tuxproject.de/projects/vim/
+" On Windows x64 {
+" 	http://sourceforge.net/projects/cream/
+" 	https://tuxproject.de/projects/vim/			"copy over ^
+"  	Ycm {
+" 		https://www.python.org/downloads/release/python-279/
+" 		http://sourceforge.net/projects/clangonwin/
+" 		https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows/downloads
+" 	}
+" }
+"
