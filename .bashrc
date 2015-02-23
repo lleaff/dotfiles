@@ -33,6 +33,12 @@ function __git() {
 }
 alias git=__git
 
+###make with specific makefile
+function __makef() {
+	make -f $1;
+}
+alias makef=__makef
+
 ###simulate improved ls output with find
 function __lsm() {
 	case $* in
