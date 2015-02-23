@@ -35,7 +35,7 @@ alias git=__git
 
 ###make with specific makefile
 function __makef() {
-	make -f $1;
+	make -f $@;
 }
 alias makef=__makef
 
