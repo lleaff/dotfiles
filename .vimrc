@@ -128,6 +128,8 @@ Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
 
 Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
 
+Plug 'epage/vim-autohighlight'
+
 "#########################################################
 "##################Color schemes, Colors##################
 "#########################################################
@@ -192,6 +194,13 @@ if has("gui_running")
 	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
 
 	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
+
+
+	if &background == 'black'
+		hi Search guibg=#303220 guifg=NONE
+	elseif &background == 'light'
+		hi Search guibg=#708559 guifg=NONE
+	endif
 else
 	colorscheme desert
 endif
@@ -445,7 +454,6 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ ':h\zs\d\+',
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
-
 
 
 "==========================================================================
