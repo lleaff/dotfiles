@@ -68,13 +68,9 @@ flags = [
 #'D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include',
 '-isystem',
 'C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++',
-#MinGW (Windows)
-#'-isystem',
-#'C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++', #32bit
-#'-isystem',
-#'C:/mingw64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++', #64bit
-#'-isystem',
-#'C:\Program Files (x86)\LLVM\bin',
+# SDL2 32bit library
+'-isystem',
+'C:/SDL2/i686-w64-mingw32/include/SDL2',
 ############################################################ UNIX
 '-isystem',
 '../BoostParts',
