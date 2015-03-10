@@ -402,6 +402,8 @@ nnoremap k gk	" v
 nmap <tab> %
 vmap <tab> %
 
+map <OM> <Esc>
+
 nnoremap gV `[v`] " Highlight last inserted text
 
 let mapleader=","

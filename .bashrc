@@ -42,21 +42,21 @@ alias makef=__makef
 ###simulate improved ls output with find
 function __lsm() {
 	case $* in
-		-a ) shift 1; command find "$@" ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
-		* ) command find "$@" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
+		-a ) shift 1; command find "$@" -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
+		* ) command find "$@" -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
 	esac
 }
 alias ls=__lsm
 function __lsma() {
-	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
+	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
 alias lsa=__lsma
 function __lsma() {
-	find $1 ! -name '.' ! -name '..' -maxdepth 1 -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
+	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
 alias lsa=__lsma
 function __lsms() {
-	find $1 ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -maxdepth 1 -printf "%f\n"
+	find $1 -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%f\n"
 }
 alias lss=__lsms
 #original ls under "lso" alias
@@ -80,6 +80,7 @@ function __ftree() {
 }
 alias tree=__ftree
 
+# For Windows
 ###ask for ssh password, keep this at the end
-eval `ssh-agent`
-ssh-add
+#eval `ssh-agent`
+#ssh-add
