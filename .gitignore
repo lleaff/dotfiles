@@ -1,4 +1,5 @@
 **
+!makesymlinks.sh
 !.*
 !.vim
 !.vim/**
