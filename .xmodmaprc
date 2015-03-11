@@ -1,5 +1,0 @@
-! Disable caps lock
-clear Lock
-! Replace caps lock with Numpad Enter
-keycode 66 = KP_Enter
-!keycode 104, action KP_Enter
