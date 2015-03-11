@@ -388,7 +388,8 @@ autocmd BufReadPost *
 "###############Keys Mappings##############
 "##########################################
 "
-" Remap the numpad Enter key to Esc
+" Remap the numpad Enter key to Esc (only in gVim
+"  because <kEnter> doesn't work in terminals)
 map! <kEnter> <Esc>
 map <kEnter> <Esc>
 
