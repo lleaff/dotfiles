@@ -17,7 +17,7 @@ alias gccc99=__gccc99
 
 ###launch gvim
 function __gvim() {
-	for f in $1; do eval '("C://Program Files (x86)/Vim/vim74/gvim.exe" $f &)'; done
+	gvim $@
 }
 alias gvim=__gvim
 
