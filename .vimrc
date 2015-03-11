@@ -386,9 +386,8 @@ autocmd BufReadPost *
 "##########################################
 "
 " Remap the numpad Enter key to Esc
-"map! <kEnter> <Esc>
-"map <kEnter> <Esc>
-" doesn't work tho
+map! <kEnter> <Esc>
+map <kEnter> <Esc>
 
 "======Movement
 nnoremap <silent> K 5k
