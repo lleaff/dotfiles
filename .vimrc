@@ -244,7 +244,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 "###############Settings###############
 "######################################
 
-if has("gui_win32")
+if has("gui_win32")					" =========Windows
+	source ~/.vim/mswin-partial.vim
+elseif has("gui_gtk2") 					" =========Linux
 	source ~/.vim/mswin-partial.vim
 endif
 
@@ -432,6 +434,9 @@ map ,c :!start cmd /k cd %:p:h:8<CR>
 map ,b :!start bash --login -i -c 'cd `cygpath "%:p:h:8"`;bash'<CR>
 
 "******* end current file directory commands WINDOWS ******************
+
+"=====Save file as root even if vim is launched without sudo
+cmap w!! w !sudo tee > /dev/null %
 
 "=====Disable middle mouse click paste
 noremap <MiddleMouse> <LeftMouse> | noremap! <MiddleMouse> <LeftMouse> | map <2-MiddleMouse> <LeftMouse> | imap <2-MiddleMouse> <LeftMouse> | map <3-MiddleMouse> <LeftMouse> | imap <3-MiddleMouse> <LeftMouse> | map <4-MiddleMouse> <LeftMouse> | imap <4-MiddleMouse> <LeftMouse>
