@@ -28,4 +28,4 @@ for file in $files; do
 done
 
 # create vim/tmp folder
-mkdir ~/.vim/tmp
+mkdir -p ~/.vim/tmp
