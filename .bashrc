@@ -1,3 +1,9 @@
+###grep case insensitive
+function __grepi() {
+	grep -i $@
+}
+alias grepi=__grepi
+
 ###autofill -o argument with first arg
 function __gccs() {
 	gcc $@ -pedantic -Wall -o ${1%.*}
@@ -35,7 +41,7 @@ alias git=__git
 
 ###make with specific makefile
 function __makef() {
-	make -f $@;
+	make -f $@
 }
 alias makef=__makef
 
