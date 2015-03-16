@@ -196,8 +196,10 @@ if has("gui_running")
 	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 			" |
 	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
 
-	set colorcolumn=150 "Highlight the nth column so you know when lines get too long
 
+	"Highlight the nth column so you know when lines get too long
+	autocmd Filetype vim,sh,c,cpp,c#,javascript,java 
+				\ set colorcolumn=150 
 
 	if &background == 'black'
 		hi Search guibg=#303220 guifg=NONE
@@ -207,6 +209,7 @@ if has("gui_running")
 else
 	colorscheme desert
 endif
+
 
 "set foldcolumn=2
 
