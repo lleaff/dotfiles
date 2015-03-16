@@ -30,6 +30,10 @@ Plug 'tpope/vim-sensible' "Configurations everyone agree on
 
 Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic)
 
+if has("unix")
+	Plug 'tpope/vim-eunuch' " :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
+endif
+
 "YouCompleteMe, YCM
 if has("gui_running")
 	if has("win32")
