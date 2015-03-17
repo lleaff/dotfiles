@@ -127,7 +127,7 @@ Plug 'ap/vim-css-color' "Highlight colors in CSS files
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
-"=========cosmetic=========
+"===========cosmetic===========
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
 
 Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
@@ -250,6 +250,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 "######################################
 "###############Settings###############
 "######################################
+"
+"=== Store swap (.swp, .swo) files in a central location
+:set directory=~/.vim/tmp
+
 
 if has("gui_win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
@@ -389,9 +393,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
-
-"=== Store swap (.swp, .swo) files in a central location
-:set directory=~/.vim/tmp
 
 "##########################################
 "###############Keys Mappings##############
