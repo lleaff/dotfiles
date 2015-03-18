@@ -179,7 +179,7 @@ if has("gui_running")
 		set guioptions -=m "no menubar
 		"set guifont=DejaVu\ Sans\ Mono\ Regular\ 11
 		set guifont=Meslo\ LG\ S\ DZ\ Regular\ 11
-		colorscheme base16-mocha
+		colorscheme lleaff-chalk
 		set background=dark
 	elseif has("gui_macvim") 		" =========OS X
 		set guifont=Menlo\ Regular:h14
