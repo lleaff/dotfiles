@@ -88,6 +88,8 @@ Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitpl
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
+Plug 'terryma/vim-multiple-cursors'
+
 "=========Languages specific=========
 "awk, bash, c, git, latex, lua, matlab, & perl support
 Plug 'WolfgangMehner/vim-plugins'
