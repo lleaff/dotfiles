@@ -3,6 +3,7 @@
 !.*
 !.vim
 !.vim/**
+*.pyc
 .vim/tmp
 .vim/bundle
 .vim/plugged
