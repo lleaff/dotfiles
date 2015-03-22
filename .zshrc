@@ -7,6 +7,8 @@ export ZSH=/home/elo/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="nanolleaff"
 
+test -r ~/dotfiles/.termaliases.sh && source ~/dotfiles/.termaliases.sh
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

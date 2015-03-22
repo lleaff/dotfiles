@@ -52,24 +52,24 @@ function __lsm() {
 		* ) command find "$@" -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
 	esac
 }
-alias ls=__lsm
+alias lsm=__lsm
 function __lsma() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
-alias lsa=__lsma
+alias lsam=__lsma
 function __lsma() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
-alias lsa=__lsma
+alias lsam=__lsma
 function __lsms() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%f\n"
 }
-alias lss=__lsms
+alias lssm=__lsms
 #original ls under "lso" alias
 function __lso() {
 	command ls $*
 }
-alias lso=__lso
+alias lsom=__lso
 
 function __ftree() {
     SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
