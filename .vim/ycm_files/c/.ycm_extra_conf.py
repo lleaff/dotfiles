@@ -96,6 +96,9 @@ flags = [
 #standard libs for gcc in QT sdk on Windows
 '-isystem',
 'D:\Qt\Tools\mingw482_32\i686-w64-mingw32\include',
+# SDL2 on Linux
+'-isystem',
+'/usr/include/SDL2'
 ]
 
 

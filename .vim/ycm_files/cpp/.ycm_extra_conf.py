@@ -101,6 +101,9 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+# SDL2
+'-isystem',
+'/usr/include/SDL2'
 ]
 
 
