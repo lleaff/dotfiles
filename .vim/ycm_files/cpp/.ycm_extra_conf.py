@@ -107,6 +107,8 @@ flags = [
 '-isystem',
 '/usr/include/c++/4.2.1',
 '-isystem',
+'/Library/Developer/CommandLineTools/usr/include/c++/v1/',
+'-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
