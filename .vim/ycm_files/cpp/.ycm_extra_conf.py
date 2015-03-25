@@ -66,11 +66,11 @@ flags = [
 #standard libs for gcc in QT sdk on Windows
 #'-isystem',
 #'D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include',
-'-isystem',
-'C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++',
+#'-isystem',
+#'C:/MinGW/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++',
 # SDL2 32bit library
-'-isystem',
-'C:/SDL2/i686-w64-mingw32/include/SDL2',
+#'-isystem',
+#'C:/SDL2/i686-w64-mingw32/include/SDL2',
 ############################################################ UNIX
 '-isystem',
 '../BoostParts',
@@ -97,13 +97,19 @@ flags = [
 '/usr/include',
 '-isystem',
 '/usr/local/include',
+# SDL2 on Linux
+'-isystem',
+'/usr/include/SDL2',
+# SDL2 on OS X
+'-isystem',
+'/usr/local/include/SDL2',
+############################################################ OS X
+'-isystem',
+'/usr/include/c++/4.2.1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
-# SDL2
-'-isystem',
-'/usr/include/SDL2'
 ]
 
 
