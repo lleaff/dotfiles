@@ -35,16 +35,14 @@ if has("unix")
 endif
 
 "YouCompleteMe, YCM
-if has("gui_running")
-	if has("win32")
-		Plug $HOME . '/.vim/ycm_win64' "Code completion engine
-		"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
-	elseif has("unix")
-		Plug 'Valloric/YouCompleteMe'
-	endif
-	autocmd FileType c 		let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/c/.ycm_extra_conf.py'
-	autocmd FileType cpp 	let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
+if has("win32")
+	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
+	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
+elseif has("unix")
+	Plug 'Valloric/YouCompleteMe'
 endif
+autocmd FileType c 		let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+autocmd FileType cpp 	let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
