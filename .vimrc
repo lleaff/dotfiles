@@ -254,7 +254,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 "=== Store swap (.swp, .swo) files in a central location
 :set directory=~/.vim/tmp
 
-
 if has("gui_win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
 elseif has("gui_gtk2") 					" =========Linux
