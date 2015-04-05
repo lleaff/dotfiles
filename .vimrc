@@ -211,7 +211,7 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	colorscheme desert
+	colorscheme lleaff-desert
 endif
 
 
