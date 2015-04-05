@@ -71,12 +71,11 @@ hi Todo		guifg=orangered guibg=yellow2
 hi SpecialKey	ctermfg=darkgreen
 hi NonText	cterm=bold ctermfg=darkblue
 hi Directory	ctermfg=darkcyan
-hi ErrorMsg	cterm=bold ctermfg=7 ctermbg=1
+hi ErrorMsg	cterm=none ctermfg=7 ctermbg=black
 hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
 hi Search	cterm=NONE ctermfg=grey ctermbg=blue
 hi MoreMsg	ctermfg=darkgreen
 hi ModeMsg	cterm=NONE ctermfg=brown
-"hi LineNr	ctermfg=3
 hi LineNr	ctermfg=darkgrey ctermbg=black
 hi Question	ctermfg=green
 hi StatusLine	cterm=bold ctermfg=darkgrey ctermbg=black
