@@ -71,7 +71,7 @@ hi Todo		guifg=orangered guibg=yellow2
 hi SpecialKey	ctermfg=darkgreen
 hi NonText	cterm=bold ctermfg=darkblue
 hi Directory	ctermfg=darkcyan
-hi ErrorMsg	cterm=none ctermfg=7 ctermbg=black
+hi ErrorMsg	cterm=NONE ctermfg=7 ctermbg=black
 hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
 hi Search	cterm=NONE ctermfg=grey ctermbg=blue
 hi MoreMsg	ctermfg=darkgreen
@@ -103,6 +103,15 @@ hi Underlined	cterm=underline ctermfg=5
 hi Ignore	cterm=bold ctermfg=7
 hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
+hi SignColumn	ctermbg=black
+hi SyntasticErrorSign	ctermfg=white ctermbg=darkred
+hi YCMErrorSign	ctermfg=white ctermbg=darkred
+hi SyntasticError	ctermfg=white ctermbg=darkred
+hi YCMErrorSection	ctermfg=white ctermbg=darkred
+hi SyntasticWarningSign	ctermfg=white ctermbg=darkyellow
+hi YCMWarningSign	ctermfg=white ctermbg=darkyellow
+hi SyntasticWarning	ctermfg=white ctermbg=darkred
+hi YCMWarningSection	ctermfg=white ctermbg=darkred
 
 
 "vim: sw=4
