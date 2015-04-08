@@ -109,9 +109,9 @@ hi YCMErrorSign	ctermfg=white ctermbg=darkred
 hi SyntasticError	ctermfg=white ctermbg=darkred
 hi YCMErrorSection	ctermfg=white ctermbg=darkred
 hi SyntasticWarningSign	ctermfg=white ctermbg=darkyellow
-hi YCMWarningSign	ctermfg=white ctermbg=darkyellow
-hi SyntasticWarning	ctermfg=white ctermbg=darkred
-hi YCMWarningSection	ctermfg=white ctermbg=darkred
+hi YCMWarningSign	ctermfg=white ctermbg=darkblue
+hi SyntasticWarning	ctermfg=white ctermbg=darkblue
+hi YCMWarningSection	ctermfg=white ctermbg=darkblue
 
 
 "vim: sw=4
