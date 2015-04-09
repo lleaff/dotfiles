@@ -1,9 +1,9 @@
 " Vim color file
 " Maintainer:	Hans Fugal <hans@fugal.net>
-" Last Change:	$Date: 2004/06/13 19:30:30 $
-" Last Change:	$Date: 2004/06/13 19:30:30 $
+" Last Change:	$Date: 2015/04/09 19:50:05 $
+" Last Change:	$Date: 2015/04/09 19:50:05 $
 " URL:		http://hans.fugal.net/vim/colors/desert.vim
-" Version:	$Id: desert.vim,v 1.1 2004/06/13 19:30:30 vimboss Exp $
+" Version:	$Id: lleaff-desert.vim v1 <- desert.vim,v 1.1 2004/06/13 19:30:30 vimboss Exp $
 
 " cool help screens
 " :he group-name
@@ -19,7 +19,7 @@ if version > 580
 	syntax reset
     endif
 endif
-let g:colors_name="desert"
+let g:colors_name="lleaff-desert"
 
 hi Normal	guifg=White guibg=grey20
 
