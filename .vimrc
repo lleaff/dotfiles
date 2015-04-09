@@ -214,7 +214,6 @@ else
 	colorscheme lleaff-desert
 endif
 
-
 "set foldcolumn=2
 
 "===Airline
@@ -471,7 +470,6 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ ':h\zs\d\+',
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
-
 
 "==========================================================================
 "=========================== How to install Vim ===========================
