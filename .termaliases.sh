@@ -1,3 +1,6 @@
+###rm verbose
+alias rm="rm -v"
+
 ###grep case insensitive
 function __grepi() {
 	grep -i $@
