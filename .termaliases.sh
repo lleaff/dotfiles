@@ -74,6 +74,8 @@ function __lso() {
 }
 alias lsom=__lso
 
+alias yt=youtube-dl
+
 function __ftree() {
     SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
 
