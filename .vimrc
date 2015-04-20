@@ -86,6 +86,8 @@ Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitpl
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
+Plug 'bruno-/vim-husk' " More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
+
 Plug 'terryma/vim-multiple-cursors'
 
 "=========Languages specific=========
