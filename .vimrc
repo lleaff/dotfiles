@@ -103,7 +103,7 @@ endif
 "===Rust
 Plug 'wting/rust.vim' "Vim support for Rust file detection and syntax highlighting
 "===JavaScript
-Plug 'marijnh/tern_for_vim' "JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm install -g jshint))
+Plug 'marijnh/tern_for_vim' "JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm install jshint), cd ~/.vim/plugged/tern_for_vim && sudo npm install -g)
 Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 Plug 'pangloss/vim-javascript' "JavaScript, vastly improved indentation and syntax support
 "Plug 'vim-scripts/JavaScript-Indent' "Javascript indentation, if not using pangloss' syntax
