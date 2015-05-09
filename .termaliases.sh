@@ -90,3 +90,8 @@ function __ftree() {
     done
 }
 alias tree=__ftree
+
+#if OSX
+if [[ $(uname -s) == "Darwin" ]]; then
+	alias gvim='open -a MacVim'
+fi
