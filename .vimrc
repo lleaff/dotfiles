@@ -410,10 +410,10 @@ map! <kEnter> <Esc>
 map <kEnter> <Esc>
 
 "======Movement
-nnoremap <silent> K 5k
-vnoremap <silent> K 5k
-nnoremap <silent> J 5j
-vnoremap <silent> J 5j
+nnoremap <silent> K 5gk
+vnoremap <silent> K 5gk
+nnoremap <silent> J 5gj
+vnoremap <silent> J 5gj
 
 nnoremap j gj	" ^ Move vertically by visual line
 nnoremap k gk	" v
