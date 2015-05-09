@@ -2,6 +2,9 @@ set nocompatible
 filetype off 
 set rtp+=~/.vim/ "for Windows
 
+" Detect kernel (Darwin => OSX)
+let s:uname = system("uname -s")
+
 if has("gui_running")
 	" To enable the saving and restoring of screen positions.
 	let g:screen_size_restore_pos = 1
@@ -255,10 +258,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 "=== Store swap (.swp, .swo) files in a central location
 :set directory=~/.vim/tmp
 
-if has("gui_win32")					" =========Windows
+if has("win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
-elseif has("gui_gtk2") 					" =========Linux
-	source ~/.vim/mswin-partial.vim
+elseif has("unix") 					
+	if s:uname != "Darwin" 		" =========Linux
+		source ~/.vim/mswin-partial.vim
+	endif
 endif
 
 "if has("gui_win32")
