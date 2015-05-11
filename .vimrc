@@ -414,6 +414,8 @@ autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 map! <kEnter> <Esc>
 map <kEnter> <Esc>
 
+map <OM> <Esc>
+
 "======Movement
 nnoremap <silent> K 5gk
 vnoremap <silent> K 5gk
@@ -423,10 +425,10 @@ vnoremap <silent> J 5gj
 nnoremap j gj	" ^ Move vertically by visual line
 nnoremap k gk	" v
 
+nnoremap <C-k> <Esc>:normal! J<CR>
+
 nmap <tab> %
 vmap <tab> %
-
-map <OM> <Esc>
 
 nnoremap gV `[v`] " Highlight last inserted text
 
