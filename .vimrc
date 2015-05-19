@@ -274,7 +274,7 @@ endif
 
 "au FocusLost * :wa "Save all buffers when window loses focus
 
-au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
+"au BufAdd,BufNewFile * nested tab sball "Open each buffer in a new tab
 
 let &path.="src/include,/usr/incude/AL," "Look for header files
 
