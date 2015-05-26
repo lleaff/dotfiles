@@ -64,15 +64,6 @@ Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 
 "Plug 'bling/vim-airline' "status bar/tabline modification ====> dslkdfj <====
 
-" Disabled because it doesn't work
-"Plug 'vim-scripts/restore_view.vim' " A plugin for automatically restoring files cursor position and folding
-"if has("unix")
-"	set viewoptions=cursor,folds,slash,unix
-"elseif has("win32")
-"	set viewoptions=cursor,folds,slash
-"endif
-" let g:skipview_files = ['*\.vim']
-
 "Plug 'vim-scripts/FuzzyFinder' "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
 
 Plug 'wincent/command-t' "Fuzzy file finding
@@ -92,6 +83,8 @@ Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitpl
 Plug 'bruno-/vim-husk' " More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
 
 Plug 'terryma/vim-multiple-cursors'
+
+Plug 'editorconfig/editorconfig-vim' " .editorconfig support, allows easily setting editor options on a project basis
 
 "=========Languages specific=========
 "awk, bash, c, git, latex, lua, matlab, & perl support
@@ -293,7 +286,8 @@ set smartindent
 set shiftwidth=4| set tabstop=4 "indent size
 
 set listchars=tab:>-,eol:↵
-"set list "Enables crlf glyph
+"set list "
+"Enables crlf glyph
 
 set ttyfast "Scrolling stuff
 
