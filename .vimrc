@@ -126,9 +126,14 @@ Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi  	v
 Plug 'vim-scripts/cmake' "syntax update
 Plug 'vim-scripts/cmake.vim' "indent
 
+"===HTML
+Plug 'othree/html5.vim'
+
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
 "Plug 'nathanaelkane/vim-indent-guides' "visual indent guides with bg color, toggle with <leader>ig
+
+
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
