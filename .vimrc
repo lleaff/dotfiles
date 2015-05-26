@@ -316,6 +316,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_cpp_compiler_options = ' -std=c++11' " -stdlib=libc++'
 let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
 let g:syntastic_warning_symbol = '!'	"v
+let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
 "This needs to be kept near the end or it gets overwritten by smth else
 highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D 
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
