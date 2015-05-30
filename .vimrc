@@ -104,8 +104,7 @@ Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 Plug 'pangloss/vim-javascript' "JavaScript, vastly improved indentation and syntax support
 "Plug 'vim-scripts/JavaScript-Indent' "Javascript indentation, if not using pangloss' syntax
 Plug 'beautify-web/js-beautify'
-Plug 'maksimr/vim-jsbeautify' "beautify using js-beautify based on ~/.vim/.editorconfig (r: beautify-web/js-beautify)
-let g:editorconfig_Beautifier=$HOME . '/.vim/.editorconfig'
+Plug 'maksimr/vim-jsbeautify' "beautify using js-beautify based on .editorconfig (r: beautify-web/js-beautify)
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -114,10 +113,7 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating, compiling, and more.
 Plug 'moll/vim-node' "Node.js tools and utilities										 	^
 Plug 'guileen/vim-node-dict' "node.js dictionary 										 	|
-Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi  	v
-
-Plug 'vim-scripts/cmake' "syntax update
-Plug 'vim-scripts/cmake.vim' "indent
+Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi 						v
 
 "===HTML
 Plug 'othree/html5.vim'
@@ -125,6 +121,10 @@ Plug 'othree/html5.vim'
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
 "Plug 'nathanaelkane/vim-indent-guides' "visual indent guides with bg color, toggle with <leader>ig
+
+"===CMake
+Plug 'vim-scripts/cmake' "syntax update
+Plug 'vim-scripts/cmake.vim' "indent
 
 
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
@@ -303,6 +303,9 @@ set showmatch	" |
 
 set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
+
+" 0: none, 1: display empty space instead of concelead character, 2: don't let space for concealed character
+set conceallevel=1 
 
 "=== #syntastic
 let g:syntastic_check_on_open=1
