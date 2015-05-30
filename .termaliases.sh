@@ -91,6 +91,19 @@ function __ftree() {
 }
 alias tree=__ftree
 
+# daemonize
+function __daemonize() {
+	nohup "$@" < /dev/null >/dev/null 2>&1 &
+	disown > /dev/null 2>&1
+}
+alias dm=__daemonize
+
+# open
+function __open() {
+	__daemonize xdg-open "$@"
+}
+alias o=__open
+
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias gvim='open -a MacVim'
