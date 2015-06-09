@@ -24,8 +24,9 @@ exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
 imap <S-Insert> 	<C-V>
 vmap <S-Insert> 	<C-V>
 
-" Use CTRL-Q to do what CTRL-V used to do
+" Use CTRL-Q and CTRL-A to do what CTRL-V used to do
 noremap <C-Q>   	<C-V>
+noremap <C-A>   	<C-V>
 
     " Vim support file to help with paste mappings and menus
 " Maintainer:   Bram Moolenaar <Bram@vim.org>
