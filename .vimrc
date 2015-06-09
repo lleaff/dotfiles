@@ -86,7 +86,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'editorconfig/editorconfig-vim' " .editorconfig support, allows easily setting editor options on a project basis
 
-"=========Languages specific=========
+"=========Languages specific, syntax=========
 "awk, bash, c, git, latex, lua, matlab, & perl support
 Plug 'WolfgangMehner/vim-plugins'
 
@@ -117,6 +117,8 @@ Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi 						v
 
 "===HTML
 Plug 'othree/html5.vim'
+"=Jade
+Plug 'digitaltoad/vim-jade'
 
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
