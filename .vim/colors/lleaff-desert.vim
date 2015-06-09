@@ -82,7 +82,10 @@ hi Question		ctermfg=green
 hi StatusLine	cterm=bold ctermfg=darkgrey ctermbg=black
 hi StatusLineNC cterm=NONE ctermfg=darkgrey ctermbg=NONE
 hi VertSplit	ctermfg=black ctermbg=black
-hi Title		ctermfg=5
+hi TabLineFill	ctermfg=black ctermbg=darkgrey
+hi TabLine		ctermfg=darkgrey ctermbg=black
+hi TabLineSel	ctermfg=black ctermbg=NONE
+hi Title		ctermfg=darkblue ctermbg=NONE
 hi Visual		cterm=reverse
 hi VisualNOS	cterm=bold,underline
 hi WarningMsg	ctermfg=1
