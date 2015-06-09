@@ -70,40 +70,40 @@ hi Todo		guifg=orangered guibg=yellow2
 
 " color terminal definitions
 hi SpecialKey	ctermfg=darkgreen
-hi NonText	cterm=bold ctermfg=darkblue
+hi NonText		cterm=bold ctermfg=darkblue
 hi Directory	ctermfg=darkcyan
-hi ErrorMsg	cterm=NONE ctermfg=7 ctermbg=black
+hi ErrorMsg		cterm=NONE ctermfg=7 ctermbg=black
 hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
-hi Search	cterm=NONE ctermfg=grey ctermbg=blue
-hi MoreMsg	ctermfg=darkgreen
-hi ModeMsg	cterm=NONE ctermfg=brown
-hi LineNr	ctermfg=darkgrey ctermbg=black
-hi Question	ctermfg=green
+hi Search		cterm=NONE ctermfg=grey ctermbg=blue
+hi MoreMsg		ctermfg=darkgreen
+hi ModeMsg		cterm=NONE ctermfg=brown
+hi LineNr		ctermfg=darkgrey ctermbg=black
+hi Question		ctermfg=green
 hi StatusLine	cterm=bold ctermfg=darkgrey ctermbg=black
 hi StatusLineNC cterm=NONE ctermfg=darkgrey ctermbg=NONE
 hi VertSplit	ctermfg=black ctermbg=black
-hi Title	ctermfg=5
-hi Visual	cterm=reverse
+hi Title		ctermfg=5
+hi Visual		cterm=reverse
 hi VisualNOS	cterm=bold,underline
 hi WarningMsg	ctermfg=1
-hi WildMenu	ctermfg=0 ctermbg=3
-hi Folded	ctermfg=darkgrey ctermbg=NONE
+hi WildMenu		ctermfg=0 ctermbg=3
+hi Folded		ctermfg=darkgrey ctermbg=NONE
 hi FoldColumn	ctermfg=darkgrey ctermbg=NONE
-hi DiffAdd	ctermbg=4
+hi DiffAdd		ctermbg=4
 hi DiffChange	ctermbg=5
 hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
-hi DiffText	cterm=bold ctermbg=1
-hi Comment	ctermfg=darkcyan
-hi Constant	ctermfg=brown
-hi Special	ctermfg=5
+hi DiffText		cterm=bold ctermbg=1
+hi Comment		ctermfg=darkcyan
+hi Constant		ctermfg=brown
+hi Special		ctermfg=5
 hi Identifier	ctermfg=6
 hi Statement	ctermfg=3
-hi PreProc	ctermfg=5
-hi Type		ctermfg=2
+hi PreProc		ctermfg=5
+hi Type			ctermfg=2
 hi Underlined	cterm=underline ctermfg=5
-hi Ignore	cterm=bold ctermfg=7
-hi Ignore	ctermfg=darkgrey
-hi Error	cterm=bold ctermfg=7 ctermbg=1
+hi Ignore		cterm=bold ctermfg=7
+hi Ignore		ctermfg=darkgrey
+hi Error		cterm=bold ctermfg=7 ctermbg=1
 hi SignColumn	ctermbg=black
 hi SyntasticErrorSign	ctermfg=white ctermbg=darkred
 hi YCMErrorSign	ctermfg=white ctermbg=darkred
