@@ -134,6 +134,8 @@ Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
 "===========cosmetic===========
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+let g:rainbow#blacklist = [ 0 ]
 
 Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
 
@@ -216,7 +218,7 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	colorscheme lleaff-desert
+	colorscheme lleaff-uno
 endif
 
 "set foldcolumn=2
@@ -254,9 +256,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 "######################################
 "###############Settings###############
 "######################################
-"
+
 "=== Store swap (.swp, .swo) files in a central location
-:set directory=~/.vim/tmp
+set directory=~/.vim/tmp
 
 if has("win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim

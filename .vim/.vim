@@ -1,0 +1,1 @@
+/home/elo/dotfiles/.vim
