@@ -1,6 +1,8 @@
 set nocompatible 
 filetype off 
-set rtp+=~/.vim/ "for Windows
+if has('win32')
+	set rtp+=~/.vim/ "for Windows
+endif
 
 " Detect kernel (Darwin => OSX)
 let s:uname = system("uname -s")
@@ -159,7 +161,7 @@ Plug 'vim-scripts/cmake.vim' "indent
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
-" =cosmetic
+" =Cosmetic
 "============================================================
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
@@ -172,7 +174,7 @@ Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
 
 Plug 'epage/vim-autohighlight'
 
-" =Color schemes, Colors
+" =Colorschemes, Colors
 "============================================================
 Plug 'xolox/vim-misc' " Dependency for vim-colorscheme-switcher
 " Cycle through colorschemes with F8/Shift-F8
@@ -192,7 +194,10 @@ Plug 'fugalh/desert.vim' "Term/GUI, dark
 Plug 'kristiandupont/shades-of-teal' "GUI, dark, blueish, low-contrast
 Plug 'sandeepsinghmails/Dev_Delight' "GUI, Light, colorful
 Plug 'jonathanfilip/vim-lucius' "GUI/256Term
+Plug 'lleaff/candy-crush-chronicle.vim' "GUI/256Term
 
+
+"------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call plug#end()
 filetype plugin indent on
@@ -259,7 +264,7 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	colorscheme lleaff-desert16
+	colorscheme candy-crush-chronicle
 endif
 
 "set foldcolumn=2
