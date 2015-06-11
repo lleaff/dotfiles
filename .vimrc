@@ -8,7 +8,6 @@ let s:uname = system("uname -s")
 if has("gui_running")
 	" To enable the saving and restoring of screen positions.
 	let g:screen_size_restore_pos = 1
-
 	" To save and restore screen for each Vim instance.
 	" This is useful if you routinely run more than one Vim instance.
 	" For all Vim to use the same settings, change this to 0.
@@ -17,24 +16,30 @@ endif
 
 if has('win32')
 	set showtabline=2 "always show tab bar
-	language English_United States "Override environment language detection 
+	language English_United States "Override environment language detection
 endif
 
-"---------------------------------------------P-L-U-G-I-N-S---------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+" =Plugins
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
 "To install vim-plug:
-"curl -Lo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"curl -Lo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/j[...]
+" [...]unegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-"###########################################
-"##################Plugins##################
-"###########################################
+"============================================================
 Plug 'tpope/vim-sensible' "Configurations everyone agree on
-
-"Plug 'yegappan/mru' "Most Recently Used files, use :MRU command
 
 Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic)
 
 if has("unix")
-	Plug 'tpope/vim-eunuch' " :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
+	" :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
+	Plug 'tpope/vim-eunuch'
 endif
 
 "YouCompleteMe, YCM
@@ -44,27 +49,33 @@ if has("win32")
 elseif has("unix")
 	Plug 'Valloric/YouCompleteMe'
 endif
-autocmd FileType c 		let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/c/.ycm_extra_conf.py'
-autocmd FileType cpp 	let g:ycm_global_ycm_extra_conf	= '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
+autocmd FileType c let g:ycm_global_ycm_extra_conf =
+			\ '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
+			\ '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
-"===File/Buffer management
+" =File/Buffer management
+"============================================================
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
 "Plug 'jistr/vim-nerdtree-tabs' "NERDTree independant of tabs
-Plug 'ctrlpvim/ctrlp.vim'  ", Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/) :help ctrlp-mappings
+"Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/)
+" :help ctrlp-mappings
+Plug 'ctrlpvim/ctrlp.vim'
 command MRU CtrlPMRU
 
-Plug 'tpope/vim-fugitive' " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse, ...)
-
-Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] } "Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) [v4.6, vim-scripts/ branch isn't updated]
+" Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
+Plug 'tpope/vim-fugitive'
+"
+"Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
+" etc) [v4.6, vim-scripts/ branch isn't updated]
+"Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] }
 
 Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 
-
-"Plug 'bling/vim-airline' "status bar/tabline modification ====> dslkdfj <====
-
-"Plug 'vim-scripts/FuzzyFinder' "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
+"buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
+"Plug 'vim-scripts/FuzzyFinder'
 
 Plug 'wincent/command-t' "Fuzzy file finding
 
@@ -73,56 +84,72 @@ Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 "Plug 'sjl/gundo.vim' "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
-Plug 'tpope/vim-surround' "Delete surroundings: ds*, Change surroundings: cs**, Surround: ys<move>*, Surround line: yss* (req: nocompatible)
+"Delete surroundings: ds*, Change surroundings: cs**,
+" Surround: ys<move>*, Surround line: yss* (req: nocompatible)
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 
-Plug 'tpope/vim-abolish' "Easily search for, substitute, and abbreviate mutlitple variants of a word
+"Easily search for, substitute, and abbreviate mutltiple variants of a word
+Plug 'tpope/vim-abolish'
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
-Plug 'bruno-/vim-husk' " More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
+"More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
+Plug 'bruno-/vim-husk'
 
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'editorconfig/editorconfig-vim' " .editorconfig support, allows easily setting editor options on a project basis
+" Editorconfig support, allows easily setting editor options on a
+"	per-project basis. Sample .editorconfig:
+"	root=true \n[*] \nindent_size = 4 \nindent_style = tab
+Plug 'editorconfig/editorconfig-vim'
 
-"=========Languages specific, syntax=========
+" =Languages specific, syntax
+"============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
 Plug 'WolfgangMehner/vim-plugins'
 
-"===C & C++
-Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] } "Switch between source and header files in C/C++ code (:A, :AT (new tab))
-if has("win32") " Add standard library headers to path on Windows
-	let &path.="D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,"
-endif
+"=== C & C++
+"Switch between source and header files in C/C++ code (:A, :AT (new tab))
+Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
+"if has("win32") " Add standard library headers to path on Windows
+"	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
+"endif
 
-"===Rust
-Plug 'wting/rust.vim' "Vim support for Rust file detection and syntax highlighting
-"===JavaScript
-Plug 'marijnh/tern_for_vim' "JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm install jshint), cd ~/.vim/plugged/tern_for_vim && sudo npm install -g)
+"=== Rust
+"Support for Rust file detection and syntax highlighting
+Plug 'wting/rust.vim'
+"=== JavaScript
+" JavaScript code-analysis engine (r: YouCompleteMe, jshint,
+" 	cd ~/.vim/plugged/tern_for_vim && sudo npm install -g)
+Plug 'marijnh/tern_for_vim' "
 Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
-Plug 'pangloss/vim-javascript' "JavaScript, vastly improved indentation and syntax support
-"Plug 'vim-scripts/JavaScript-Indent' "Javascript indentation, if not using pangloss' syntax
+"JavaScript, vastly improved indentation and syntax support
+Plug 'pangloss/vim-javascript'
+"Javascript indentation, if not using pangloss' syntax
+"Plug 'vim-scripts/JavaScript-Indent'
 Plug 'beautify-web/js-beautify'
-Plug 'maksimr/vim-jsbeautify' "beautify using js-beautify based on .editorconfig (r: beautify-web/js-beautify)
+"beautify using js-beautify based on .editorconfig
+"(r: beautify-web/js-beautify)
+Plug 'maksimr/vim-jsbeautify'
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating, compiling, and more.
-Plug 'moll/vim-node' "Node.js tools and utilities										 	^
-Plug 'guileen/vim-node-dict' "node.js dictionary 										 	|
-Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi 						v
+Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating,
+" 							compiling, and more.
+Plug 'moll/vim-node' "Node.js tools and utilities					^
+Plug 'guileen/vim-node-dict' "node.js dictionary 				 	|
+Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 
-"===HTML
+"=== HTML
 Plug 'othree/html5.vim'
 "=Jade
 Plug 'digitaltoad/vim-jade'
 
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
-"Plug 'nathanaelkane/vim-indent-guides' "visual indent guides with bg color, toggle with <leader>ig
 
 "===CMake
 Plug 'vim-scripts/cmake' "syntax update
@@ -132,28 +159,39 @@ Plug 'vim-scripts/cmake.vim' "indent
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
-"===========cosmetic===========
+" =cosmetic
+"============================================================
 Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [ 0 ]
 
 Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
 
+"visual indent guides with bg color, toggle with <leader>ig
+"Plug 'nathanaelkane/vim-indent-guides'
+
 Plug 'epage/vim-autohighlight'
 
-"#########################################################
-"##################Color schemes, Colors##################
-"#########################################################
+" =Color schemes, Colors
+"============================================================
+Plug 'xolox/vim-misc' " Dependency for vim-colorscheme-switcher
+" Cycle through colorschemes with F8/Shift-F8
+Plug 'xolox/vim-colorscheme-switcher'
+"------------------------------------------------------------
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'chriskempson/base16-vim' "Many great themes
+Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'ciaranm/inkpot' "Plurple-pink-yellow
 Plug 'junegunn/seoul256.vim'
 "Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'Junza/Spink' "Low color contrast brownish theme
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'fugalh/desert.vim' "dark colorscheme, works in terminal
+Plug 'fugalh/desert.vim' "Term/GUI, dark
+Plug 'kristiandupont/shades-of-teal' "GUI, dark, blueish, low-contrast
+Plug 'sandeepsinghmails/Dev_Delight' "GUI, Light, colorful
+Plug 'jonathanfilip/vim-lucius' "GUI/256Term
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -163,22 +201,27 @@ filetype plugin indent on
 
 " Vim-Plug help
 " -------------
-" PlugInstall [name ...][#threads]		Install plugins
-" PlugUpdate [name ...][#threads]			Install or update plugins
-" PlugClean[!]												Remove unused directories (bang version will clean without prompt)
-" PlugUpgrade													Upgrade vim-plug itself
-" PlugStatus													Check the status of plugins
-" PlugDiff														See the updated changes from the previous PlugUpdate
-" PlugSnapshot [output path]					Generate script for restoring the current snapshot of the plugin
-"-------------------------------------------------------------------------------------------------------
+" PlugInstall [name ...][#threads]	Install plugins
+" PlugUpdate [name ...][#threads]	Install or update plugins
+" PlugClean[!]						Remove unused directories (bang
+"								version will clean without prompt)
+" PlugUpgrade						Upgrade vim-plug itself
+" PlugStatus						Check the status of plugins
+" PlugDiff							See the updated changes from the
+"								previous PlugUpdate
+" PlugSnapshot [output path]		Generate script for restoring the
+" 								current snapshot of the plugin
+"--------------------------------------------------------------------------
 
-
-
-
-"#######################################
-"###############Cosmetics###############
-"#######################################
-
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+" =Cosmetics
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
 " Colors, font
 if has("gui_running")
 	if has("gui_gtk2") 				" =========Linux
@@ -198,14 +241,12 @@ if has("gui_running")
 		set guifont=Meslo\ LG\ S\ DZ\ Regular:h10:cANSI
 		colorscheme lleaff-atelierdune | set background=dark
 	endif
-	"autocmd FileType c colorscheme base16-ocean | set background=dark
-	"autocmd FileType javascript colorscheme base16-mocha | set background=dark
-	highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D		" ^ Doesn't work
-	highlight YCMErrorSign guifg=#cccccc guibg=#7D4D4D				" |
-	highlight YCMErrorLine guifg=#cccccc guibg=#7D4D4D				" |
-	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 		" |
-	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 			" |
-	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 			" v
+	highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D	" ^ Doesn't
+	highlight YCMErrorSign guifg=#cccccc guibg=#7D4D4D			" | work
+	highlight YCMErrorLine guifg=#cccccc guibg=#7D4D4D			" |
+	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 	" |
+	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 		" |
+	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 		" v
 
 
 	"Highlight the nth column so you know when lines get too long
@@ -218,7 +259,7 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	colorscheme lleaff-uno
+	colorscheme lleaff-desert16
 endif
 
 "set foldcolumn=2
@@ -247,15 +288,21 @@ let g:airline_symbols.paste = 'Þ'
 "let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" Always show sign gutter (Doesn't work with YCM because YCM removes the signs)
+" Always show sign gutter (Doesn't work with YCM because YCM clears
+	" the signs)
 "autocmd BufEnter * sign define dummy
-"autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+"autocmd BufEnter * execute 'sign place 9999 line=1
+"	  \ name=dummy buffer=' . bufnr('')
 
-
-
-"######################################
-"###############Settings###############
-"######################################
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+" =Settings
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
 
 "=== Store swap (.swp, .swo) files in a central location
 set directory=~/.vim/tmp
@@ -308,9 +355,6 @@ set showmatch	" |
 set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
-" 0: none, 1: display empty space instead of concelead character, 2: don't let space for concealed character
-set conceallevel=1 
-
 "=== #syntastic
 let g:syntastic_check_on_open=1
 "let g:syntastic_cpp_compiler = 'clang++'
@@ -331,8 +375,8 @@ highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F
 "=============Default window size and position
 "if has("gui_running")
 "	set lines=70
-"	set columns=116  
-"	winpos 0 0 
+"	set columns=116
+"	winpos 0 0
 "endif
 
 "===========Restore window pos and curosr
@@ -354,7 +398,8 @@ if has("gui_running")
     " Must set font first so columns and lines are based on font size.
     let f = ScreenFilename()
     if has("gui_running") && g:screen_size_restore_pos && filereadable(f)
-      let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
+      let vim_instance =
+		  \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
       for line in readfile(f)
         let sizepos = split(line)
         if len(sizepos) == 5 && sizepos[0] == vim_instance
@@ -369,7 +414,8 @@ if has("gui_running")
   function! ScreenSave()
     " Save window size and position.
     if has("gui_running") && g:screen_size_restore_pos
-      let vim_instance = (g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
+      let vim_instance =
+		  \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
       let data = vim_instance . ' ' . &columns . ' ' . &lines . ' ' .
             \ (getwinposx()<0?0:getwinposx()) . ' ' .
             \ (getwinposy()<0?0:getwinposy())
@@ -412,15 +458,19 @@ autocmd BufReadPost *
 
 autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 
-"##########################################
-"###############Keys Mappings##############
-"##########################################
-"
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+" =Keys Mappings
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
+"------------------------------------------------------------
 " Remap the numpad Enter key to Esc
-" (doesn't work in some terminal emulators)
 map! <kEnter> <Esc>
 map <kEnter> <Esc>
-
+" (works with $TERM=xterm)
 map <OM> <Esc>
 
 "======Movement
@@ -492,6 +542,12 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ ':h\zs\d\+',
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
+
+"------------------------------------------------------------
+" =Commands
+"------------------------------------------------------------
+" CDC = Change to Directory of Current file
+command CDC cd %:p:h
 
 "==========================================================================
 "=========================== How to install Vim ===========================
