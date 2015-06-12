@@ -3,7 +3,7 @@ alias rm="rm -v"
 
 ###grep case insensitive
 function __grepi() {
-	grep -i $@
+	grep -i --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn $@
 }
 alias grepi=__grepi
 
