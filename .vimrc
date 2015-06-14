@@ -187,7 +187,6 @@ Plug 'chriskempson/base16-vim' "Many great themes
 Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'ciaranm/inkpot' "Plurple-pink-yellow
 Plug 'junegunn/seoul256.vim'
-"Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'Junza/Spink' "Low color contrast brownish theme
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'fugalh/desert.vim' "Term/GUI, dark
@@ -270,28 +269,31 @@ endif
 "set foldcolumn=2
 
 "===Airline
-set encoding=utf-8
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
+" Symbols for non-Powerline-patched fonts
+if exists('g:airline_unicode_symbols')
+	set encoding=utf-8
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
 
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = ' ' " 
-let g:airline_right_sep = '«'
-let g:airline_right_sep = ' ' " 
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+	" unicode symbols
+	let g:airline_left_sep = '»'
+	let g:airline_left_sep = ' ' " 
+	let g:airline_right_sep = '«'
+	let g:airline_right_sep = ' ' " 
+	"let g:airline_symbols.linenr = '␊'
+	"let g:airline_symbols.linenr = '␤'
+	"let g:airline_symbols.linenr = '¶'
+	"let g:airline_symbols.branch = '⎇'
+	let g:airline_symbols.paste = 'ρ'
+	let g:airline_symbols.paste = 'Þ'
+	"let g:airline_symbols.paste = '∥'
+	let g:airline_symbols.whitespace = 'Ξ'
+endif
 
 " Always show sign gutter (Doesn't work with YCM because YCM clears
 	" the signs)
