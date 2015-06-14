@@ -5,7 +5,7 @@ if has('win32')
 endif
 
 " Detect kernel (Darwin => OSX)
-let s:uname = system("uname -s")
+let s:uname = substitute(system("uname"), '\n', '', '')
 
 if has("gui_running")
 	" To enable the saving and restoring of screen positions.
@@ -263,7 +263,12 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	colorscheme candy-crush-chronicle
+	if s:uname == "Darwin"
+		colorscheme lucius
+		LuciusLight
+	else
+		colorscheme candy-crush-chronicle
+	endif
 endif
 
 "set foldcolumn=2
