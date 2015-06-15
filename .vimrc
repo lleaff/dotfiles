@@ -31,8 +31,7 @@ endif
 "------------------------------------------------------------
 "------------------------------------------------------------
 "To install vim-plug:
-"curl -Lo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/j[...]
-" [...]unegunn/vim-plug/master/plug.vim
+"curl -Lo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 "============================================================
 Plug 'tpope/vim-sensible' "Configurations everyone agree on
