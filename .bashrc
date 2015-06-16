@@ -1,6 +1,7 @@
 test -r ~/dotfiles/.termaliases.sh && source ~/dotfiles/.termaliases.sh
 
-export EDITOR="vim"
+VISUAL=/usr/bin/vim; export EDITOR
+EDITOR=/usr/bin/vim; export EDITOR
 
 # For Windows
 ###ask for ssh password, keep this at the end
