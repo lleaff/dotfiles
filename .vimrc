@@ -266,7 +266,9 @@ else
 		colorscheme lucius
 		LuciusLight
 	else
-		colorscheme candy-crush-chronicle
+		"colorscheme candy-crush-chronicle
+		colors lucius
+		let g:lucius_no_term_bg = 1
 	endif
 endif
 
@@ -476,7 +478,7 @@ autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
-" =Keys Mappings
+" =Keys Mappings, Keybinds, Bindings
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
@@ -498,8 +500,10 @@ nnoremap k gk	" v
 
 nnoremap <C-k> <Esc>:normal! J<CR>
 
-nmap <tab> %
-vmap <tab> %
+"nmap <tab> %
+"vmap <tab> %
+
+map <tab> <C-w>
 
 nnoremap gV `[v`] " Highlight last inserted text
 

@@ -1,5 +1,5 @@
 bgColor='black'
-fgColor=2
+fgColor=white
 pathColor=$fgColor
 
 
