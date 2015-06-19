@@ -124,7 +124,7 @@ Plug 'wting/rust.vim'
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint,
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install -g)
 Plug 'marijnh/tern_for_vim' "
-Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
+" Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
 Plug 'pangloss/vim-javascript'
 "Javascript indentation, if not using pangloss' syntax
@@ -140,9 +140,9 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating,
 " 							compiling, and more.
-Plug 'moll/vim-node' "Node.js tools and utilities					^
-Plug 'guileen/vim-node-dict' "node.js dictionary 				 	|
-Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
+" Plug 'moll/vim-node' "Node.js tools and utilities						^
+" Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
+" Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 
 "=== HTML
 Plug 'othree/html5.vim'
@@ -371,10 +371,17 @@ set showmatch	" |
 set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 
+"========================
+"=Completion
+"========================
+"longest: insert longest common text of all matches
+"menuone: pop-up menu even if there's only one match
+set completeopt=longest,menuone
+
 "=== #syntastic
 let g:syntastic_check_on_open=1
 "let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11' " -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++10' " -stdlib=libc++'
 let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
 let g:syntastic_warning_symbol = '!'	"v
 let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
