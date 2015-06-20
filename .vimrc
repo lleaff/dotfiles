@@ -490,6 +490,8 @@ autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
+let mapleader=","
+
 " Remap the numpad Enter key to Esc
 map! <kEnter> <Esc>
 map <kEnter> <Esc>
@@ -517,9 +519,10 @@ noremap <tab> <C-w>
 noremap <BS> <C-o>
 noremap <C-o> <C-i>
 
+"=======
 nnoremap gV `[v`] " Highlight last inserted text
 
-let mapleader=","
+map <leader>f :NERDTreeToggle<CR>
 
 map <C-S-Tab> :tabprevious<CR> 		" Previous tab
 nmap <C-S-Tab> :tabprevious<CR>
@@ -578,6 +581,8 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 "------------------------------------------------------------
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
+
+command NT NERDTreeToggle
 
 "==========================================================================
 "=========================== How to install Vim ===========================
