@@ -251,11 +251,6 @@ if has("gui_running")
 	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 		" |
 	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 		" v
 
-
-	"Highlight the nth column so you know when lines get too long
-	autocmd Filetype vim,sh,c,cpp,c#,javascript,java 
-				\ set colorcolumn=150 
-
 	if &background == 'black'
 		hi Search guibg=#303220 guifg=NONE
 	elseif &background == 'light'
@@ -271,6 +266,11 @@ else
 		let g:lucius_no_term_bg = 1
 	endif
 endif
+
+"Highlight the nth column so you know when lines get too long
+autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss 
+			\ set colorcolumn=78 
+
 
 "set foldcolumn=2
 
@@ -510,7 +510,12 @@ nnoremap <C-k> <Esc>:normal! J<CR>
 "nmap <tab> %
 "vmap <tab> %
 
-map <tab> <C-w>
+"Note: In Terminal Vim <tab> is the same as <C-i>
+noremap <tab> <C-w>
+
+" Backspace
+noremap <BS> <C-o>
+noremap <C-o> <C-i>
 
 nnoremap gV `[v`] " Highlight last inserted text
 

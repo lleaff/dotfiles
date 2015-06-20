@@ -1,3 +1,6 @@
+defaultTERM='xterm-256color'
+#==========================================
+
 ###rm verbose
 alias rm="rm -v"
 
@@ -7,6 +10,11 @@ function __grepi() {
 }
 alias grepi=__grepi
 
+#========================================== tmux
+# Required alias for 256 colors support
+alias tmux="TERM=$defaultTERM tmux"
+
+#========================================== gcc
 ###autofill -o argument with first arg
 function __gccs() {
 	gcc $@ -pedantic -Wall -o ${1%.*}
@@ -23,6 +31,7 @@ function __gccc99() {
 	gcc $@ -std=c99 -pedantic -Wall -o ${1%.*}
 }
 alias gccc99=__gccc99
+#==========================================
 
 ###launch gvim
 function __gvim() {
@@ -41,12 +50,6 @@ function __git() {
 	esac
 }
 alias git=__git
-
-###make with specific makefile
-function __makef() {
-	make -f $@
-}
-alias makef=__makef
 
 ###simulate improved ls output with find
 function __lsm() {
@@ -76,6 +79,7 @@ alias lsom=__lso
 
 alias yt=youtube-dl
 
+#==========================================
 function __ftree() {
     SEDMAGIC='s;[^/]*/;|____;g;s;____|; |;g'
 
@@ -91,6 +95,7 @@ function __ftree() {
 }
 alias tree=__ftree
 
+#==========================================
 # daemonize
 function __daemonize() {
 	nohup "$@" < /dev/null >/dev/null 2>&1 &
@@ -104,6 +109,7 @@ function __open() {
 }
 alias o=__open
 
+#==========================================
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias gvim='open -a MacVim'
