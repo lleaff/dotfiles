@@ -512,6 +512,9 @@ nnoremap <C-k> <Esc>:normal! J<CR>
 "nmap <tab> %
 "vmap <tab> %
 
+" % w/out Shift on AZERTY keyboards
+map ù %
+
 "Note: In Terminal Vim <tab> is the same as <C-i>
 noremap <tab> <C-w>
 
