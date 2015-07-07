@@ -91,7 +91,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 
 "Easily search for, substitute, and abbreviate mutltiple variants of a word
+" foobar -> FooBAR ; Foobar x FooBAR
 Plug 'tpope/vim-abolish'
+
+"Automatically clears search highlight
+Plug 'pgdouyon/vim-evanesco'
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
@@ -515,8 +519,13 @@ nnoremap <C-k> <Esc>:normal! J<CR>
 " % w/out Shift on AZERTY keyboards
 map ù %
 
+"======Windows
 "Note: In Terminal Vim <tab> is the same as <C-i>
 noremap <tab> <C-w>
+
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
 
 " Backspace
 noremap <BS> <C-o>

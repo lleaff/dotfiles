@@ -1,5 +1,6 @@
 bgColor='black'
 fgColor=white
+altFgColor=green
 pathColor=$fgColor
 
 
@@ -29,7 +30,7 @@ numToSymbol() {
 
 # Background jobs
 jobsIndicator() {
-	echo '%k%(1j.%F{$fgColor}'$(numToSymbol $(jobs -l | wc -l))'.)%K{$bgColor}'
+	echo '%k%(1j.%F{$altFgColor}'$(numToSymbol $(jobs -l | wc -l))'.)%K{$bgColor}'
 }
 
 # Git
@@ -46,14 +47,14 @@ prompt_status() {
   RETVAL=$?
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}x"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}!"
+  #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}¤"
 
   [[ -n "$symbols" ]] && echo "$symbols "
 }
 
 # Left side
-PROMPT='%K{${bgColor}}$(prompt_status)%F{${pathColor}}%2c %{%f%k%b%}%F{${bgColor}}%f '
+PROMPT='%K{${bgColor}}$(prompt_status)%F{${pathColor}}%2c %{%f%k%b%}%F{${bgColor}} %f '
 # Right side
 RPROMPT='%K{${bgColor}}$(jobsIndicator)$(git_prompt_info)%{%f%k%b%}'
