@@ -105,7 +105,11 @@ alias dm=__daemonize
 
 # open
 function __open() {
-	__daemonize xdg-open "$@"
+	if [[ -z $1 ]]; then
+		__daemonize xdg-open .
+	else
+		__daemonize xdg-open "$@"
+	fi
 }
 alias o=__open
 
