@@ -57,6 +57,12 @@ autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
+Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " =File/Buffer management
 "============================================================
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
@@ -521,7 +527,7 @@ map ù %
 
 "======Windows
 "Note: In Terminal Vim <tab> is the same as <C-i>
-noremap <tab> <C-w>
+nnoremap <tab> <C-w>
 
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
