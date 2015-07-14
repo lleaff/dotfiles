@@ -132,8 +132,8 @@ Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
 Plug 'wting/rust.vim'
 "=== JavaScript
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint,
-" 	cd ~/.vim/plugged/tern_for_vim && sudo npm install -g)
-Plug 'marijnh/tern_for_vim' "
+" 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
 Plug 'pangloss/vim-javascript'
