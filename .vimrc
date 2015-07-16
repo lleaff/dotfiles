@@ -131,7 +131,7 @@ Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
 "Support for Rust file detection and syntax highlighting
 Plug 'wting/rust.vim'
 "=== JavaScript
-" JavaScript code-analysis engine (r: YouCompleteMe, jshint,
+" JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
@@ -528,6 +528,9 @@ map ù %
 "======Windows
 "Note: In Terminal Vim <tab> is the same as <C-i>
 nnoremap <tab> <C-w>
+
+nmap <tab>e :tabn<CR>
+nmap <tab>z :tabp<CR>
 
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
