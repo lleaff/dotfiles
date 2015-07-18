@@ -161,6 +161,9 @@ Plug 'digitaltoad/vim-jade'
 
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
+Plug 'hail2u/vim-css3-syntax'
+"=SCSS
+Plug 'cakebaker/scss-syntax.vim'
 
 "===CMake
 Plug 'vim-scripts/cmake' "syntax update
@@ -522,8 +525,9 @@ nnoremap <C-k> <Esc>:normal! J<CR>
 "nmap <tab> %
 "vmap <tab> %
 
-" % w/out Shift on AZERTY keyboards
+"======for AZERTY keyboards (bypass Shift, ...)
 map ù %
+map à @
 
 "======Windows
 "Note: In Terminal Vim <tab> is the same as <C-i>
