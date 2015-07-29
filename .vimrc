@@ -518,7 +518,9 @@ nnoremap <silent> J 5gj
 vnoremap <silent> J 5gj
 
 nnoremap j gj	" ^ Move vertically by visual line
-nnoremap k gk	" v
+vnoremap j gj	" |
+nnoremap k gk	" |
+vnoremap k gk	" v
 
 nnoremap <C-k> <Esc>:normal! J<CR>
 

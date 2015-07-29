@@ -10,6 +10,12 @@ function __grepi() {
 }
 alias grepi=__grepi
 
+###grep recursive
+function __grepr() {
+	grep -r --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn $@
+}
+alias grepr=__grepr
+
 #========================================== tmux
 # Required alias for 256 colors support
 alias tmux="TERM=$defaultTERM tmux"
