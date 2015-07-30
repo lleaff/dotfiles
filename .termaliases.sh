@@ -1,6 +1,18 @@
 defaultTERM='xterm-256color'
 #==========================================
 
+function __mkcd {
+	mkdir $@; cd $@;
+}
+alias mkcd=__mkcd
+
+function __cdls {
+	cd $@; ls;
+}
+alias cdl=__cdls
+
+#==========================================
+
 ###rm verbose
 alias rm="rm -v"
 
