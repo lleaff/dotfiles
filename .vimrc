@@ -270,12 +270,12 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
-	if s:uname == "Darwin"
+	if s:uname == "Darwin" " OSX
 		colorscheme lucius
 		LuciusLight
-	else
+	else " Linux
 		"colorscheme candy-crush-chronicle
-		colors lucius
+		colors seoul256-light
 		let g:lucius_no_term_bg = 1
 	endif
 endif
