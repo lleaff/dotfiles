@@ -57,6 +57,17 @@ autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
+Plug 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+     \ }
+Plug 'm2mdas/phpcomplete-extended' " (r: Shougo/vimproc)
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -276,6 +287,9 @@ else
 	else " Linux
 		"colorscheme candy-crush-chronicle
 		colors seoul256-light
+
+		" Make terminal bg color transparent (at 'Tail' anchor)
+
 		let g:lucius_no_term_bg = 1
 	endif
 endif
@@ -659,6 +673,14 @@ command CDC cd %:p:h
 
 command NT NERDTreeToggle
 
+"------------------------------------------------------------
+" =Tail
+"    Commands that need to stay at the end
+"------------------------------------------------------------
+" Make terminal background color transparent, relegated to the end since
+"  themes seem to load asynchronously.
+hi Normal ctermbg=none
+
 "==========================================================================
 "=========================== How to install Vim ===========================
 "==========================================================================
@@ -674,4 +696,3 @@ command NT NERDTreeToggle
 " 		https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows/downloads
 " 	}
 " }
-"

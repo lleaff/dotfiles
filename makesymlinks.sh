@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script creates symlinks from the home directory 
+# This script creates symlinks from the home directory
 #  to any desired dotfiles in ~/dotfiles
 ############################
 
@@ -8,7 +8,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/__old/dotfiles/             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files=".bashrc .vimrc .vim .zshrc .oh-my-zsh .tmux.conf .tmux .gitconfig"   
+files=".bashrc .vimrc .vim .zshrc .oh-my-zsh .tmux.conf .tmux .gitconfig .locations .termaliases .emacs.d"
 
 ##########
 
@@ -23,7 +23,7 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old
-#  directory, then create symlinks 
+#  directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/$file $olddir

@@ -10,7 +10,7 @@ EDITOR=/usr/bin/vim; export EDITOR
 # time that oh-my-zsh is loaded.
 ZSH_THEME="ccaddy-powerline"
 
-test -r ~/dotfiles/.termaliases.sh && source ~/dotfiles/.termaliases.sh
+test -r ~/.termaliases && source ~/.termaliases
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

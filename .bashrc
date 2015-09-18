@@ -1,4 +1,4 @@
-test -r ~/dotfiles/.termaliases.sh && source ~/dotfiles/.termaliases.sh
+test -r ~/dotfiles/.termaliases && source ~/dotfiles/.termaliases
 
 VISUAL=/usr/bin/vim; export EDITOR
 EDITOR=/usr/bin/vim; export EDITOR
