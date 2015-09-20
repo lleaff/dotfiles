@@ -1,3 +1,4 @@
+;;;####################################################################
 ;;; better-defaults.el --- Fixing weird quirks and poor defaults
 ;; Copyright © 2013 Phil Hagelberg and contributors
 ;; Author: Phil Hagelberg
@@ -36,7 +37,7 @@
   (global-set-key (kbd "C-M-r") 'isearch-backward)
 
   (show-paren-mode 1)
-;  (setq-default indent-tabs-mode nil) ; Deactivate Tab
+  (setq-default indent-tabs-mode nil) ; Deactivate Tab
   (setq x-select-enable-clipboard t
 	x-select-enable-primary t
 	save-interprogram-paste-before-kill t
@@ -53,13 +54,40 @@
 (provide 'better-defaults)
 ;;; better-defaults.el ends here
 
+;;;####################################################################
+;;;  =Packages
+;;;####################################################################
+
+;; Enable package repositories
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+; activate all the packages (in particular autoloads)
+(package-initialize)
+
+(require 'company) ; TODO install (use-package?)
+(add-hook 'after-init-hook 'global-company-mode)
+
+
+;;;####################################################################
+;;;  =Settings
+;;;####################################################################
 
 (setq ring-bell-function 'ignore) ; No alarm bells
 
+(linum-mode) ; Display line numbers
+(setq linum-format "%d ") ; Takes one integer argument, defaults to "%d"
+
 ;; Mouse support in terminal
-(unless window-system
+(unless window-system ; Only if in terminal
   (require 'mouse)
-  (xterm-mouse-mode t)
+  (xterm-mouse-mode t) ; Basic mouse interaction
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
+  (setq mouse-sel-mode t) ; Allow selecting text with mouse
 )
+
+(setq-default tab-width 4) ; tab -> 4 spaces
+(delete-selection-mode) ; Replace selected text when typing
+
+(global-set-key (kbd "RET") 'newline-and-indent) ; Automatically indent when pressing return
