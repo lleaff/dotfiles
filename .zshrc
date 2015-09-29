@@ -8,7 +8,7 @@ EDITOR=/usr/bin/vim; export EDITOR
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ccaddy-powerline"
+ZSH_THEME="ccaddy"
 
 test -r ~/.termaliases && source ~/.termaliases
 
@@ -51,7 +51,8 @@ OMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # KEEP zsh-syntax-highlighting LAST
-plugins=(git zsh-syntax-highlighting)
+plugins=(zsh-syntax-highlighting)
+#plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
@@ -59,7 +60,8 @@ plugins=(git zsh-syntax-highlighting)
 #ZSH_HIGHLIGHT_STYLES[path]=none
 
 
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$HOME/bin:$PATH"
+#export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -88,3 +90,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Launch tmux automatically
+if command -v tmux>/dev/null; then [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux; fi
+
+

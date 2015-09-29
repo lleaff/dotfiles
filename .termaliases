@@ -1,15 +1,32 @@
 defaultTERM='xterm-256color'
 
+/opt/emacs24/bin/emacs --daemon # Start emacs server
+#==========================================
+
 # Locations aliases
-test -r ~/.locations && source ~/.locations
+test -r "$HOME/.locations" && source "$HOME/.locations"
+
+alias emacsd="/opt/emacs24/bin/emacs --daemon"
+alias emacsk="/opt/emacs24/bin/emacsclient -e '(kill-emacs)'"
+alias emacs="/opt/emacs24/bin/emacsclient"
+alias ctest="$HOME/tests/c/testc.sh"
 #==========================================
 
 function mkcd {
-	mkdir $@; cd $@;
+	mkdir $@ && cd $@;
 }
 
 function cdls {
-	cd $@; ls;
+	cd $@ && ls;
+}
+
+function mkexe() {
+	echo '#!/' >> $1 && chmod +x $1
+}
+
+# Upload to sprunge.us
+function sprunge() {
+	cat $@ | curl -F 'sprunge=<-' http://sprunge.us
 }
 
 #==========================================

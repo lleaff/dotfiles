@@ -7,25 +7,25 @@ pathColor=$fgColor
 # Convert integer to symbol characters
 numToSymbol() {
 	num=$1
-	symbol=''
-	while [[ $num > 0 ]]; do
-		digit=$(( $num % 10 ))
-		case $digit in
-			0 ) ;;
-			1 ) symbol='❶'$symbol ;;
-			2 ) symbol='❷'$symbol ;;
-			3 ) symbol='❸'$symbol ;;
-			4 ) symbol='❹'$symbol ;;
-			5 ) symbol='❺'$symbol ;;
-			6 ) symbol='❻'$symbol ;;
-			7 ) symbol='❼'$symbol ;;
-			8 ) symbol='❽'$symbol ;;
-			9 ) symbol='❾'$symbol ;;
-			10 ) symbol='❿'$symbol ;;
-		esac
+		symbol=''
+		while [[ $num > 0 ]]; do
+			digit=$(( $num % 10 ))
+				case $digit in
+				0 ) ;;
+	1 ) symbol='❶'$symbol ;;
+	2 ) symbol='❷'$symbol ;;
+	3 ) symbol='❸'$symbol ;;
+	4 ) symbol='❹'$symbol ;;
+	5 ) symbol='❺'$symbol ;;
+	6 ) symbol='❻'$symbol ;;
+	7 ) symbol='❼'$symbol ;;
+	8 ) symbol='❽'$symbol ;;
+	9 ) symbol='❾'$symbol ;;
+	10 ) symbol='❿'$symbol ;;
+	esac
 		num=$(( num / 10 ))
-	done
-	echo $symbol
+		done
+		echo $symbol
 }
 
 # Background jobs
@@ -44,14 +44,14 @@ ZSH_THEME_GIT_PROMPT_CLEAN=''
 # - am I root
 # - are there background jobs?
 prompt_status() {
-  RETVAL=$?
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}x"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}!"
-  #[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}¤"
+	RETVAL=$?
+		local symbols
+		symbols=()
+		[[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}x"
+		[[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}!"
+#[[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}¤"
 
-  [[ -n "$symbols" ]] && echo "$symbols "
+		[[ -n "$symbols" ]] && echo "$symbols "
 }
 
 # Left side

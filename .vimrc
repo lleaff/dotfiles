@@ -512,12 +512,15 @@ autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
-" =Keys Mappings, Keybinds, Bindings
+" =Keys Mappings, =Keybinds, =Bindings, =Mappings
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
 "------------------------------------------------------------
 let mapleader=","
+
+"QWERTY
+map ; :
 
 " Remap the numpad Enter key to Esc
 map! <kEnter> <Esc>
@@ -554,6 +557,8 @@ nmap <tab>z :tabp<CR>
 
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
+imap kj <Esc>
 
 
 " Backspace
