@@ -17,9 +17,15 @@
     (self-insert-command arg)))
 
 (define-key evil-insert-state-map (kbd "k") 'evil-escape-if-next-char-is-j)
-;------------------------------------------------------------
 
-(define-key evil-insert-state-map (kbd "J") (progn
-                                              (evil-line-move up)
-                                              (evil-repeat 4)))
-(define-key evil-insert-state-map (kbd "K") "5k")
+;------------------------------------------------------------
+;; map J 5j
+(define-key evil-normal-state-map (kbd "J") (lambda ()
+                                              (interactive) (evil-next-line 5)))
+;; map K 5k
+(define-key evil-normal-state-map (kbd "K") (lambda ()
+                                              (interactive) (evil-previous-line 5)))
+;; map <C-k> J
+(define-key evil-normal-state-map (kbd "C-k") 'evil-join)
+;; map ; :
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
