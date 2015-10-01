@@ -16,6 +16,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
+   ;; Press <SPC f e h> to display available layers.
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
@@ -23,19 +24,24 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;;; Syntax
      auto-completion
+     syntax-checking
+     ;;; Other
      better-defaults
-     emacs-lisp
+     dash
      ;; git
-     ;; markdown
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     syntax-checking
      ;; version-control
+     ;;; Cosmetic
      colors
+     ;;; Languages
+     emacs-lisp
+     ;; markdown
      c-c++
      )
    ;; List of additional packages that will be installed without being
@@ -82,8 +88,18 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          alect-light
+                         soft-stone
+                         oldlace
+                         sunny-day
                          alect-light-alt
+                         ample-light
+                         anti-zenburn
+                         aproprospriate-light
+                         flatui
+                         organic-green
+                         sanityinc-solarized-light
                          spacemacs-dark
+                         soft-morning
                          spacemacs-light
                          solarized-light
                          solarized-dark
@@ -213,15 +229,18 @@ layers configuration. You are free to put any user code."
   (set-face-background 'hl-line "#DBD9C1") ; #DFDAC3
 
   (global-linum-mode t) ; Activate line numbers left of text
-  (setq linum-format "%2d ") ; Default line number format: "%d"
+  (setq linum-format "%-2d ") ; Default line number format: "%d"
   (set-face-background 'linum "#B9B9B9")
+
+  ;;; Code highlighting
+  (auto-highlight-symbol-mode t)
 
   ;; Prep'Etna headers
   (load-file "~/.emacs.d/private/custom/std_comment.el")
 
   (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
 
-  ;;; Restore cursor position
+  ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.
   (require 'saveplace)
   (setq save-place-file (concat user-emacs-directory "saveplace.el") ) ; use standard emacs dir
@@ -237,7 +256,7 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rainbow-mode rainbow-identifiers disaster company-c-headers cmake-mode clang-format helm-c-yasnippet flycheck-pos-tip flycheck company-statistics company-quickhelp company auto-yasnippet ac-ispell alect-themes window-numbering which-key volatile-highlights vi-tilde-fringe use-package spray spacemacs-theme smooth-scrolling rainbow-delimiters quelpa powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link))))
+    (zeal-at-point helm-dash rainbow-mode rainbow-identifiers disaster company-c-headers cmake-mode clang-format helm-c-yasnippet flycheck-pos-tip flycheck company-statistics company-quickhelp company auto-yasnippet ac-ispell alect-themes window-numbering which-key volatile-highlights vi-tilde-fringe use-package spray spacemacs-theme smooth-scrolling rainbow-delimiters quelpa powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

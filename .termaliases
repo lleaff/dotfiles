@@ -1,6 +1,4 @@
 defaultTERM='xterm-256color'
-
-/opt/emacs24/bin/emacs --daemon # Start emacs server
 #==========================================
 
 # Locations aliases
@@ -152,4 +150,9 @@ alias o=__open
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias gvim='open -a MacVim'
+fi
+
+#==========================================
+if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
+	/opt/emacs24/bin/emacs --daemon # Start emacs server
 fi

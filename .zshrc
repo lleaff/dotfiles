@@ -51,7 +51,7 @@ OMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # KEEP zsh-syntax-highlighting LAST
-plugins=(zsh-syntax-highlighting)
+plugins=(svn zsh-syntax-highlighting)
 #plugins=(git zsh-syntax-highlighting)
 
 # User configuration
