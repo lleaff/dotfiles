@@ -8,6 +8,7 @@ alias emacsd="/opt/emacs24/bin/emacs --daemon"
 alias emacsk="/opt/emacs24/bin/emacsclient -e '(kill-emacs)'"
 alias emacs="/opt/emacs24/bin/emacsclient"
 alias ctest="$HOME/tests/c/testc.sh"
+alias formtest="$HOME/tests/c/formtest.sh"
 #==========================================
 
 function mkcd {

@@ -8,8 +8,8 @@ EDITOR=/usr/bin/vim; export EDITOR
 #eval `ssh-agent`
 #ssh-add
 
-nocolor='\e[0m' 
-fgwhite='\e[0;37m' 
-bgblack='\e[40m' 
+nocolor='\e[0m'
+fgwhite='\e[0;37m'
+bgblack='\e[40m'
 
 export PS1="${fgwhite}${bgblack}\w${nocolor} "

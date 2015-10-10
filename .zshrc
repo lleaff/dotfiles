@@ -92,6 +92,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Launch tmux automatically
-if command -v tmux>/dev/null; then [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux; fi
+if [[ -z $(hash tmux) ]]; then tmux; fi
 
 

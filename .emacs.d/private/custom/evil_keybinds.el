@@ -40,6 +40,7 @@
 (define-key evil-normal-state-map (kbd "C-k") 'evil-join)
 ; map ; :
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+(define-key evil-visual-state-map (kbd ";") 'evil-ex)
 
 ; map <TAB> <C-w>
 ; TODO Doesnt work
