@@ -92,6 +92,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Launch tmux automatically
-if [[ -z $(hash tmux) ]]; then tmux; fi
+if [[ -z $(hash tmux) ]]; then
+	if [[ -z $(pgrep tmux) ]]; then
+		tmux;
+	fi
+fi
 
 
