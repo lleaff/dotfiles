@@ -19,29 +19,29 @@
 (define-key evil-insert-state-map (kbd "k") 'evil-escape-if-next-char-is-j)
 
 ;------------------------------------------------------------
-; Make evil-mode up/down operate in screen lines instead of logical lines
+;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
 (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
 (define-key evil-visual-state-map "j" 'evil-next-visual-line)
 (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-; map J 5j
+;; map J 5j
 (define-key evil-normal-state-map (kbd "J")
   (lambda () (interactive) (evil-next-visual-line 5)))
 (define-key evil-visual-state-map (kbd "J")
   (lambda () (interactive) (evil-next-visual-line 5)))
-; map K 5k
+;; map K 5k
 (define-key evil-normal-state-map (kbd "K")
   (lambda () (interactive) (evil-previous-visual-line 5)))
 (define-key evil-visual-state-map (kbd "K")
   (lambda () (interactive) (evil-previous-visual-line 5)))
 
-; map <C-k> J
+;; map <C-k> J
 (define-key evil-normal-state-map (kbd "C-k") 'evil-join)
-; map ; :
+;; map ; :
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-visual-state-map (kbd ";") 'evil-ex)
 
-; map <TAB> <C-w>
-; TODO Doesnt work
-(define-key evil-motion-state-minor-mode (kbd "TAB") 'evil-window-map))
+;; map <TAB> <C-w>
+;; TODO Doesnt work
+;; (define-key evil-motion-state-minor-mode (kbd "TAB") 'evil-window-map)

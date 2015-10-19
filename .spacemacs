@@ -41,8 +41,11 @@ values."
      colors
      ;;; Languages
      emacs-lisp
-     ;; markdown
+     markdown
      c-c++
+     php
+     python
+     javascript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -235,10 +238,12 @@ layers configuration. You are free to put any user code."
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
 
+  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
+
   ;; Prep'Etna headers
+  (load-file "~/.emacs.d/private/custom/loginname.el")
   (load-file "~/.emacs.d/private/custom/std_comment.el")
 
-  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
 
   ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.
@@ -256,7 +261,7 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ample-zen-theme zeal-at-point helm-dash rainbow-mode rainbow-identifiers disaster company-c-headers cmake-mode clang-format helm-c-yasnippet flycheck-pos-tip flycheck company-statistics company-quickhelp company auto-yasnippet ac-ispell alect-themes window-numbering which-key volatile-highlights vi-tilde-fringe use-package spray spacemacs-theme smooth-scrolling rainbow-delimiters quelpa powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link))))
+    (web-beautify mmm-mode markdown-toc markdown-mode json-mode js2-refactor js2-mode js-doc gh-md company-tern coffee-mode phpunit phpcbf php-auto-yasnippets drupal-mode pyvenv pytest pyenv-mode pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode ample-zen-theme zeal-at-point helm-dash rainbow-mode rainbow-identifiers disaster company-c-headers cmake-mode clang-format helm-c-yasnippet flycheck-pos-tip flycheck company-statistics company-quickhelp company auto-yasnippet ac-ispell alect-themes window-numbering which-key volatile-highlights vi-tilde-fringe use-package spray spacemacs-theme smooth-scrolling rainbow-delimiters quelpa powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
