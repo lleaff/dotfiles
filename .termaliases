@@ -4,9 +4,14 @@ defaultTERM='xterm-256color'
 # Locations aliases
 test -r "$HOME/.locations" && source "$HOME/.locations"
 
-alias emacsd="/opt/emacs24/bin/emacs --daemon"
-alias emacsk="/opt/emacs24/bin/emacsclient -e '(kill-emacs)'"
-alias emacs="/opt/emacs24/bin/emacsclient"
+EMACSL="/opt/emacs24/bin/emacs"
+if [[ ! -e $EMACSL ]]; then
+	EMACSL="emacs"
+fi
+alias emacsd="$EMACSL --daemon"
+alias emacsk="${EMACSL}client -e '(kill-emacs)'"
+alias emacsr="emacsk; emacsd"
+alias emacs="${EMACSL}client"
 alias ctest="$HOME/tests/c/testc.sh"
 alias formtest="$HOME/tests/c/formtest.sh"
 #==========================================
@@ -154,6 +159,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 fi
 
 #==========================================
-if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
-	/opt/emacs24/bin/emacs --daemon # Start emacs server
-fi
+#if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
+#	$EMACSL --daemon # Start emacs server
+#fi
