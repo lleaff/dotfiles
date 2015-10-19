@@ -236,10 +236,12 @@ layers configuration. You are free to put any user code."
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
 
+  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
+
   ;; Prep'Etna headers
+  (load-file "~/.emacs.d/private/custom/loginname.el")
   (load-file "~/.emacs.d/private/custom/std_comment.el")
 
-  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
 
   ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.

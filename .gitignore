@@ -14,7 +14,7 @@
 .emacs.d/auto-save-list
 .emacs.d/backups
 .emacs.d/places
-std_comment.el
+loginname.el
 
 ###temp files
 *.swp
