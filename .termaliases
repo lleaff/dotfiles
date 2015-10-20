@@ -155,7 +155,9 @@ alias o=__open
 #==========================================
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
+	alias o='open'
 	alias gvim='open -a MacVim'
+	alias gemacs='open -a Emacs'
 fi
 
 #==========================================

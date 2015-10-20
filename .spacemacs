@@ -46,6 +46,8 @@ values."
      php
      python
      javascript
+     php
+     prolog
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -227,6 +229,9 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
+  ;; Indent width
+  (setq c-basic-offset 2)
+
   ;;; Cosmetic
   (global-hl-line-mode nil) ; -1 to deactivate current line highlight
   (set-face-background 'hl-line "#DBD9C1") ; #DFDAC3
@@ -259,6 +264,9 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("7153b82e50b6f7452b4519097f880d968a6eaf6f6ef38cc45a144958e553fbc6" "5e3fc08bcadce4c6785fc49be686a4a82a356db569f55d411258984e952f194a" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(package-selected-packages
    (quote
     (web-beautify mmm-mode markdown-toc markdown-mode json-mode js2-refactor js2-mode js-doc gh-md company-tern coffee-mode phpunit phpcbf php-auto-yasnippets drupal-mode pyvenv pytest pyenv-mode pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode ample-zen-theme zeal-at-point helm-dash rainbow-mode rainbow-identifiers disaster company-c-headers cmake-mode clang-format helm-c-yasnippet flycheck-pos-tip flycheck company-statistics company-quickhelp company auto-yasnippet ac-ispell alect-themes window-numbering which-key volatile-highlights vi-tilde-fringe use-package spray spacemacs-theme smooth-scrolling rainbow-delimiters quelpa powerline popwin popup pcre2el paradox page-break-lines open-junk-file neotree move-text macrostep linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-jumper evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move auto-highlight-symbol auto-dictionary aggressive-indent adaptive-wrap ace-window ace-link))))
