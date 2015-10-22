@@ -249,6 +249,16 @@ layers configuration. You are free to put any user code."
   (load-file "~/.emacs.d/private/custom/loginname.el")
   (load-file "~/.emacs.d/private/custom/std_comment.el")
 
+  (add-hook 'php-mode-hook 'php-my-settings)
+  (defun php-my-settings ()
+    (setq c-basic-offset 2)
+    )
+
+  (add-hook 'prog-mode-hook 'prog-my-settings)
+  (defun prog-my-settings ()
+    (setq c-basic-offset 2)
+    (spacemacs/toggle-fill-column-indicator-on)
+    )
 
   ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.
