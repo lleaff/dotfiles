@@ -39,6 +39,7 @@ values."
      ;; version-control
      ;;; Cosmetic
      colors
+     themes-megapack
      ;;; Languages
      emacs-lisp
      markdown
@@ -46,7 +47,6 @@ values."
      php
      python
      javascript
-     php
      prolog
      )
    ;; List of additional packages that will be installed without being
@@ -222,12 +222,40 @@ user code."
   (add-to-list 'load-path "~/.emacs.d/private/custom") ; Random .el files
 
   (setq evil-toggle-key "C-`") ; Default is C-z
+
+  ;; =My defaults
+  (setq-default
+   c-basic-offset 2
+
+   js2-basic-offset 2
+   js2-include-node-externs t ; Node.js syntax
+
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2
+
+   python-indent-offset 2
+
+   flycheck-eslintrc "~/.eslintrc"
+   )
   )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  (add-to-list 'load-path "~/.emacs.d/private/custom")
+  
+  ;;(defun load-file-s (filename)
+  ;;  "Load file if it exists"
+  ;;  (interactive "P\nfFile to load: ")
+  ;;  (when (file-exists-p filename)
+  ;;                        (load-file filename))
+  ;;  )
 
   ;; Indent width
   (setq c-basic-offset 2)
@@ -242,8 +270,6 @@ layers configuration. You are free to put any user code."
 
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
-
-  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
 
   ;; Prep'Etna headers
   (load-file "~/.emacs.d/private/custom/loginname.el")
@@ -260,11 +286,27 @@ layers configuration. You are free to put any user code."
     (spacemacs/toggle-fill-column-indicator-on)
     )
 
+  ;;; Tern.js
+  ;; Load
+;  (add-to-list 'load-path "/usr/lib/node_modules/tern/emacs")
+;  (autoload 'tern-mode "tern.el" nil t)
+;  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+;  (eval-after-load 'tern
+;    '(progn
+;       (require 'tern-auto-complete)
+;       (tern-ac-setup)))
+  ;; Reset Tern (to reload .tern-project resolution)
+  (defun kill-tern-process ()
+    (interactive)
+      (delete-process "Tern"))
+
   ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.
   (require 'saveplace)
   (setq save-place-file (concat user-emacs-directory "saveplace.el") ) ; use standard emacs dir
   (setq-default save-place t)
+
+  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

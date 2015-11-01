@@ -40,8 +40,10 @@
 (define-key evil-normal-state-map (kbd "C-k") 'evil-join)
 ;; map ; :
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+(define-key evil-motion-state-map (kbd ";") 'evil-ex)
 (define-key evil-visual-state-map (kbd ";") 'evil-ex)
 
 ;; map <TAB> <C-w>
 ;; TODO Doesnt work
 ;; (define-key evil-motion-state-minor-mode (kbd "TAB") 'evil-window-map)
+;(define-key evil-normal-state-map (kbd "TAB") 'evil-window-map)
