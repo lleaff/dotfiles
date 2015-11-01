@@ -19,6 +19,7 @@ alias emacsn="${EMACSL}"
 alias e="emacs"
 
 #==========================================
+alias g=git
 alias n=node
 
 alias ctest="$HOME/tests/c/testc.sh"
@@ -95,13 +96,17 @@ function gvim() {
 	gvim $@
 }
 
-###"git" enhancement
+###git enhancement
 function git() {
-	case $* in
+	case $1 in
 		add* ) shift 1; command git add -v "$@" ;;
+		a ) shift 1; command git add -v "$@" ;;
 		status* ) shift 1; command git status -s "$@" ;;
+		st ) shift 1; command git status -s "$@" ;;
+		s ) shift 1; command git status -s "$@" ;;
 		pull* ) shift 1; command git pull -v "$@" ;;
 		logf* ) shift 1; command git log --stat --pretty=oneline "$@" ;; #log formatted
+    ci ) shift 1; command git commit "$@" ;;
 		* ) command git "$@" ;;
 	esac
 }
