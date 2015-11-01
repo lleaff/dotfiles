@@ -1,3 +1,4 @@
+export TERM=256color
 test -r ~/dotfiles/.termaliases && source ~/dotfiles/.termaliases
 
 VISUAL=/usr/bin/vim; export EDITOR

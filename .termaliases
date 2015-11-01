@@ -4,14 +4,23 @@ defaultTERM='xterm-256color'
 # Locations aliases
 test -r "$HOME/.locations" && source "$HOME/.locations"
 
+# Emacs
+#==========================================
 EMACSL="/opt/emacs24/bin/emacs"
 if [[ ! -e $EMACSL ]]; then
-	EMACSL="emacs"
+	EMACSL=$(whereis emacs | cut -d ' ' -f 2)
 fi
 alias emacsd="$EMACSL --daemon"
 alias emacsk="${EMACSL}client -e '(kill-emacs)'"
 alias emacsr="emacsk; emacsd"
-alias emacs="${EMACSL}client"
+# -a '' starts a new daemon instance if none exists
+alias emacs="${EMACSL}client -nw -a ''"
+alias emacsn="${EMACSL}"
+alias e="emacs"
+
+#==========================================
+alias n=node
+
 alias ctest="$HOME/tests/c/testc.sh"
 alias formtest="$HOME/tests/c/formtest.sh"
 #==========================================
