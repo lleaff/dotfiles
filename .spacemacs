@@ -239,7 +239,8 @@ user code."
 
    python-indent-offset 2
 
-   flycheck-eslintrc "~/.eslintrc"
+   ;; Requires 'eslint' to be installed ($> npm i -g eslint)
+   flycheck-eslintrc ".eslintrc"
    )
   )
 
@@ -285,6 +286,22 @@ layers configuration. You are free to put any user code."
     (setq c-basic-offset 2)
     (spacemacs/toggle-fill-column-indicator-on)
     )
+
+  (defun js-node-mode ()
+    "Initialize Node.js syntax checking and completion"
+    (interactive)
+    (progn
+      (setq js2-include-browser-externs nil)
+      (setq js2-include-node-externs t)
+      js2-mode))
+
+  (defun js-browser-mode ()
+    "Initialize WebAPI syntax checking and completion"
+    (interactive)
+    (progn
+      (setq js2-include-browser-externs t)
+      (setq js2-include-node-externs nil)
+      js2-mode))
 
   ;;; Tern.js
   ;; Load
