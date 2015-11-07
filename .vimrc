@@ -44,12 +44,12 @@ if has("unix")
 endif
 
 "YouCompleteMe, YCM
-if has("win32")
-	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
-	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
-elseif has("unix")
+"if has("win32")
+"	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
+"	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
+"elseif has("unix")
 	Plug 'Valloric/YouCompleteMe'
-endif
+"endif
 autocmd FileType c let g:ycm_global_ycm_extra_conf =
 			\ '~/.vim/ycm_files/c/.ycm_extra_conf.py'
 autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
@@ -553,7 +553,8 @@ map à @
 nnoremap <tab> <C-w>
 
 nmap <tab>e :tabn<CR>
-nmap <tab>z :tabp<CR>
+nmap <tab>w :tabp<CR>
+nmap <tab>z :tabp<CR>  "Azerty
 
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
