@@ -30,6 +30,7 @@ values."
      ;;; Other
      better-defaults
      dash
+     tmux
      ;; git
      ;; org
      ;; (shell :variables
@@ -232,6 +233,7 @@ user code."
 
    js2-basic-offset 2
    js2-include-node-externs t ; Node.js syntax
+   js2-skip-preprocessor-directives t ; Treat lines beginning with # as comments
 
    ;; web-mode
    css-indent-offset 2
@@ -327,6 +329,7 @@ layers configuration. You are free to put any user code."
   (setq-default save-place t)
 
   (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
+  (load-file "~/.emacs.d/private/custom/tmux.el")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
