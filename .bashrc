@@ -14,3 +14,8 @@ fgwhite='\e[0;37m'
 bgblack='\e[40m'
 
 export PS1="${fgwhite}${bgblack}\w${nocolor} "
+
+export PATH="$HOME/bin:$PATH"
+if [[ $OSTYPE == darwin* ]]; then
+	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
+fi

@@ -62,6 +62,9 @@ plugins=(svn zsh-syntax-highlighting)
 
 
 export PATH="$HOME/bin:$PATH"
+if [[ $OSTYPE == darwin* ]]; then
+	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
+fi
 #export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
