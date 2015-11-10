@@ -30,7 +30,7 @@ values."
      ;;; Other
      better-defaults
      dash
-     tmux
+     ;; tmux
      ;; git
      ;; org
      ;; (shell :variables
@@ -229,8 +229,9 @@ user code."
 
   ;; =My defaults
   (setq-default
-   c-basic-offset 2
+   c-basic-offset 2 ; Default indent level
 
+   ;; js2-mode
    js2-basic-offset 2
    js2-include-node-externs t ; Node.js syntax
    js2-skip-preprocessor-directives t ; Treat lines beginning with # as comments
@@ -246,6 +247,12 @@ user code."
 
    ;; Requires 'eslint' to be installed ($> npm i -g eslint)
    flycheck-eslintrc ".eslintrc"
+
+   navigate-bind-on-evil-window-map t
+   navigate-pane-left-key  (kbd "h")
+   navigate-pane-down-key  (kbd "j")
+   navigate-pane-up-key    (kbd "k")
+   navigate-pane-right-key (kbd "l")
    )
   )
 
@@ -262,9 +269,6 @@ layers configuration. You are free to put any user code."
   ;;  (when (file-exists-p filename)
   ;;                        (load-file filename))
   ;;  )
-
-  ;; Indent width
-  (setq c-basic-offset 2)
 
   ;;; Cosmetic
   (global-hl-line-mode nil) ; -1 to deactivate current line highlight
