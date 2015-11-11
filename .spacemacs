@@ -247,12 +247,6 @@ user code."
 
    ;; Requires 'eslint' to be installed ($> npm i -g eslint)
    flycheck-eslintrc ".eslintrc"
-
-   navigate-bind-on-evil-window-map t
-   navigate-pane-left-key  (kbd "h")
-   navigate-pane-down-key  (kbd "j")
-   navigate-pane-up-key    (kbd "k")
-   navigate-pane-right-key (kbd "l")
    )
   )
 
@@ -334,6 +328,14 @@ layers configuration. You are free to put any user code."
 
   (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
   (load-file "~/.emacs.d/private/custom/tmux.el")
+
+  (setq-default
+   evil-tmux-navigator-bind-on-evil-window-map t
+   evil-tmux-navigator-pane-left-key  (kbd "h")
+   evil-tmux-navigator-pane-down-key  (kbd "j")
+   evil-tmux-navigator-pane-up-key    (kbd "k")
+   evil-tmux-navigator-pane-right-key (kbd "l"))
+  (evil-tmux-navigator-bind-keys)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
