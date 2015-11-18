@@ -27,13 +27,20 @@ alias formtest="$HOME/tests/c/formtest.sh"
 
 alias pl=swipl
 #==========================================
+# Keep aliases when using sudo
+alias sudo='sudo '
+
+if [[ -e "$HOME/bin/apt" ]]; then
+    alias apt="$HOME/bin/apt"
+fi
+#==========================================
 
 function mkcd {
 	mkdir $@ && cd $@;
 }
 
 function cdls {
-	cd $@ && ls;
+	cd $@ && ls --color=auto;
 }
 
 function mkexe() {

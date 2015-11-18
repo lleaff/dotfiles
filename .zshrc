@@ -61,7 +61,7 @@ plugins=(svn zsh-syntax-highlighting)
 #ZSH_HIGHLIGHT_STYLES[path]=none
 
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 if [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
 fi

@@ -42,6 +42,7 @@ values."
      colors
      themes-megapack
      ;;; Languages
+     html
      emacs-lisp
      markdown
      c-c++
@@ -305,6 +306,11 @@ layers configuration. You are free to put any user code."
       (setq js2-include-browser-externs t)
       (setq js2-include-node-externs nil)
       js2-mode))
+
+  (add-hook 'web-mode-hook 'web-my-settings)
+  (defun web-my-settings ()
+    (spacemacs/toggle-fill-column-indicator-off) ; Makes web-mode buggy
+    )
 
   ;;; Tern.js
   ;; Load
