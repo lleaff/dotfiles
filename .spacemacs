@@ -267,11 +267,18 @@ layers configuration. You are free to put any user code."
 
   ;;; Cosmetic
   (global-hl-line-mode nil) ; -1 to deactivate current line highlight
-  (set-face-background 'hl-line "#DBD9C1") ; #DFDAC3
 
   (global-linum-mode t) ; Activate line numbers left of text
-  (setq linum-format "%-2d ") ; Default line number format: "%d"
+  (setq linum-format "%3d ") ; Default line number format: "%d"
   (set-face-background 'linum "#B9B9B9")
+
+  ;; Custom theme
+  (defun my-custom-theme ()
+    "Load custom theme"
+    (interactive)
+    (load-file "~/.emacs.d/private/custom/alect-light-custom.el")
+    (load-theme 'alect-light))
+  (my-custom-theme)
 
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
