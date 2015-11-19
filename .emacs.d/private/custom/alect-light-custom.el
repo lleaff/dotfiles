@@ -1,4 +1,7 @@
-(alect-set-color 'light 'bg-1 "none")
+(if (not window-system)
+  ;; Main background color
+  (alect-set-color 'light 'bg-1 "none"))
+
 (alect-set-color 'light 'blue+1 "#3649E2")
 (alect-set-color 'light 'gray+1 "#555555")
 ;(alect-set-color 'light 'yellow+1 "#d78765")

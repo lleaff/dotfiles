@@ -284,8 +284,10 @@ layers configuration. You are free to put any user code."
   (auto-highlight-symbol-mode t)
 
   ;; Prep'Etna headers
-  (load-file "~/.emacs.d/private/custom/loginname.el")
-  (load-file "~/.emacs.d/private/custom/std_comment.el")
+  (setq-local loginname-file "~/.emacs.d/private/custom/loginname.el")
+  (if (file-readable-p loginname-file)
+	(load-file loginname-file)
+	(load-file "~/.emacs.d/private/custom/std_comment.el"))
 
   (add-hook 'php-mode-hook 'php-my-settings)
   (defun php-my-settings ()
