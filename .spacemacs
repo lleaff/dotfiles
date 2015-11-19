@@ -257,7 +257,7 @@ user code."
 layers configuration. You are free to put any user code."
 
   (add-to-list 'load-path "~/.emacs.d/private/custom")
-  
+
   ;;(defun load-file-s (filename)
   ;;  "Load file if it exists"
   ;;  (interactive "P\nfFile to load: ")
