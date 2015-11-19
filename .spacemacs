@@ -266,7 +266,7 @@ layers configuration. You are free to put any user code."
   ;;  )
 
   ;;; Cosmetic
-  (global-hl-line-mode nil) ; -1 to deactivate current line highlight
+  (global-hl-line-mode -1) ; -1 to deactivate current line highlight
 
   (global-linum-mode t) ; Activate line numbers left of text
   (setq linum-format "%3d ") ; Default line number format: "%d"
