@@ -10,7 +10,8 @@
 .vim/ycm_win64
 .oh-my-zsh/**
 !.oh-my-zsh/themes/**.zsh-theme
-!.emacs.d/
+.emacs.d/
+!.emacs.d/private
 .emacs.d/auto-save-list
 .emacs.d/backups
 .emacs.d/places
