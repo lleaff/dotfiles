@@ -32,11 +32,22 @@
   (lambda () (interactive) (evil-next-visual-line 5)))
 (define-key evil-visual-state-map (kbd "J")
   (lambda () (interactive) (evil-next-visual-line 5)))
+(define-key evil-motion-state-map (kbd "J")
+  (lambda () (interactive) (evil-next-visual-line 5)))
 ;; map K 5k
 (define-key evil-normal-state-map (kbd "K")
   (lambda () (interactive) (evil-previous-visual-line 5)))
 (define-key evil-visual-state-map (kbd "K")
   (lambda () (interactive) (evil-previous-visual-line 5)))
+(define-key evil-motion-state-map (kbd "K")
+  (lambda () (interactive) (evil-previous-visual-line 5)))
+
+;; map H ^
+(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
+(define-key evil-motion-state-map (kbd "H") 'evil-first-non-blank)
+;; map L $
+(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line)
+(define-key evil-motion-state-map (kbd "L") 'evil-end-of-line)
 
 ;;------------------------------------------------------------
 

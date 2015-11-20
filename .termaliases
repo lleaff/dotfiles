@@ -19,6 +19,9 @@ alias emacsn="${EMACSL}"
 alias e="emacs"
 
 #==========================================
+alias tm=tmux
+alias tmu=tmux
+
 alias g=git
 alias n=node
 

@@ -1,6 +1,10 @@
+;;; Alect customization
+;;;------------------------------------------------------------
+
+;; No background in terminal
 (if (not window-system)
-  ;; Main background color
-  (alect-set-color 'light 'bg-1 "none"))
+    (alect-set-color 'light 'bg-1 "none"); Main background color
+  )
 
 (alect-set-color 'light 'blue+1 "#3649E2")
 (alect-set-color 'light 'gray+1 "#555555")
@@ -38,3 +42,18 @@
                              :foreground fg+1 :background "firebrick3"
                              :box (:line-width 2 :color bg-2 :style nil))))
    ))
+
+;;; Other customization
+;;;------------------------------------------------------------
+
+(defvar spacemacs-evil-cursor-colors
+  '((normal . "DarkGoldenrod2")
+    (insert . "chartreuse3")
+    (emacs  . "SkyBlue2")
+    (evilified . "LightGoldenrod3")
+    (visual . "gray")
+    (motion . "plum3")
+    (lisp   . "HotPink1")
+    (iedit  . "firebrick1")
+    (iedit-insert  . "firebrick1"))
+  "Colors assigned to evil states.")
