@@ -12,7 +12,7 @@
 (alect-set-color 'light 'yellow+2 "#ce724b")
 (alect-set-color 'light 'green-1 "#079530")
 (alect-set-color 'light 'green-2 "#678c6b")
-(alect-set-color 'light 'magenta "#ba7082")
+(alect-set-color 'light 'magenta "#bf6092")
 (alect-set-color 'light 'cyan-1 "#4e8c87")
 (alect-set-color 'light 'cyan-2 "#67878d")
 
@@ -57,3 +57,6 @@
     (iedit  . "firebrick1")
     (iedit-insert  . "firebrick1"))
   "Colors assigned to evil states.")
+
+(set-face-foreground 'js2-function-param "#875faf")
+(set-face-foreground 'js2-external-variable "#d70000")

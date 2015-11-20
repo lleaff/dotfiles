@@ -25,6 +25,9 @@ alias tmu=tmux
 alias g=git
 alias n=node
 
+alias yt=youtube-dl
+alias scdl=soundcloud-dl
+
 alias ctest="$HOME/tests/c/testc.sh"
 alias formtest="$HOME/tests/c/formtest.sh"
 
@@ -164,8 +167,6 @@ function lsms() {
 function lso() {
 	command ls $*
 }
-
-alias yt=youtube-dl
 
 #==========================================
 function ftree() {
