@@ -6,11 +6,11 @@
     (alect-set-color 'light 'bg-1 "none"); Main background color
   )
 
-(alect-set-color 'light 'blue+1 "#3649E2")
+(alect-set-color 'light 'blue+1 "#4659a2")
 (alect-set-color 'light 'gray+1 "#555555")
 ;(alect-set-color 'light 'yellow+1 "#d78765")
 (alect-set-color 'light 'yellow+2 "#ce724b")
-(alect-set-color 'light 'green-1 "#17a750")
+(alect-set-color 'light 'green-1 "#079530")
 (alect-set-color 'light 'green-2 "#678c6b")
 (alect-set-color 'light 'magenta "#ba7082")
 (alect-set-color 'light 'cyan-1 "#4e8c87")
@@ -25,7 +25,7 @@
  '(
    (font-lock-string-face  ((t :foreground cyan-1)))
    (font-lock-doc-face     ((t :inherit font-lock-comment-face)))
-   (font-lock-comment-face ((t :foreground "#7e8b71"))) ; #7e8b71
+   (font-lock-comment-face ((t :foreground "#9a8e75"))) ; #7e8b71
    (font-lock-builtin-face ((t :foreground yellow+2)))
    (font-lock-variable-name-face ((t :foreground magenta)))
    (font-lock-function-name-face ((t :inherit font-lock-variable-name-face)))
