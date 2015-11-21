@@ -273,12 +273,8 @@ layers configuration. You are free to put any user code."
   (set-face-background 'linum "#B9B9B9")
 
   ;; Custom theme
-  (defun my-custom-theme ()
-    "Load custom theme"
-    (interactive)
-    (load-file "~/.emacs.d/private/custom/alect-light-custom.el")
-    (load-theme 'alect-light))
-  (my-custom-theme)
+  (load-file "~/.emacs.d/private/custom/puddle-light.el")
+  (puddle-light-theme)
 
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
