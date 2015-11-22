@@ -271,6 +271,8 @@ layers configuration. You are free to put any user code."
   (global-linum-mode t) ; Activate line numbers left of text
   (setq linum-format "%3d ") ; Default line number format: "%d"
   (set-face-background 'linum "#B9B9B9")
+  ;; Deactivate sp-pair-overlay (highlights the inside of new parenthesis pairs)
+  (setq sp-highlight-pair-overlay nil) 
 
   ;; Custom theme
   (load-file "~/.emacs.d/private/custom/puddle-light.el")

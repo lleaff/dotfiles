@@ -70,6 +70,10 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# Makes C-p/C-n behave like Up/Down arrows
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
