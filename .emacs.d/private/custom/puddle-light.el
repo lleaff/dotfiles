@@ -1,3 +1,9 @@
+(setq mode-line-bg-active "#585858")
+(setq mode-line-bg-inactive "#B9B9B9")
+(setq mode-line-fg-active "#afaf87") ;"#afaf87"
+(setq mode-line-fg-inactive "#87875f")
+
+
 ;;; Alect customization
 ;;;------------------------------------------------------------
 (defun puddle-light-alect-customization ()
@@ -20,11 +26,9 @@
 
   ;;"#67878d" ; blue-green low cont
 
-  ;;(setq fg-alt "#878769")
-
   (setq
    alect-overriding-faces
-   '(
+   `(
      (font-lock-string-face  ((t :foreground cyan-1)))
      (font-lock-doc-face     ((t :inherit font-lock-comment-face)))
      (font-lock-comment-face ((t :foreground "#9a8e75"))) ; #7e8b71
@@ -34,11 +38,13 @@
      (font-lock-keyword-face ((t :foreground green-1)))
      (font-lock-constant-face ((t :foreground blue+1)))
 
-     (linum ((t :foreground "#878769" :background gray-1)))
+     (linum ((t :foreground ,mode-line-fg-inactive
+                :background ,mode-line-bg-inactive)))
 
-     (mode-line-buffer-id    ((t :foreground "#878769")))
+     ;;(mode-line-buffer-id    ((t :foreground ,mode-line-fg-active)))
      (mode-line              ((((background light))
-                               :foreground "#878769" :background gray
+                               :foreground ,mode-line-fg-active
+                               :background ,mode-line-bg-active
                                :box (:line-width 2 :color bg-2 :style nil))
                               (((background dark))
                                :foreground fg+1 :background "firebrick3"
@@ -51,7 +57,7 @@
 (defun face-inherit (srcFace, destFace)
   (set-face-attribute srcFace :inherit destFace))
 
-(defun js2-color-settings ()
+(defun js2-face-settings ()
   (interactive)
   (set-face-foreground 'js2-function-param "#875faf")
   (set-face-foreground 'js2-external-variable "#d70000")
@@ -72,22 +78,74 @@
   ;;                    :inherit font-lock-comment-face)
   )
 
+(defun powerline-face-settings ()
+
+  (progn
+    (set-face-attribute 'powerline-active1 nil
+                    :background mode-line-bg-active
+                    :foreground mode-line-fg-active)
+    (set-face-attribute 'powerline-active2 nil
+                    :background mode-line-bg-active
+                    :foreground mode-line-fg-active)
+
+    (set-face-attribute 'powerline-inactive1 nil
+                    :background mode-line-bg-inactive
+                    :foreground mode-line-fg-inactive)
+    (set-face-attribute 'powerline-inactive2 nil
+                    :background mode-line-bg-inactive
+                    :foreground mode-line-fg-inactive)
+    (set-face-attribute 'mode-line-inactive nil
+                    :background mode-line-bg-inactive
+                    :foreground mode-line-fg-inactive)
+    (set-face-background 'mode-line-inactive mode-line-bg-inactive)
+    )
+
+  (setq spacemacs-mode-line-left
+        '(
+          ;;((workspace-number window-number)
+          ;; :fallback state-tag :separator "|" :face state-face)
+          anzu
+          ;;(buffer-modified buffer-size buffer-id remote-host)
+          (buffer-modified buffer-id remote-host)
+          major-mode
+          ((flycheck-errors flycheck-warnings flycheck-infos)
+           :when active)
+          ;;((minor-modes process)
+          ;; :when active)
+          (erc-track :when active)
+          (org-pomodoro :when active)
+          (org-clock :when active)
+          (version-control :when active)
+          ))
+  (setq spacemacs-mode-line-right
+        '(
+          selection-info
+          (battery :when active)
+          ((point-position line-column)
+           :separator " | ")
+          ((global-mode new-version)
+           :when active)
+          buffer-position hud))
+  )
+
 (defun puddle-light-other-customization ()
   "Customization independent of alect-themes"
+  (interactive)
 
   (defvar spacemacs-evil-cursor-colors
     '((normal . "red") ;"DarkGoldenrod2"
-      (insert . "chartreuse3")
-      (emacs  . "SkyBlue2")
-      (evilified . "red")
-      (visual . "gray")
-      (motion . "plum3")
-      (lisp   . "HotPink1")
-      (iedit  . "firebrick1")
-      (iedit-insert  . "firebrick1"))
+      (insert . "red") ;"chartreuse3"
+      (emacs  . "red") ;"SkyBlue2"
+      (evilified . "red") ;"red"
+      (visual . "red") ;"gray"
+      (motion . "red") ;"plum3"
+      (lisp   . "red") ;"HotPink1"
+      (iedit  . "red") ;"firebrick1"
+      (iedit-insert  . "red")) ;"firebrick1"
     "Colors assigned to evil states.")
 
-  (add-hook 'js2-mode-hook 'js2-color-settings))
+  (powerline-face-settings)
+  (add-hook 'js2-mode-hook 'js2-face-settings))
 
 ;;; Custom theme
 ;;;------------------------------------------------------------
