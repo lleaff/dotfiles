@@ -255,6 +255,12 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
+  ;; Add filenames to mode, eg: (add-to-mode 'gam-mode '(".gamrc" ".gamport"))
+  (defun add-to-mode (mode lst)
+    (dolist (file lst)
+      (add-to-list 'auto-mode-alist
+                   (cons file mode))))
+
   (add-to-list 'load-path "~/.emacs.d/private/custom")
 
   (require 'evil-custom-keybinds)
@@ -350,7 +356,13 @@ layers configuration. You are free to put any user code."
    evil-tmux-navigator-pane-right-key (kbd "l"))
   (evil-tmux-navigator-bind-keys)
 
-  (add-to-list 'auto-mode-alist '(".eslintrc" . json-mode))
+
+  (add-to-mode 'json-mode (list
+                           ".eslintrc"
+                           ".tern-project"))
+
+  ;; Load company (autocompletion) on JSON files
+  (add-hook 'json-mode-hook (lambda () (company-mode t)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
