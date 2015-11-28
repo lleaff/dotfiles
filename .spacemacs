@@ -30,8 +30,7 @@ values."
      ;;; Other
      better-defaults
      dash
-     ;; tmux
-     ;; git
+     git
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -258,6 +257,8 @@ layers configuration. You are free to put any user code."
 
   (add-to-list 'load-path "~/.emacs.d/private/custom")
 
+  (require 'evil-custom-keybinds)
+
   ;;(defun load-file-s (filename)
   ;;  "Load file if it exists"
   ;;  (interactive "P\nfFile to load: ")
@@ -275,17 +276,17 @@ layers configuration. You are free to put any user code."
   (setq sp-highlight-pair-overlay nil) 
 
   ;; Custom theme
-  (load-file "~/.emacs.d/private/custom/puddle-light.el")
+  (require 'puddle-light)
   (puddle-light-theme)
 
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
 
-  ;; Prep'Etna headers
+  ;; Personal headers
   (setq-local loginname-file "~/.emacs.d/private/custom/loginname.el")
   (if (file-readable-p loginname-file)
-	(load-file loginname-file)
-	(load-file "~/.emacs.d/private/custom/std_comment.el"))
+  (require 'loginname)
+  (require 'std_comment))
 
   (add-hook 'php-mode-hook 'php-my-settings)
   (defun php-my-settings ()
@@ -339,8 +340,7 @@ layers configuration. You are free to put any user code."
   (setq save-place-file (concat user-emacs-directory "saveplace.el") ) ; use standard emacs dir
   (setq-default save-place t)
 
-  (load-file "~/.emacs.d/private/custom/evil_keybinds.el")
-  (load-file "~/.emacs.d/private/custom/tmux.el")
+  (require 'evil-tmux-navigator)
 
   (setq-default
    evil-tmux-navigator-bind-on-evil-window-map t

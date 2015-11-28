@@ -150,12 +150,14 @@
                       :background "#d75f00")
 
   ;; Parentheses, Smartparens
-  (set-face-attribute 'sp-pair-overlay-face nil
-                      :background "#d7ffff")
-  (dolist (face '(show-paren-match sp-show-pair-match-face))
-    (set-face-attribute face nil
-                        :background "#afafff"
-                        :foreground "#000000"))
+  (eval-after-load "smartparens"
+    '(progn
+    (set-face-attribute 'sp-pair-overlay-face nil
+                        :background "#d7ffff")
+    (dolist (face '(show-paren-match sp-show-pair-match-face))
+      (set-face-attribute face nil
+                          :background "#afafff"
+                          :foreground "#000000"))))
 
   (eval-after-load "helm-command"
     '(progn
@@ -193,3 +195,5 @@
   (puddle-light-alect-customization)
   (load-theme 'alect-light)
   (puddle-light-other-customization))
+
+(provide 'puddle-light)
