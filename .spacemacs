@@ -349,6 +349,8 @@ layers configuration. You are free to put any user code."
    evil-tmux-navigator-pane-up-key    (kbd "k")
    evil-tmux-navigator-pane-right-key (kbd "l"))
   (evil-tmux-navigator-bind-keys)
+
+  (add-to-list 'auto-mode-alist '(".eslintrc" . json-mode))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
