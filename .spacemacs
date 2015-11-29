@@ -48,6 +48,7 @@ values."
      php
      python
      javascript
+     haskell
      prolog
      )
    ;; List of additional packages that will be installed without being
@@ -346,16 +347,6 @@ layers configuration. You are free to put any user code."
   (setq save-place-file (concat user-emacs-directory "saveplace.el") ) ; use standard emacs dir
   (setq-default save-place t)
 
-  (require 'evil-tmux-navigator)
-
-  (setq-default
-   evil-tmux-navigator-bind-on-evil-window-map t
-   evil-tmux-navigator-pane-left-key  (kbd "h")
-   evil-tmux-navigator-pane-down-key  (kbd "j")
-   evil-tmux-navigator-pane-up-key    (kbd "k")
-   evil-tmux-navigator-pane-right-key (kbd "l"))
-  (evil-tmux-navigator-bind-keys)
-
 
   (add-to-mode 'json-mode (list
                            ".eslintrc"
@@ -363,6 +354,24 @@ layers configuration. You are free to put any user code."
 
   ;; Load company (autocompletion) on JSON files
   (add-hook 'json-mode-hook (lambda () (company-mode t)))
+
+  ;; Disable evil mode in specific modes
+  (defun append-to-list (listToModify toAppend)
+    "Like 'append but modifies the list in place instead of creating a copy"
+    (dolist (element toAppend)
+      (add-to-list listToModify element)))
+
+  (append-to-list 'evil-emacs-state-modes '(haskell-interactive-mode))
+
+  (require 'evil-tmux-navigator)
+  (setq-default
+   evil-tmux-navigator-bind-on-evil-window-map nil
+   evil-tmux-navigator-pane-left-key  (kbd "C-M-z h")
+   evil-tmux-navigator-pane-down-key  (kbd "C-M-z j")
+   evil-tmux-navigator-pane-up-key    (kbd "C-M-z k")
+   evil-tmux-navigator-pane-right-key (kbd "C-M-z l"))
+  (evil-tmux-navigator-bind-keys)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

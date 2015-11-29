@@ -115,7 +115,8 @@ group"
           'tmux-navigate-up)
         (define-key evil-window-map
           evil-tmux-navigator-pane-right-key
-          'tmux-navigate-right))
+          'tmux-navigate-right)
+        )
     (progn
       ;; Unset key-bindings to avoid conflicts
       (dolist (key bindings)
@@ -146,6 +147,46 @@ group"
       (define-key evil-motion-state-map
         evil-tmux-navigator-pane-right-key
         'tmux-navigate-right)
+
+        (progn
+          (define-key evil-emacs-state-local-map
+            evil-tmux-navigator-pane-left-key
+            'tmux-navigate-left)
+          (define-key evil-emacs-state-local-map
+            evil-tmux-navigator-pane-down-key
+            'tmux-navigate-down)
+          (define-key evil-emacs-state-local-map
+           evil-tmux-navigator-pane-up-key
+            'tmux-navigate-up)
+          (define-key evil-emacs-state-local-map
+            evil-tmux-navigator-pane-right-key
+            'tmux-navigate-right))
+        (progn
+          (define-key evil-emacs-state-map
+            evil-tmux-navigator-pane-left-key
+            'tmux-navigate-left)
+          (define-key evil-emacs-state-map
+            evil-tmux-navigator-pane-down-key
+            'tmux-navigate-down)
+          (define-key evil-emacs-state-map
+           evil-tmux-navigator-pane-up-key
+            'tmux-navigate-up)
+          (define-key evil-emacs-state-map
+            evil-tmux-navigator-pane-right-key
+            'tmux-navigate-right))
+        (progn
+          (global-set-key
+            evil-tmux-navigator-pane-left-key
+            'tmux-navigate-left)
+          (global-set-key
+            evil-tmux-navigator-pane-down-key
+            'tmux-navigate-down)
+          (global-set-key
+           evil-tmux-navigator-pane-up-key
+            'tmux-navigate-up)
+          (global-set-key
+            evil-tmux-navigator-pane-right-key
+            'tmux-navigate-right))
       )))
 
 (provide 'evil-tmux-navigator)
