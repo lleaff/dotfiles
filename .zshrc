@@ -64,6 +64,9 @@ plugins=(svn zsh-syntax-highlighting)
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 if [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
+else
+    # Haskell
+    export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.4/bin:$PATH
 fi
 #export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,3 +104,5 @@ bindkey "^N" down-line-or-search
 
 # Launch tmux automatically
 #if [[ -z $(hash tmux) ]]; then tmux; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

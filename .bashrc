@@ -19,3 +19,5 @@ export PATH="$HOME/bin:$PATH"
 if [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
