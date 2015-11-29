@@ -256,11 +256,22 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  ;; Add filenames to mode, eg: (add-to-mode 'gam-mode '(".gamrc" ".gamport"))
+  ;;; Functions
+  ;;;------------------------------------------------------------
+
   (defun add-to-mode (mode lst)
+    "Add filenames to mode, eg: (add-to-mode 'gam-mode '(\".gamrc\" \".gamport\"))"
     (dolist (file lst)
       (add-to-list 'auto-mode-alist
                    (cons file mode))))
+
+
+  (defun append-to-list (listToModify toAppend)
+    "Append a list to another list, Like 'append but modifies the list in place instead of creating a copy"
+    (dolist (element toAppend)
+      (add-to-list listToModify element)))
+
+  ;;;------------------------------------------------------------
 
   (add-to-list 'load-path "~/.emacs.d/private/custom")
 
@@ -274,6 +285,7 @@ layers configuration. You are free to put any user code."
   ;;  )
 
   ;;; Cosmetic
+  ;;;------------------------------------------------------------
   (global-hl-line-mode -1) ; -1 to deactivate current line highlight
 
   (global-linum-mode t) ; Activate line numbers left of text
@@ -289,11 +301,13 @@ layers configuration. You are free to put any user code."
   ;;; Code highlighting
   (auto-highlight-symbol-mode t)
 
+  ;;;------------------------------------------------------------
+
   ;; Personal headers
   (setq-local loginname-file "~/.emacs.d/private/custom/loginname.el")
   (if (file-readable-p loginname-file)
-  (require 'loginname)
-  (require 'std_comment))
+      (require 'loginname)
+    (require 'std_comment))
 
   (add-hook 'php-mode-hook 'php-my-settings)
   (defun php-my-settings ()
@@ -324,22 +338,22 @@ layers configuration. You are free to put any user code."
 
   (add-hook 'web-mode-hook 'web-my-settings)
   (defun web-my-settings ()
-    (spacemacs/toggle-fill-column-indicator-off) ; Makes web-mode buggy
+    (spacemacs/toggle-fill-column-indicator-off) ; "on" makes web-mode buggy
     )
 
-  ;;; Tern.js
-  ;; Load
-;  (add-to-list 'load-path "/usr/lib/node_modules/tern/emacs")
-;  (autoload 'tern-mode "tern.el" nil t)
-;  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
-;  (eval-after-load 'tern
-;    '(progn
-;       (require 'tern-auto-complete)
-;       (tern-ac-setup)))
+  ;;;;; Tern.js
+  ;;;; Load
+  ;; (add-to-list 'load-path "/usr/lib/node_modules/tern/emacs")
+  ;; (autoload 'tern-mode "tern.el" nil t)
+  ;; (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+  ;; (eval-after-load 'tern
+  ;;   '(progn
+  ;;      (require 'tern-auto-complete)
+  ;;      (tern-ac-setup)))
   ;; Reset Tern (to reload .tern-project resolution)
   (defun kill-tern-process ()
     (interactive)
-      (delete-process "Tern"))
+    (delete-process "Tern"))
 
   ;;; Restore cursor position ;TODO Doesnt work
   ;; Turn on save place so that when opening a file, the cursor will be at the last position.
@@ -352,16 +366,19 @@ layers configuration. You are free to put any user code."
                            ".eslintrc"
                            ".tern-project"))
 
-  ;; Load company (autocompletion) on JSON files
+  ;; Load company (an auto-completion package) on JSON files
   (add-hook 'json-mode-hook (lambda () (company-mode t)))
 
   ;; Disable evil mode in specific modes
-  (defun append-to-list (listToModify toAppend)
-    "Like 'append but modifies the list in place instead of creating a copy"
-    (dolist (element toAppend)
-      (add-to-list listToModify element)))
-
   (append-to-list 'evil-emacs-state-modes '(haskell-interactive-mode))
+
+  (define-key evil-emacs-state-map (kbd "C-u") (lambda ()
+                                                 (interactive)
+                                                 (haskell-interactive-mode-beginning)
+                                                 (kill-line)))
+  (define-key evil-emacs-state-map (kbd "C-p") 'haskell-interactive-mode-history-previous)
+  (define-key evil-emacs-state-map (kbd "C-n") 'haskell-interactive-mode-history-next)
+  (define-key evil-emacs-state-map (kbd "C-h") 'delete-backward-char)
 
   (require 'evil-tmux-navigator)
   (setq-default
@@ -372,7 +389,7 @@ layers configuration. You are free to put any user code."
    evil-tmux-navigator-pane-right-key (kbd "C-M-z l"))
   (evil-tmux-navigator-bind-keys)
 
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
