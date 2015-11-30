@@ -282,8 +282,10 @@ if has("gui_running")
 	endif
 else
 	if s:uname == "Darwin" " OSX
-		colorscheme lucius
-		LuciusLight
+		" colorscheme lucius
+		" LuciusLight
+		colors seoul256-light
+		let g:lucius_no_term_bg = 1
 	else " Linux
 		"colorscheme candy-crush-chronicle
 		colors seoul256-light
