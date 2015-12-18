@@ -236,6 +236,7 @@ user code."
    js2-basic-offset 2
    js2-include-node-externs t ; Node.js syntax
    js2-skip-preprocessor-directives t ; Treat lines beginning with # as comments
+   js2-strict-trailing-comma-warning nil ; Don't warn about trailing commas (bugs in old IE versions)
 
    ;; web-mode
    css-indent-offset 2

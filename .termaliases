@@ -28,7 +28,7 @@ alias g=git
 alias n=node
 
 alias yt=youtube-dl
-alias scdl=soundcloud-dl
+alias soundcloud-dl=scdl
 
 alias ctest="$HOME/tests/c/testc.sh"
 alias formtest="$HOME/tests/c/formtest.sh"
@@ -168,6 +168,15 @@ function lsms() {
 #original ls under "lso" alias
 function lso() {
 	command ls $*
+}
+
+#==========================================
+function append() {
+    if [[ -z "$1" ]] || [ -z "$2"]; then
+        echo "Usage: append TEXT DESTINATION"
+    fi
+
+    echo "$1" >> "$2";
 }
 
 #==========================================

@@ -3,6 +3,8 @@
 (setq mode-line-fg-active "#afaf87") ;"#afaf87"
 (setq mode-line-fg-inactive "#87875f")
 (setq comment-fg "#9a8e75")
+(setq warning-color "#a76600")
+(setq warning-color-alt "#d70000")
 ;; purple: #8700ff
 
 
@@ -39,6 +41,7 @@
      (font-lock-function-name-face ((t :inherit font-lock-variable-name-face)))
      (font-lock-keyword-face ((t :foreground green-1)))
      (font-lock-constant-face ((t :foreground blue+1)))
+     (warning ((t :foreground ,warning-color)))
 
      (linum ((t :foreground ,mode-line-fg-inactive
                 :background ,mode-line-bg-inactive)))
@@ -62,7 +65,7 @@
 (defun js2-face-settings ()
   (interactive)
   (set-face-foreground 'js2-function-param "#af5faf");"#875faf")
-  (set-face-foreground 'js2-external-variable "#d70000")
+  (set-face-foreground 'js2-external-variable warning-color-alt)
 
   ;; jsdoc
   (set-face-foreground 'js2-jsdoc-html-tag-delimiter comment-fg)
