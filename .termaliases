@@ -145,6 +145,7 @@ function git() {
 		logf* ) shift 1; command git log --stat --pretty=oneline "$@" ;; #log formatted
 		diffc ) shift 1; command git diff --cached "$@" ;;
     ci ) shift 1; command git commit "$@" ;;
+    amend ) shift 1; command git commit --amend -m "$@" ;;
 		* ) command git "$@" ;;
 	esac
 }
