@@ -390,6 +390,9 @@ layers configuration. You are free to put any user code."
    evil-tmux-navigator-pane-right-key (kbd "C-M-z l"))
   (evil-tmux-navigator-bind-keys)
 
+  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

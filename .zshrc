@@ -102,7 +102,12 @@ bindkey "^N" down-line-or-search
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Launch tmux automatically
-#if [[ -z $(hash tmux) ]]; then tmux; fi
+# Only execute if in an interactive shell, not a login one
+if [[ -o interactive ]]; then
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+    if hash tmux 2>/dev/null; then
+        tmux; clear;
+    fi
+fi

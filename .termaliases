@@ -79,6 +79,23 @@ function __tmuxnewwindow() {
 
 alias tnew=__tmuxnewwindow
 
+function __tmuxnewpane() {
+    local q='"'
+    if [[ -n $(hash "$1" 2>&1) ]] && [[ -e "$1" ]]; then
+        if [[ -d "$1" ]]; then
+            local execs="-c $(realpath $1)" 
+            local q=''
+        else
+            local execs="less $(echo $@)"
+        fi
+    else
+        local execs="$(echo $@)"
+    fi
+    eval 'tmux split-window '$q"$execs"$q
+}
+
+alias tpane=__tmuxnewpane
+
 #==========================================
 
 ###rm verbose
@@ -145,7 +162,7 @@ function git() {
 		logf* ) shift 1; command git log --stat --pretty=oneline "$@" ;; #log formatted
 		diffc ) shift 1; command git diff --cached "$@" ;;
     ci ) shift 1; command git commit "$@" ;;
-    amend ) shift 1; command git commit --amend -m "$@" ;;
+    amend ) shift 1; command git commit --amend -m "" "$@" ;;
 		* ) command git "$@" ;;
 	esac
 }
