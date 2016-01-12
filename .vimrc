@@ -378,8 +378,13 @@ set number "Show line numbers
 set foldmethod=syntax
 set foldlevel=7 "Open folds N levels when opening file
 
+" Indentation
 set smartindent
-set shiftwidth=4| set tabstop=4 "indent size
+set shiftwidth=4
+set tabstop=4 "A tab is x spaces
+set softtabstop=4 "Insert x spaces when tab is pressed
+set expandtab  "Always use spaces instead of tabs
+set shiftround "Round indent to nearest shiftwidth multiple
 
 set listchars=tab:>-,eol:↵
 "set list "

@@ -64,6 +64,12 @@ plugins=(svn zsh-syntax-highlighting)
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 if [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
+
+	# Haskell, Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
+	export GHC_DOT_APP=$HOME"/Applications/ghc-7.10.2.app"
+	if [ -d "$GHC_DOT_APP" ]; then
+		export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+	fi
 else
     # Haskell
     export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.4/bin:$PATH
