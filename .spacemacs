@@ -350,7 +350,7 @@ layers configuration. You are free to put any user code."
   ;; (eval-after-load 'tern
   ;;   '(progn
   ;;      (require 'tern-auto-complete)
-  ;;      (tern-ac-setup)))
+  ;;      (Tern-ac-setup)))
   ;; Reset Tern (to reload .tern-project resolution)
   (defun kill-tern-process ()
     (interactive)
@@ -371,7 +371,8 @@ layers configuration. You are free to put any user code."
   (add-hook 'json-mode-hook (lambda () (company-mode t)))
 
   ;; Disable evil mode in specific modes
-  (append-to-list 'evil-emacs-state-modes '(haskell-interactive-mode))
+  (append-to-list 'evil-emacs-state-modes '(haskell-interactive-mode
+                                            haskell-error-mode))
 
   (define-key evil-emacs-state-map (kbd "C-u") (lambda ()
                                                  (interactive)
@@ -380,6 +381,10 @@ layers configuration. You are free to put any user code."
   (define-key evil-emacs-state-map (kbd "C-p") 'haskell-interactive-mode-history-previous)
   (define-key evil-emacs-state-map (kbd "C-n") 'haskell-interactive-mode-history-next)
   (define-key evil-emacs-state-map (kbd "C-h") 'delete-backward-char)
+
+  (defun ghci ()
+    (interactive)
+    (haskell-interactive-switch))
 
   (require 'evil-tmux-navigator)
   (setq-default
