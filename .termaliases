@@ -34,7 +34,8 @@ alias ctest="$HOME/tests/c/testc.sh"
 alias formtest="$HOME/tests/c/formtest.sh"
 
 alias pl=swipl
-alias ghci="ghci -v0" # No loading messages
+if hash 2>/dev/null ghci-ng; then GHCI=ghci-ng; else GHCI=ghci; fi
+alias ghci="$GHCI -v0" # No loading messages
 #==========================================
 # Keep aliases when using sudo
 alias sudo='sudo '
