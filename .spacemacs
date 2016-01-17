@@ -230,6 +230,7 @@ user code."
 
   ;; =My defaults
   (setq-default
+
    c-basic-offset 2 ; Default indent level
 
    ;; js2-mode
