@@ -542,7 +542,9 @@ nnoremap <silent> J 5gj
 vnoremap <silent> J 5gj
 
 nmap H ^
+vmap H ^
 nmap L $
+vmap L $
 
 nnoremap j gj	" ^ Move vertically by visual line
 vnoremap j gj	" |
