@@ -246,6 +246,7 @@ function psgrep {
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias o='open'
+    alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias gvim='open -a MacVim'
 	alias gemacs='open -a Emacs'
 fi

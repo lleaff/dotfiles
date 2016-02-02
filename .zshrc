@@ -64,6 +64,7 @@ plugins=(svn zsh-syntax-highlighting)
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 if [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
+	export PATH="$PATH:$HOME/Applications/MacVim.app/Contents/MacOS"
 
 	# Haskell, Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
 	export GHC_DOT_APP=$HOME"/Applications/ghc-7.10.2.app"
