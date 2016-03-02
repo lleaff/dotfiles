@@ -1,35 +1,71 @@
 #!/bin/bash
 # This script creates symlinks from the home directory
-#  to any desired dotfiles in ~/dotfiles
+#  to any desired files in the directory it is in.
 ############################
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/__old/dotfiles/             # old dotfiles backup directory
+dir=$(dirname "$0")                    # dotfiles directory
+olddir="$HOME/__old/dotfiles/"         # old dotfiles backup directory
+SYMLINK_NAMES_FILE="$dir/to_symlink"
+if [[ -n "$1" ]]; then
+    TARGET="$1";
+else
+    TARGET="$HOME";
+fi
+
 # list of files/folders to symlink in homedir
-files=".bashrc .bash_profile .vimrc .vim .zshrc .oh-my-zsh .tmux.conf .tmux .gitconfig .locations .termaliases .spacemacs .emacs.d .ghci"
+files="$(cat "$SYMLINK_NAMES_FILE")"
+
 
 ##########
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
+COLORRESET='\e[39m'
+COLORGREEN='\e[32m'
+COLORYELLOW='\e[33m'
+COLORMAGENTA='\e[35m'
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
+##########
+
+if [[ "$TARGET" == "$HOME" ]]; then
+    friendlyTargetName="home directory"
+else
+    friendlyTargetName="$TARGET"
+fi
+
+# create dotfiles_old in homedir
+echo -e "Creating $olddir for backup of any existing dotfiles in $TARGET"
+mkdir -p $olddir
+
+realdir=$(realpath $dir)
+realolddir=$(realpath $olddir)
+
+
+cd $realdir
+
+existing=""
 
 # move any existing dotfiles in homedir to dotfiles_old
 #  directory, then create symlinks
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/$file $olddir
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/$file
+    if $(mv "$TARGET/$file" "$realolddir" 2>/dev/null); then
+        existing="${existing}${file}, "
+    fi
+    dirnm=$(dirname "$file")
+    if [[ $dirnm != '.' ]]; then
+        echo -e "${COLORMAGENTA}Creating directory ${COLORRESET}$dirnm ${COLORMAGENTA}for ${COLORRESET}$file${COLORRESET}"
+        mkdir -p $dirnm
+    fi
+    echo -e "${COLORYELLOW}Creating symlink to $file in $friendlyTargetName${COLORRESET}"
+    ln -s "$realdir/$file" "$TARGET/$file"
 done
+
+echo "____________________________________________________________"
+
+if [[ -n "$existing" ]]; then
+    echo -e "${COLORYELLOW}Moved existing file(s) ${COLORRESET}$existing${COLORYELLOW}to ${COLORRESET}$olddir${COLORRESET}"
+fi
+echo -e "${COLORGREEN}All done.${COLORRESET}"
 
 # create vim/tmp folder
 mkdir -p ~/.vim/tmp

@@ -1,0 +1,13 @@
+.bashrc
+.bash_profile
+.vimrc
+.vim
+.zshrc
+.tmux.conf
+.tmux
+.gitconfig
+.locations
+.termaliases
+.spacemacs
+.emacs.d/private
+.ghci

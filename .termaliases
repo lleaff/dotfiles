@@ -216,6 +216,10 @@ function ftree() {
 #==========================================
 # daemonize
 function __daemonize() {
+    if ! hash "$1" 2>/dev/null; then
+        echo "Command doesn't exist: \"$1\""
+        return
+    fi
 	nohup "$@" < /dev/null >/dev/null 2>&1 &
 	disown > /dev/null 2>&1
 }
