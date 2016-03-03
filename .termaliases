@@ -19,6 +19,7 @@ alias emacsr="emacsk; emacsd"
 alias emacs="${EMACSL}client -nw -a ''"
 alias emacsn="${EMACSL}"
 alias e="emacs"
+alias v="vim"
 
 #==========================================
 alias tm=tmux
