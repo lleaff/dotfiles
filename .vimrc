@@ -138,6 +138,9 @@ Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
 
+"=== Haskell
+Plug 'eagletmt/ghcmod-vim'
+
 "=== Rust
 "Support for Rust file detection and syntax highlighting
 Plug 'rust-lang/rust.vim'

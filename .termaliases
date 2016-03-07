@@ -19,6 +19,7 @@ alias emacsr="emacsk; emacsd"
 alias emacs="${EMACSL}client -nw -a ''"
 alias emacsn="${EMACSL}"
 alias e="emacs"
+alias v="vim"
 
 #==========================================
 alias v=vim
@@ -262,6 +263,7 @@ function psgrep {
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias o='open'
+    alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias gvim='open -a MacVim'
 	alias gemacs='open -a Emacs'
 fi
