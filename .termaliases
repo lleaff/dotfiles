@@ -21,6 +21,11 @@ alias emacsn="${EMACSL}"
 alias e="emacs"
 
 #==========================================
+alias v=vim
+if hash nvim 2>/dev/null; then
+    alias vim=nvim
+fi
+
 alias tm=tmux
 alias tmu=tmux
 
@@ -143,6 +148,13 @@ function __testc() {
 	./$name $@
 }
 alias testc=__testc
+
+#==========================================
+
+# C# build and run
+function cst() {
+  mcs $@ && mono "${1%.*}.exe"
+}
 
 #==========================================
 
