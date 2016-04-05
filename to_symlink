@@ -11,3 +11,4 @@
 .spacemacs
 .emacs.d/private
 .ghci
+.atom

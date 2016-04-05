@@ -18,6 +18,12 @@
 .emacs.d/places
 loginname.el
 
+!.atom/**
+.atom/packages
+.atom/storage
+.atom/compile-cache
+.atom/.apm
+
 ###temp files
 *.swp
 
