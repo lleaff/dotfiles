@@ -143,7 +143,7 @@ Plug 'eagletmt/ghcmod-vim'
 
 "=== Rust
 "Support for Rust file detection and syntax highlighting
-Plug 'wting/rust.vim'
+Plug 'rust-lang/rust.vim'
 "=== JavaScript
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
@@ -179,9 +179,15 @@ Plug 'hail2u/vim-css3-syntax'
 "=SCSS
 Plug 'cakebaker/scss-syntax.vim'
 
+"===C#, CSharp
+Plug 'OmniSharp/omnisharp-vim'
+
 "===CMake
 Plug 'vim-scripts/cmake' "syntax update
 Plug 'vim-scripts/cmake.vim' "indent
+
+"===Markdown
+Plug 'plasticboy/vim-markdown'
 
 
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
@@ -383,9 +389,9 @@ set foldlevel=7 "Open folds N levels when opening file
 
 " Indentation
 set smartindent
-set shiftwidth=4
-set tabstop=4 "A tab is x spaces
-set softtabstop=4 "Insert x spaces when tab is pressed
+set shiftwidth=2
+set tabstop=2 "A tab is x spaces
+set softtabstop=2 "Insert x spaces when tab is pressed
 set expandtab  "Always use spaces instead of tabs
 set shiftround "Round indent to nearest shiftwidth multiple
 
@@ -544,8 +550,10 @@ vnoremap <silent> K 5gk
 nnoremap <silent> J 5gj
 vnoremap <silent> J 5gj
 
+map  H ^
 nmap H ^
 vmap H ^
+map  L $
 nmap L $
 vmap L $
 
