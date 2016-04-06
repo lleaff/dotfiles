@@ -32,4 +32,8 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 'atom-text-editor.vim-mode.insert-mode':
-   'k j': 'vim-mode:activate-normal-mode'
+  'k j': 'vim-mode:activate-normal-mode'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'L': 'vim-mode:move-to-last-character-of-line'
+  'H': 'vim-mode:move-to-first-character-of-line'
