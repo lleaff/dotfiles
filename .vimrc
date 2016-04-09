@@ -130,17 +130,14 @@ Plug 'editorconfig/editorconfig-vim'
 "============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
 Plug 'WolfgangMehner/vim-plugins'
-
 "=== C & C++
 "Switch between source and header files in C/C++ code (:A, :AT (new tab))
 Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
 "if has("win32") " Add standard library headers to path on Windows
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
-
 "=== Haskell
 Plug 'eagletmt/ghcmod-vim'
-
 "=== Rust
 "Support for Rust file detection and syntax highlighting
 Plug 'rust-lang/rust.vim'
@@ -167,27 +164,24 @@ Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating,
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
-
 "=== HTML
 Plug 'othree/html5.vim'
 "=Jade
 Plug 'digitaltoad/vim-jade'
-
 "===CSS
 Plug 'ap/vim-css-color' "Highlight colors in CSS files
 Plug 'hail2u/vim-css3-syntax'
 "=SCSS
 Plug 'cakebaker/scss-syntax.vim'
-
 "===C#, CSharp
 Plug 'OmniSharp/omnisharp-vim'
-
+"===Swift
+Plug 'keith/swift.vim'
+"===Markdown
+Plug 'plasticboy/vim-markdown'
 "===CMake
 Plug 'vim-scripts/cmake' "syntax update
 Plug 'vim-scripts/cmake.vim' "indent
-
-"===Markdown
-Plug 'plasticboy/vim-markdown'
 
 
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
@@ -306,7 +300,7 @@ else
 endif
 
 "Highlight the nth column so you know when lines get too long
-autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss 
+autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift
 			\ set colorcolumn=78 
 
 
