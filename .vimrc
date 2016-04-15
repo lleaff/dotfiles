@@ -148,6 +148,11 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
 Plug 'pangloss/vim-javascript'
+
+"=JSX
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " use JSX syntax in .js files too
+
 "Javascript indentation, if not using pangloss' syntax
 "Plug 'vim-scripts/JavaScript-Indent'
 Plug 'beautify-web/js-beautify'
