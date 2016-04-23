@@ -148,64 +148,66 @@ call dein#add('editorconfig/editorconfig-vim')
 " =Languages specific, syntax
 "============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
-call dein#add('WolfgangMehner/vim-plugins')
+"call dein#add('WolfgangMehner/vim-plugins')
 "=== C & C++
 "Switch between source and header files in C/C++ code (:A, :AT (new tab))
-call dein#add('fanchangyong/a.vim', { 'for': ['c', 'c++'] })
+call dein#add('fanchangyong/a.vim', {'for': ['c', 'c++']})
 "if has("win32") " Add standard library headers to path on Windows
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
 "=== Haskell
-call dein#add('eagletmt/ghcmod-vim')
+call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
 "=== Rust
 "Support for Rust file detection and syntax highlighting
-call dein#add('rust-lang/rust.vim')
+call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 "=== JavaScript
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
 call dein#add('marijnh/tern_for_vim', { 'do': 'npm install' })
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
-call dein#add('pangloss/vim-javascript')
+call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript', 'javascript.jsx']})
 
 "=JSX
-call dein#add('mxw/vim-jsx')
+call dein#add('mxw/vim-jsx', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
 let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 
 "Javascript indentation, if not using pangloss' syntax
 "Plug 'vim-scripts/JavaScript-Indent'
-call dein#add('beautify-web/js-beautify')
+call dein#add('beautify-web/js-beautify', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
 "beautify using js-beautify based on .editorconfig
 "(r: beautify-web/js-beautify)
-call dein#add('maksimr/vim-jsbeautify')
+call dein#add('maksimr/vim-jsbeautify', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-call dein#add('kchmck/vim-coffee-script') "CoffeeScript syntax, indentating,
-" 							compiling, and more.
+
+ "CoffeeScript syntax, indentating, compiling, and more.
+call dein#add('kchmck/vim-coffee-script', {'for': ['coffee', 'cson']})
+
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 "=== HTML
-call dein#add('othree/html5.vim')
+call dein#add('othree/html5.vim', {'on_ft': ['html']})
 "=Jade
-call dein#add('digitaltoad/vim-jade')
+call dein#add('digitaltoad/vim-jade', {'on_ft': ['jade']})
 "===CSS
-call dein#add('ap/vim-css-color') "Highlight colors in CSS files
-call dein#add('hail2u/vim-css3-syntax')
+call dein#add('ap/vim-css-color', {'on_ft': ['css']}) "Highlight colors in CSS files
+call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
 "=SCSS
-call dein#add('cakebaker/scss-syntax.vim')
+call dein#add('cakebaker/scss-syntax.vim', {'for': ['scss']})
 "===C#, CSharp
-call dein#add('OmniSharp/omnisharp-vim')
+call dein#add('OmniSharp/omnisharp-vim', {'for': ['cs', 'csharp']})
 "===Swift
-call dein#add('keith/swift.vim')
+call dein#add('keith/swift.vim', {'for': ['swift']})
 "===Markdown
-call dein#add('plasticboy/vim-markdown')
+call dein#add('plasticboy/vim-markdown', {'for': ['md', 'markdown']})
 "===CMake
-call dein#add('vim-scripts/cmake') "syntax update
-call dein#add('vim-scripts/cmake.vim') "indent
+call dein#add('vim-scripts/cmake', {'for': ['cmake']}) "syntax update
+call dein#add('vim-scripts/cmake.vim', {'for': ['cmake']}) "indent
 
 
 call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
@@ -226,24 +228,24 @@ call dein#add('epage/vim-autohighlight')
 
 " =Colorschemes, Colors
 "============================================================
-call dein#add('xolox/vim-misc') " Dependency for vim-colorscheme-switcher
-" Cycle through colorschemes with F8/Shift-F8
-call dein#add('xolox/vim-colorscheme-switcher')
+"call dein#add('xolox/vim-misc') " Dependency for vim-colorscheme-switcher
+"" Cycle through colorschemes with F8/Shift-F8
+"call dein#add('xolox/vim-colorscheme-switcher')
 "------------------------------------------------------------
-call dein#add('tomasr/molokai')
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('Lokaltog/vim-distinguished')
-call dein#add('chriskempson/base16-vim') "Many great themes
-call dein#add('atelierbram/vim-colors_atelier-schemes')
-call dein#add('ciaranm/inkpot') "Plurple-pink-yellow
+"call dein#add('tomasr/molokai')
+"call dein#add('altercation/vim-colors-solarized')
+"call dein#add('Lokaltog/vim-distinguished')
+"call dein#add('chriskempson/base16-vim') "Many great themes
+"call dein#add('atelierbram/vim-colors_atelier-schemes')
+"call dein#add('ciaranm/inkpot') "Plurple-pink-yellow
 call dein#add('junegunn/seoul256.vim')
-call dein#add('Junza/Spink') "Low color contrast brownish theme
-call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
-call dein#add('fugalh/desert.vim') "Term/GUI, dark
-call dein#add('kristiandupont/shades-of-teal') "GUI, dark, blueish, low-contrast
-call dein#add('sandeepsinghmails/Dev_Delight') "GUI, Light, colorful
-call dein#add('jonathanfilip/vim-lucius') "GUI/256Term
-call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
+"call dein#add('Junza/Spink') "Low color contrast brownish theme
+"call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
+"call dein#add('fugalh/desert.vim') "Term/GUI, dark
+"call dein#add('kristiandupont/shades-of-teal') "GUI, dark, blueish, low-contrast
+"call dein#add('sandeepsinghmails/Dev_Delight') "GUI, Light, colorful
+"call dein#add('jonathanfilip/vim-lucius') "GUI/256Term
+"call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
 
 
 "____________________________________________________________
