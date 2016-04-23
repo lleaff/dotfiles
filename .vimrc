@@ -163,7 +163,7 @@ call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 "=== JavaScript
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
-call dein#add('marijnh/tern_for_vim', { 'do': 'npm install' })
+call dein#add('marijnh/tern_for_vim', { 'build': 'npm install' })
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
 call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript', 'javascript.jsx']})
