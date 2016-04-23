@@ -211,6 +211,7 @@ call dein#add('vim-scripts/cmake.vim', {'for': ['cmake']}) "indent
 
 
 call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
+let g:indentLine_conceallevel = 0 " Default: 2
 call dein#add('Raimondi/delimitMate') "Automatically add closing brackets and quotes
 
 " =Cosmetic
@@ -398,6 +399,8 @@ let &path.="src/include,/usr/incude/AL," "Look for header files
 
 syntax enable "Turn on syntax highlighting
 set number "Show line numbers
+
+set conceallevel=0
 
 "set foldmethod=syntax "Disabled for perf issues, using Konfekt/FastFold
 "instead
