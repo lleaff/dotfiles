@@ -1,3 +1,6 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
 set nocompatible 
 filetype off 
 if has('win32')
@@ -21,54 +24,70 @@ if has('win32')
 	language English_United States "Override environment language detection
 endif
 
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-" =Plugins
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"To install vim-plug:
-"curl -Lo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-call plug#begin('~/.vim/plugged')
-"============================================================
-Plug 'tpope/vim-sensible' "Configurations everyone agree on
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Plugins                                             @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+" =Neobundle configuration
+"____________________________________________________________
+"To install Dein:
+" curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
+" sh ./dein_installer.sh {specify the installation directory}"
 
-Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic)
+set runtimepath^=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.vim/bundle/dein.vim'))
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+" =Bundle list
+"____________________________________________________________
+
+call dein#add('tpope/vim-sensible') "Configurations everyone agree on
+
+call dein#add('scrooloose/syntastic') "Syntax checking plugin (options at #syntastic)
 
 if has("unix")
 	" :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
-	Plug 'tpope/vim-eunuch'
+call dein#add('tpope/vim-eunuch')
 endif
 
-"YouCompleteMe, YCM
-"if has("win32")
-"	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
-"	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
-"elseif has("unix")
-	Plug 'Valloric/YouCompleteMe'
-"endif
-autocmd FileType c let g:ycm_global_ycm_extra_conf =
-			\ '~/.vim/ycm_files/c/.ycm_extra_conf.py'
-autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
-			\ '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+" "YouCompleteMe, YCM
+" "if has("win32")
+" "	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
+" "	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
+" "elseif has("unix")
+" call dein#add('Valloric/YouCompleteMe')
+" "endif
+" autocmd FileType c let g:ycm_global_ycm_extra_conf =
+" 			\ '~/.vim/ycm_files/c/.ycm_extra_conf.py'
+" autocmd FileType cpp let g:ycm_global_ycm_extra_conf =
+" 			\ '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
 
-Plug 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-     \ }
-Plug 'm2mdas/phpcomplete-extended' " (r: Shougo/vimproc)
+" =Neocomplete
+call dein#add('Shougo/neocomplete.vim')
+
+
+call dein#add('Konfekt/FastFold')
+
+call dein#add('Shougo/vimproc', {'build': 'make'})
+call dein#add('m2mdas/phpcomplete-extended', {'on_ft': 'php'}) " (r: Shougo/vimproc)
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
-Plug 'junegunn/vim-easy-align'
+call dein#add('junegunn/vim-easy-align')
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -76,187 +95,182 @@ nmap ga <Plug>(EasyAlign)
 
 " =File/Buffer management
 "============================================================
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } "File browser
-"Plug 'jistr/vim-nerdtree-tabs' "NERDTree independant of tabs
+call dein#add('scrooloose/nerdtree', {'on': 'NERDTreeToggle' }) "File browser
+"call dein#add('jistr/vim-nerdtree-tabs') "NERDTree independent of tabs
 "Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/)
 " :help ctrlp-mappings
-Plug 'ctrlpvim/ctrlp.vim'
+call dein#add('ctrlpvim/ctrlp.vim')
 command MRU CtrlPMRU
 
 " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
-Plug 'tpope/vim-fugitive'
+call dein#add('tpope/vim-fugitive')
 "
 "Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
 " etc) [v4.6, vim-scripts/ branch isn't updated]
-"Plug 'ChoiZ/taglist.vim', { 'on': ['TlistOpen', 'TlistToggle'] }
+"call dein#add('ChoiZ/taglist.vim') { 'on': ['TlistOpen', 'TlistToggle'] }
 
-Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
+call dein#add('tomtom/tcomment_vim') "Comment toggle, handles embedded filetypes
 
 "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
 "Plug 'vim-scripts/FuzzyFinder'
 
-Plug 'wincent/command-t' "Fuzzy file finding
+call dein#add('wincent/command-t') "Fuzzy file finding
 
-Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
+call dein#add('kana/vim-gf-user') "Improvements to 'gf', open file under cursor
 
 "Plug 'sjl/gundo.vim' "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
 "Delete surroundings: ds*, Change surroundings: cs**,
 " Surround: ys<move>*, Surround line: yss* (req: nocompatible)
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-repeat') "Enable repeating supported plugin maps with .
 
 "Easily search for, substitute, and abbreviate mutltiple variants of a word
 " foobar -> FooBAR ; Foobar x FooBAR
-Plug 'tpope/vim-abolish'
+call dein#add('tpope/vim-abolish')
 
 "Automatically clears search highlight
-Plug 'pgdouyon/vim-evanesco'
+call dein#add('pgdouyon/vim-evanesco')
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
 "More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
-Plug 'bruno-/vim-husk'
+call dein#add('bruno-/vim-husk')
 
-Plug 'terryma/vim-multiple-cursors'
+call dein#add('terryma/vim-multiple-cursors')
 
 " Editorconfig support, allows easily setting editor options on a
 "	per-project basis. Sample .editorconfig:
 "	root=true \n[*] \nindent_size = 4 \nindent_style = tab
-Plug 'editorconfig/editorconfig-vim'
+call dein#add('editorconfig/editorconfig-vim')
 
 " =Languages specific, syntax
 "============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
-Plug 'WolfgangMehner/vim-plugins'
+call dein#add('WolfgangMehner/vim-plugins')
 "=== C & C++
 "Switch between source and header files in C/C++ code (:A, :AT (new tab))
-Plug 'fanchangyong/a.vim', { 'for': ['c', 'c++'] }
+call dein#add('fanchangyong/a.vim', { 'for': ['c', 'c++'] })
 "if has("win32") " Add standard library headers to path on Windows
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
 "=== Haskell
-Plug 'eagletmt/ghcmod-vim'
+call dein#add('eagletmt/ghcmod-vim')
 "=== Rust
 "Support for Rust file detection and syntax highlighting
-Plug 'rust-lang/rust.vim'
+call dein#add('rust-lang/rust.vim')
 "=== JavaScript
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+call dein#add('marijnh/tern_for_vim', { 'do': 'npm install' })
 " Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
 "JavaScript, vastly improved indentation and syntax support
-Plug 'pangloss/vim-javascript'
+call dein#add('pangloss/vim-javascript')
 
 "=JSX
-Plug 'mxw/vim-jsx'
+call dein#add('mxw/vim-jsx')
 let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 
 "Javascript indentation, if not using pangloss' syntax
 "Plug 'vim-scripts/JavaScript-Indent'
-Plug 'beautify-web/js-beautify'
+call dein#add('beautify-web/js-beautify')
 "beautify using js-beautify based on .editorconfig
 "(r: beautify-web/js-beautify)
-Plug 'maksimr/vim-jsbeautify'
+call dein#add('maksimr/vim-jsbeautify')
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-Plug 'kchmck/vim-coffee-script' "CoffeeScript syntax, indentating,
+call dein#add('kchmck/vim-coffee-script') "CoffeeScript syntax, indentating,
 " 							compiling, and more.
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 "=== HTML
-Plug 'othree/html5.vim'
+call dein#add('othree/html5.vim')
 "=Jade
-Plug 'digitaltoad/vim-jade'
+call dein#add('digitaltoad/vim-jade')
 "===CSS
-Plug 'ap/vim-css-color' "Highlight colors in CSS files
-Plug 'hail2u/vim-css3-syntax'
+call dein#add('ap/vim-css-color') "Highlight colors in CSS files
+call dein#add('hail2u/vim-css3-syntax')
 "=SCSS
-Plug 'cakebaker/scss-syntax.vim'
+call dein#add('cakebaker/scss-syntax.vim')
 "===C#, CSharp
-Plug 'OmniSharp/omnisharp-vim'
+call dein#add('OmniSharp/omnisharp-vim')
 "===Swift
-Plug 'keith/swift.vim'
+call dein#add('keith/swift.vim')
 "===Markdown
-Plug 'plasticboy/vim-markdown'
+call dein#add('plasticboy/vim-markdown')
 "===CMake
-Plug 'vim-scripts/cmake' "syntax update
-Plug 'vim-scripts/cmake.vim' "indent
+call dein#add('vim-scripts/cmake') "syntax update
+call dein#add('vim-scripts/cmake.vim') "indent
 
 
-Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
-Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
+call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
+call dein#add('Raimondi/delimitMate') "Automatically add closing brackets and quotes
 
 " =Cosmetic
 "============================================================
-Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
+call dein#add('junegunn/rainbow_parentheses.vim') "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [ 0 ]
 
-Plug 'jpalardy/spacehi.vim' "<F3> Toggle show white space characters
+call dein#add('jpalardy/spacehi.vim') "<F3> Toggle show white space characters
 
 "visual indent guides with bg color, toggle with <leader>ig
 "Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'epage/vim-autohighlight'
+call dein#add('epage/vim-autohighlight')
 
 " =Colorschemes, Colors
 "============================================================
-Plug 'xolox/vim-misc' " Dependency for vim-colorscheme-switcher
+call dein#add('xolox/vim-misc') " Dependency for vim-colorscheme-switcher
 " Cycle through colorschemes with F8/Shift-F8
-Plug 'xolox/vim-colorscheme-switcher'
+call dein#add('xolox/vim-colorscheme-switcher')
 "------------------------------------------------------------
-Plug 'tomasr/molokai'
-Plug 'altercation/vim-colors-solarized'
-Plug 'Lokaltog/vim-distinguished'
-Plug 'chriskempson/base16-vim' "Many great themes
-Plug 'atelierbram/vim-colors_atelier-schemes'
-Plug 'ciaranm/inkpot' "Plurple-pink-yellow
-Plug 'junegunn/seoul256.vim'
-Plug 'Junza/Spink' "Low color contrast brownish theme
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'fugalh/desert.vim' "Term/GUI, dark
-Plug 'kristiandupont/shades-of-teal' "GUI, dark, blueish, low-contrast
-Plug 'sandeepsinghmails/Dev_Delight' "GUI, Light, colorful
-Plug 'jonathanfilip/vim-lucius' "GUI/256Term
-Plug 'lleaff/candy-crush-chronicle.vim' "GUI/256Term
+call dein#add('tomasr/molokai')
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('Lokaltog/vim-distinguished')
+call dein#add('chriskempson/base16-vim') "Many great themes
+call dein#add('atelierbram/vim-colors_atelier-schemes')
+call dein#add('ciaranm/inkpot') "Plurple-pink-yellow
+call dein#add('junegunn/seoul256.vim')
+call dein#add('Junza/Spink') "Low color contrast brownish theme
+call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
+call dein#add('fugalh/desert.vim') "Term/GUI, dark
+call dein#add('kristiandupont/shades-of-teal') "GUI, dark, blueish, low-contrast
+call dein#add('sandeepsinghmails/Dev_Delight') "GUI, Light, colorful
+call dein#add('jonathanfilip/vim-lucius') "GUI/256Term
+call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
 
 
-"------------------------------------------------------------
-" All of your Plugins must be added before the following line
-call plug#end()
+"____________________________________________________________
+" END Dein configuration
+"____________________________________________________________
+" Required:
+call dein#end()
+" Required:
 filetype plugin indent on
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
-" Vim-Plug help
-" -------------
-" PlugInstall [name ...][#threads]	Install plugins
-" PlugUpdate [name ...][#threads]	Install or update plugins
-" PlugClean[!]						Remove unused directories (bang
-"								version will clean without prompt)
-" PlugUpgrade						Upgrade vim-plug itself
-" PlugStatus						Check the status of plugins
-" PlugDiff							See the updated changes from the
-"								previous PlugUpdate
-" PlugSnapshot [output path]		Generate script for restoring the
-" 								current snapshot of the plugin
-"--------------------------------------------------------------------------
+if dein#check_install()
+  call dein#install()
+endif
 
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-" =Cosmetics
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
+"____________________________________________________________
+
+
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Cosmetics                                           @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 " =Colors, font
 if has("gui_running")
 	if has("gui_gtk2") 				" =========Linux
@@ -344,15 +358,15 @@ endif
 "autocmd BufEnter * execute 'sign place 9999 line=1
 "	  \ name=dummy buffer=' . bufnr('')
 
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-" =Settings
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Settings                                            @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 "=== Store swap (.swp, .swo) files in a central location
 set directory=~/.vim/tmp
@@ -383,7 +397,8 @@ let &path.="src/include,/usr/incude/AL," "Look for header files
 syntax enable "Turn on syntax highlighting
 set number "Show line numbers
 
-set foldmethod=syntax
+"set foldmethod=syntax "Disabled for perf issues, using Konfekt/FastFold
+"instead
 set foldlevel=7 "Open folds N levels when opening file
 
 " Indentation
@@ -416,10 +431,6 @@ autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 "========================
 "=Completion
 "========================
-"longest: insert longest common text of all matches
-"menuone: pop-up menu even if there's only one match
-set completeopt=longest,menuone
-
 "=== #syntastic
 let g:syntastic_check_on_open=1
 "let g:syntastic_cpp_compiler = 'clang++'
@@ -430,6 +441,50 @@ let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
 "This needs to be kept near the end or it gets overwritten by smth else
 highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D 
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+
+" =Neocomplete configuration
+"------------------------------------------------------------
+let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#sources#syntax#min_keyword_length = 3 " Default: 4
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"============================================================
+
 
 "==============Status line
 "Default status line: set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -523,15 +578,16 @@ autocmd BufReadPost *
 
 autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-" =Keys Mappings, =Keybinds, =Bindings, =Mappings
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
-"------------------------------------------------------------
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Keys Mappings, =Keybinds, =Bindings, =Mappings      @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 let mapleader=","
 
 "QWERTY
@@ -693,9 +749,15 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
 
-"------------------------------------------------------------
-" =Commands
-"------------------------------------------------------------
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Commands                                            @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 " CDC = Change to Directory of Current file
 command CDC cd %:p:h
 
@@ -709,9 +771,9 @@ command NT NERDTreeToggle
 "  themes seem to load asynchronously.
 hi Normal ctermbg=none
 
-"==========================================================================
-"=========================== How to install Vim ===========================
-"==========================================================================
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@ How to install Vim @@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 " On Windows x64 {
 " 	http://sourceforge.net/projects/cream/
 " 	https://tuxproject.de/projects/vim/					"copy over ^
