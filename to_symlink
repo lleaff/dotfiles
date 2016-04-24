@@ -12,3 +12,4 @@
 .emacs.d/private
 .ghci
 .atom
+.eslintrc.js

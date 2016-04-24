@@ -168,6 +168,8 @@ call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
                                       \ 'if': 'executable("npm")',
                                       \ 'on_ft': 'javascript'})
+" For syntax checking:
+" $ npm install -g eslint babel-eslint eslint-plugin-react
 
 " YAJS doesn't include indent so keep vim-js-indent
 call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
@@ -436,6 +438,14 @@ autocmd GUIEnter * set visualbell t_vb= " Disable flashing
 "========================
 "=== #syntastic
 let g:syntastic_check_on_open=1
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['python', 'javascript'],
+                            \ 'passive_filetypes': [] }
+let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 "let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++10' " -stdlib=libc++'
 let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
