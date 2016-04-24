@@ -130,8 +130,10 @@ call dein#add('tpope/vim-repeat') "Enable repeating supported plugin maps with .
 " foobar -> FooBAR ; Foobar x FooBAR
 call dein#add('tpope/vim-abolish')
 
+call dein#add('junegunn/vim-pseudocl') " Requirement for vim-oblique
+call dein#add('junegunn/vim-oblique') " Improved /-search, (r: vim-oblique)
 "Automatically clears search highlight
-call dein#add('pgdouyon/vim-evanesco')
+"call dein#add('pgdouyon/vim-evanesco') "if no vim-oblique
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
@@ -195,7 +197,7 @@ call dein#add('othree/html5.vim', {'on_ft': ['html']})
 "=Jade
 call dein#add('digitaltoad/vim-jade', {'on_ft': ['jade']})
 "===CSS
-call dein#add('ap/vim-css-color', {'on_ft': ['css']}) "Highlight colors in CSS files
+call dein#add('ap/vim-css-color') ", {'on_ft': ['css']}) "Highlight colors in CSS files
 call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
 "=SCSS
 call dein#add('cakebaker/scss-syntax.vim', {'for': ['scss']})
@@ -220,7 +222,8 @@ call dein#add('junegunn/rainbow_parentheses.vim') "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [ 0 ]
 
-call dein#add('jpalardy/spacehi.vim') "<F3> Toggle show white space characters
+" :FixWhitespace
+call dein#add('bronson/vim-trailing-whitespace')
 
 "visual indent guides with bg color, toggle with <leader>ig
 "Plug 'nathanaelkane/vim-indent-guides'
@@ -293,12 +296,6 @@ if has("gui_running")
 		set guifont=Meslo\ LG\ S\ DZ\ Regular:h10:cANSI
 		colorscheme lleaff-atelierdune | set background=dark
 	endif
-	highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D	" ^ Doesn't
-	highlight YCMErrorSign guifg=#cccccc guibg=#7D4D4D			" | work
-	highlight YCMErrorLine guifg=#cccccc guibg=#7D4D4D			" |
-	highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 	" |
-	highlight YCMWarningSign guifg=#cccccc guibg=#976D4F 		" |
-	highlight YCMWarningLine guifg=#cccccc guibg=#976D4F 		" v
 
 	if &background == 'black'
 		hi Search guibg=#303220 guifg=NONE
@@ -314,16 +311,15 @@ else
 	else " Linux
 		"colorscheme candy-crush-chronicle
 		colors seoul256-light
-
 		" Make terminal bg color transparent (at 'Tail' anchor)
 
-		let g:lucius_no_term_bg = 1
+		let g:lucius_no_term_bg = 1 " For lucius and candy-crush-chronicle themes
 	endif
 endif
 
 "Highlight the nth column so you know when lines get too long
 autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift
-			\ set colorcolumn=78 
+			\ set colorcolumn=78
 
 
 "set foldcolumn=2
@@ -772,9 +768,11 @@ command NT NERDTreeToggle
 " =Tail
 "    Commands that need to stay at the end
 "------------------------------------------------------------
-" Make terminal background color transparent, relegated to the end since
-"  themes seem to load asynchronously.
+" =Cosmetics
+" Relegated to the end since themes seem to load asynchronously ?
 hi Normal ctermbg=none
+"hi IncSearch ctermbg=red
+hi Search ctermbg=153 ctermfg=0
 
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@ How to install Vim @@@@@@@@@@@@@@@@@@@@@@@@@@@
