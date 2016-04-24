@@ -163,9 +163,11 @@ call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
 "Support for Rust file detection and syntax highlighting
 call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 "=== JavaScript
-" JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
+" JavaScript code-analysis engine (r: jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
-call dein#add('marijnh/tern_for_vim', { 'build': 'npm install' })
+call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
+                                      \ 'if': 'executable("npm")',
+                                      \ 'on_ft': 'javascript'})
 
 " YAJS doesn't include indent so keep vim-js-indent
 call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
