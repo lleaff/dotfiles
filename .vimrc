@@ -164,16 +164,16 @@ call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 " JavaScript code-analysis engine (r: YouCompleteMe, jshint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
 call dein#add('marijnh/tern_for_vim', { 'build': 'npm install' })
-" Plug 'jelera/vim-javascript-syntax' "JavaScript (r: syntastic)
-"JavaScript, vastly improved indentation and syntax support
-call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript', 'javascript.jsx']})
 
-"=JSX
+" YAJS doesn't include indent so keep vim-js-indent
+call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
+call dein#add('gavocanov/vim-js-indent', {'on_ft': 'javascript'})
+" extends syntax for with jQuery,backbone,etc.
+call dein#add('othree/javascript-libraries-syntax.vim', {'on_ft': 'javascript'})
+
 call dein#add('mxw/vim-jsx', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
 let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 
-"Javascript indentation, if not using pangloss' syntax
-"Plug 'vim-scripts/JavaScript-Indent'
 call dein#add('beautify-web/js-beautify', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
 "beautify using js-beautify based on .editorconfig
 "(r: beautify-web/js-beautify)
@@ -460,20 +460,20 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+  return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
