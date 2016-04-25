@@ -163,7 +163,7 @@ call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
 "Support for Rust file detection and syntax highlighting
 call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 "=== JavaScript
-" JavaScript code-analysis engine (r: jshint (npm i -g),
+" JavaScript code-analysis engine (r: eslint (npm i -g),
 " 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
 call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
                                       \ 'if': 'executable("npm")',
@@ -651,7 +651,6 @@ nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 imap kj <Esc>
-
 
 " Backspace
 noremap <BS> <C-o>
