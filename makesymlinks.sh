@@ -17,7 +17,6 @@ fi
 # list of files/folders to symlink in homedir
 files="$(cat "$SYMLINK_NAMES_FILE")"
 
-
 ##########
 
 COLORRESET='\e[39m'
@@ -37,11 +36,17 @@ fi
 echo -e "Creating $olddir for backup of any existing dotfiles in $TARGET"
 mkdir -p $olddir
 
-realdir=$(realpath $dir)
-realolddir=$(realpath $olddir)
+if hash realpath 2>/dev/null; then
+	realdir=$(realpath "$dir")
+	realolddir=$(realpath "$olddir")
+else
+	realdir="$dir"
+	realolddir="$olddir"
+fi
 
 
 cd $realdir
+realdir=$(pwd)
 
 existing=""
 
