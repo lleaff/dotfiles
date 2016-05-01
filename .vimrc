@@ -114,7 +114,12 @@ call dein#add('tomtom/tcomment_vim') "Comment toggle, handles embedded filetypes
 "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
 "call dein#add('vim-scripts/FuzzyFinder')
 
-call dein#add('wincent/command-t') "Fuzzy file finding
+" call dein#add('wincent/command-t', {
+"     \   'build_commands': ['make', 'ruby'],
+"     \   'build': {
+"     \      'unix': 'cd ruby/command-t && { make clean; ruby extconf.rb && make }'
+"     \   }
+"     \ })  "Fuzzy file finding
 
 call dein#add('kana/vim-gf-user') "Improvements to 'gf', open file under cursor
 
@@ -670,6 +675,10 @@ nnoremap <silent> <C-w-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-w-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-w-l> :TmuxNavigateRight<cr>
 
+nmap <leader>t :tabnew<CR>
+
+nmap <leader>q :q<CR>
+
 "=======
 nnoremap gV `[v`] " Highlight last inserted text
 
@@ -788,6 +797,8 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 command CDC cd %:p:h
 
 command NT NERDTreeToggle
+
+command Tn tabnew
 
 "------------------------------------------------------------
 " =Tail
