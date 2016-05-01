@@ -112,13 +112,13 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('tomtom/tcomment_vim') "Comment toggle, handles embedded filetypes
 
 "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
-"Plug 'vim-scripts/FuzzyFinder'
+"call dein#add('vim-scripts/FuzzyFinder')
 
 call dein#add('wincent/command-t') "Fuzzy file finding
 
 call dein#add('kana/vim-gf-user') "Improvements to 'gf', open file under cursor
 
-"Plug 'sjl/gundo.vim' "Undo tree visualization
+"call dein#add('sjl/gundo.vim') "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
 "Delete surroundings: ds*, Change surroundings: cs**,
@@ -146,6 +146,13 @@ call dein#add('terryma/vim-multiple-cursors')
 "	per-project basis. Sample .editorconfig:
 "	root=true \n[*] \nindent_size = 4 \nindent_style = tab
 call dein#add('editorconfig/editorconfig-vim')
+
+call dein#add('christoomey/vim-tmux-navigator')
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w> h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w> j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w> k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w> l :TmuxNavigateRight<cr>
 
 " =Languages specific, syntax
 "============================================================
