@@ -663,6 +663,13 @@ imap kj <Esc>
 noremap <BS> <C-o>
 noremap <C-o> <C-i>
 
+" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w-l> :TmuxNavigateRight<cr>
+
 "=======
 nnoremap gV `[v`] " Highlight last inserted text
 
