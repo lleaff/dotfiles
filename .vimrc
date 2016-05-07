@@ -165,7 +165,7 @@ nnoremap <silent> <C-w> l :TmuxNavigateRight<cr>
 "call dein#add('WolfgangMehner/vim-plugins')
 "=== C & C++
 "Switch between source and header files in C/C++ code (:A, :AT (new tab))
-call dein#add('fanchangyong/a.vim', {'for': ['c', 'c++']})
+call dein#add('fanchangyong/a.vim', {'on_ft': ['c', 'cpp']})
 "if has("win32") " Add standard library headers to path on Windows
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
@@ -203,7 +203,7 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
  "CoffeeScript syntax, indentating, compiling, and more.
-call dein#add('kchmck/vim-coffee-script', {'for': ['coffee', 'cson']})
+call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee', 'cson']})
 
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
@@ -216,16 +216,16 @@ call dein#add('digitaltoad/vim-jade', {'on_ft': ['jade']})
 call dein#add('ap/vim-css-color') ", {'on_ft': ['css']}) "Highlight colors in CSS files
 call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
 "=SCSS
-call dein#add('cakebaker/scss-syntax.vim', {'for': ['scss']})
+call dein#add('cakebaker/scss-syntax.vim', {'on_ft': ['scss']})
 "===C#, CSharp
-call dein#add('OmniSharp/omnisharp-vim', {'for': ['cs', 'csharp']})
+call dein#add('OmniSharp/omnisharp-vim', {'on_ft': 'cs'})
 "===Swift
-call dein#add('keith/swift.vim', {'for': ['swift']})
+call dein#add('keith/swift.vim', {'on_ft': 'swift'})
 "===Markdown
-call dein#add('plasticboy/vim-markdown', {'for': ['md', 'markdown']})
+call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
 "===CMake
-call dein#add('vim-scripts/cmake', {'for': ['cmake']}) "syntax update
-call dein#add('vim-scripts/cmake.vim', {'for': ['cmake']}) "indent
+call dein#add('vim-scripts/cmake', {'on_ft': 'cmake'}) "syntax update
+call dein#add('vim-scripts/cmake.vim', {'on_ft': 'cmake'}) "indent
 
 
 call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
@@ -669,7 +669,7 @@ noremap <BS> <C-o>
 noremap <C-o> <C-i>
 
 " vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_no_mappings = 1 " Not working for some reason
 nnoremap <silent> <C-w-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-w-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-w-k> :TmuxNavigateUp<cr>
