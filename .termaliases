@@ -181,6 +181,7 @@ function git() {
 		diffc ) shift 1; command git diff --cached "$@" ;;
     ci ) shift 1; command git commit "$@" ;;
     amend ) shift 1; command git commit --amend -m "" "$@" ;;
+    quickfix ) shift 1; command git commit --amend -am "" && git push -f ;;
 		* ) command git "$@" ;;
 	esac
 }
