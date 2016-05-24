@@ -202,8 +202,12 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
- "CoffeeScript syntax, indentating, compiling, and more.
+" =CoffeeScript syntax, indentating, compiling, and more.
 call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee', 'cson']})
+
+" =TypeScript
+call dein#add('HerringtonDarkholme/yats', {'on_ft': ['typescript']})
+call dein#add('Quramy/tsuquyomi', {'on_ft': ['typescript']})
 
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
