@@ -52,20 +52,24 @@ fi
 #==========================================
 
 function mkcd {
-	mkdir $@ && cd $@;
+	mkdir "$@" && cd "$@";
 }
 
 function cdls {
-	cd $@ && ls --color=auto;
+	cd "$@" && ls --color=auto;
+}
+
+function cl {
+	cd "$@" && ls --color=auto;
 }
 
 function mkexe() {
-	echo '#!/' >> $1 && chmod +x $1
+	echo '#!/' >> "$1" && chmod +x "$1"
 }
 
 # Upload to sprunge.us
 function sprunge() {
-	cat $@ | curl -F 'sprunge=<-' http://sprunge.us
+	cat "$@" | curl -F 'sprunge=<-' http://sprunge.us
 }
 
 #==========================================
@@ -77,10 +81,10 @@ function __tmuxnewwindow() {
             local execs="-c $(realpath $1)" 
             local q=''
         else
-            local execs="less $(echo $@)"
+            local execs="less $(echo "$@")"
         fi
     else
-        local execs="$(echo $@)"
+        local execs="$(echo "$@")"
     fi
     eval 'tmux new-window '$q"$execs"$q
 }
@@ -91,10 +95,10 @@ function __tmuxnewpane() {
     local q='"'
     if [[ -n $(hash "$1" 2>&1) ]] && [[ -e "$1" ]]; then
         if [[ -d "$1" ]]; then
-            local execs="-c $(realpath $1)" 
+            local execs="-c $(realpath "$1")" 
             local q=''
         else
-            local execs="less $(echo $@)"
+            local execs="less $(echo "$@")"
         fi
     else
         local execs="$(echo $@)"
@@ -111,12 +115,12 @@ alias rm="rm -v"
 
 ###grep case insensitive
 function grepi() {
-	grep -i --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn $@
+	grep -i --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn "$@"
 }
 
 ###grep recursive
 function grepr() {
-	grep -r --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn $@
+	grep -r --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn "$@"
 }
 
 #========================================== tmux
@@ -126,27 +130,27 @@ alias tmux="TERM=$defaultTERM tmux"
 #========================================== gcc
 ###autofill -o argument with first arg
 function gccs() {
-	gcc $@ -pedantic -Wall -o ${1%.*}
+	gcc "$@" -pedantic -Wall -o "${1%.*}"
 }
 
 function g++s() {
-	g++ $@ -pedantic -Wall -o ${1%.*}
+	g++ "$@" -pedantic -Wall -o "${1%.*}"
 }
 
 ###default arguments to compile c programs
 function gccc99() {
-	gcc $@ -std=c99 -pedantic -Wall -o ${1%.*}
+	gcc "$@" -std=c99 -pedantic -Wall -o "${1%.*}"
 }
 
 function gccc11() {
-	gcc $@ -std=c11 -pedantic -Wall -o ${1%.*}
+	gcc "$@" -std=c11 -pedantic -Wall -o "${1%.*}"
 }
 #==========================================
 function __testc() {
-	gccc11 $@
-	name=${1%.*}
+	gccc11 "$@"
+	name="${1%.*}"
 	shift
-	./$name $@
+	./$name "$@"
 }
 alias testc=__testc
 
@@ -161,11 +165,6 @@ function cst() {
 }
 
 #==========================================
-
-###launch gvim
-function gvim() {
-	gvim $@
-}
 
 ###git enhancement
 function git() {
@@ -244,7 +243,7 @@ alias dm=__daemonize
 
 # open
 function __open() {
-	if [[ -z $1 ]]; then
+	if [[ -z "$1" ]]; then
 		__daemonize xdg-open .
 	else
 		__daemonize xdg-open "$@"
