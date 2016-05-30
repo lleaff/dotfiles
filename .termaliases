@@ -6,6 +6,26 @@ defaultTERM='xterm-256color'
 # Locations aliases
 test -r "$HOME/.locations" && source "$HOME/.locations"
 
+#==========================================
+#if OSX
+if [[ $(uname -s) == "Darwin" ]]; then
+	alias xdg-open='open'
+	if [[ -f "$HOME/Applications/MacVim.app/Contents/MacOS/Vim" ]]; then
+		alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
+	fi
+	alias gvim='open -a MacVim'
+	alias gemacs='open -a Emacs'
+fi
+
+#==========================================
+#if Windows (Cygwin)
+if [[ $(uname -s) == "CYGWIN_NT"* ]]; then
+	alias xdg-open='open'
+	if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
+		alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
+	fi
+fi
+
 # Emacs
 #==========================================
 EMACSL="/opt/emacs24/bin/emacs"
@@ -164,11 +184,11 @@ function cst() {
   mcs "$src" && mono "$executable" "$@"
 }
 
+function git() {
+	case $1 in
 #==========================================
 
 ###git enhancement
-function git() {
-	case $1 in
 		add* ) shift 1; command git add -v "$@" ;;
 		a ) shift 1; command git add -v "$@" ;;
 		status* ) shift 1; command git status -s "$@" ;;
@@ -262,16 +282,6 @@ function psgrep {
     fi
 }
 
-#==========================================
-#if OSX
-if [[ $(uname -s) == "Darwin" ]]; then
-	alias o='open'
-  if [[ -f "$HOME/Applications/MacVim.app/Contents/MacOS/Vim" ]]; then
-    alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
-  fi
-	alias gvim='open -a MacVim'
-	alias gemacs='open -a Emacs'
-fi
 
 #==========================================
 #if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
