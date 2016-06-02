@@ -26,6 +26,17 @@ if [[ $(uname -s) == "CYGWIN_NT"* ]]; then
 	fi
 fi
 
+#==========================================
+#if Windows (Mingw (Git Bash)
+if [[ $(uname -s) == "MINGW"* ]]; then
+	alias xdg-open='start'
+  alias tree='cmd //c tree'
+	if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
+		alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
+	fi
+  alias whereis="echo" # FIX THIS
+fi
+
 # Emacs
 #==========================================
 EMACSL="/opt/emacs24/bin/emacs"
@@ -39,10 +50,9 @@ alias emacsr="emacsk; emacsd"
 alias emacs="${EMACSL}client -nw -a ''"
 alias emacsn="${EMACSL}"
 alias e="emacs"
-alias v="vim"
 
 #==========================================
-alias v=vim
+alias v="vim"
 #if hash nvim 2>/dev/null; then
 #    alias vim=nvim
 #fi
