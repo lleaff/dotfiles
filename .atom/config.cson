@@ -8,5 +8,8 @@
     invisibles: {}
   "exception-reporting":
     userId: "3481e1ac-0e59-be54-c40a-2ca8561f879b"
+  minimap: {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

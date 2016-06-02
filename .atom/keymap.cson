@@ -35,5 +35,12 @@
   'k j': 'vim-mode:activate-normal-mode'
 
 'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-a': 'vim-mode:move-to-first-character-of-line'
+  'ctrl-e': 'vim-mode:move-to-last-character-of-line'
+  'ctrl-J': 'vim-mode:join'
+
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'K': 'custom:move-five-up'
+  'J': 'custom:move-five-down'
   'L': 'vim-mode:move-to-last-character-of-line'
   'H': 'vim-mode:move-to-first-character-of-line'
