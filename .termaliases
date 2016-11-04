@@ -21,9 +21,6 @@ fi
 #if Windows (Cygwin)
 if [[ $(uname -s) == "CYGWIN_NT"* ]]; then
 	alias xdg-open='open'
-	if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
-		alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
-	fi
 fi
 
 #==========================================
@@ -31,11 +28,11 @@ fi
 if [[ $(uname -s) == "MINGW"* ]]; then
 	alias xdg-open='start'
   alias tree='cmd //c tree'
-	if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
-		alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
-	fi
-  alias whereis="echo" # FIX THIS
+	#if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
+	#	alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
+	#fi
 fi
+
 
 # Emacs
 #==========================================
@@ -50,9 +47,10 @@ alias emacsr="emacsk; emacsd"
 alias emacs="${EMACSL}client -nw -a ''"
 alias emacsn="${EMACSL}"
 alias e="emacs"
+alias v="vim"
 
 #==========================================
-alias v="vim"
+alias v=vim
 #if hash nvim 2>/dev/null; then
 #    alias vim=nvim
 #fi
@@ -142,6 +140,9 @@ alias tpane=__tmuxnewpane
 
 ###rm verbose
 alias rm="rm -v"
+
+###grep 
+alias grep="grep --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 
 ###grep case insensitive
 function grepi() {
