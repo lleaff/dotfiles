@@ -1,8 +1,5 @@
 export TERM=xterm-256color
 
-if [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases;
-elif [[ -f ~/.termaliases ]]; then source ~/.termaliases; fi
-
 #MinGW (Windows)
 if [[ $OSTYPE == "msys" ]]; then
 
@@ -24,6 +21,10 @@ else
   export VISUAL=/usr/bin/vim
   export EDITOR=/usr/bin/vim
 fi
+
+
+if [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases;
+elif [[ -f ~/.termaliases ]]; then source ~/.termaliases; fi
 
 
 #nocolor='\e[0m'
