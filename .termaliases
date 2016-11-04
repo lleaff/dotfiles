@@ -216,6 +216,9 @@ function git() {
 	esac
 }
 
+alias l="ls"
+alias la="ls -A"
+
 ###simulate improved ls output with find
 function lsm() {
 	case $* in
@@ -232,6 +235,7 @@ function lsma() {
 function lsms() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%f\n"
 }
+
 #original ls under "lso" alias
 function lso() {
 	command ls $*

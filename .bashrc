@@ -23,8 +23,8 @@ else
 fi
 
 
-if [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases;
-elif [[ -f ~/.termaliases ]]; then source ~/.termaliases; fi
+if [[ -f ~/.termaliases ]]; then source ~/.termaliases;
+elif [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases; fi
 
 
 #nocolor='\e[0m'
