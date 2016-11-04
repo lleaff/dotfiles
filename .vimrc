@@ -1,8 +1,10 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-set nocompatible 
-filetype off 
+set langmenu=en_US.UTF-8
+
+set nocompatible
+filetype off
 if has('win32')
 	set rtp+=~/.vim/ "for Windows
 endif
@@ -83,7 +85,17 @@ call dein#add('Shougo/neocomplete.vim')
 
 call dein#add('Konfekt/FastFold')
 
-call dein#add('Shougo/vimproc', {'build': 'make'})
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+"call dein#add('Shougo/vimproc', {
+"      \ 'build' : {
+"      \     'windows' : 'tools\\update-dll-mingw',
+"      \     'cygwin' : 'make -f make_cygwin.mak',
+"      \     'mac' : 'make',
+"      \     'linux' : 'make',
+"      \     'unix' : 'gmake',
+"      \    }
+"      \ })
+
 call dein#add('m2mdas/phpcomplete-extended', {'on_ft': 'php'}) " (r: Shougo/vimproc)
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
@@ -256,7 +268,7 @@ call dein#add('epage/vim-autohighlight')
 "" Cycle through colorschemes with F8/Shift-F8
 "call dein#add('xolox/vim-colorscheme-switcher')
 "------------------------------------------------------------
-"call dein#add('tomasr/molokai')
+call dein#add('tomasr/molokai')
 "call dein#add('altercation/vim-colors-solarized')
 "call dein#add('Lokaltog/vim-distinguished')
 "call dein#add('chriskempson/base16-vim') "Many great themes
@@ -298,6 +310,7 @@ endif
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 " =Colors, font
+" GUI
 if has("gui_running")
 	if has("gui_gtk2") 				" =========Linux
 		set guioptions -=T "no toolbar
@@ -323,6 +336,7 @@ if has("gui_running")
 		hi Search guibg=#708559 guifg=NONE
 	endif
 else
+  " Terminal
 	if s:uname == "Darwin" " OSX
 		" colorscheme lucius
 		" LuciusLight
@@ -430,7 +444,10 @@ set softtabstop=2 "Insert x spaces when tab is pressed
 set expandtab  "Always use spaces instead of tabs
 set shiftround "Round indent to nearest shiftwidth multiple
 
-set listchars=tab:>-,eol:↵
+if has("unix")
+  set listchars=tab:>-,eol:↵
+endif
+
 "set list "
 "Enables crlf glyph
 
