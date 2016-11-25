@@ -118,6 +118,11 @@ if [[ -o interactive ]]; then
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     if hash tmux 2>/dev/null; then
-        tmux; clear;
+        FIRST_TMUX_SESSION=$(tmux ls | sed -r 's/(^[0-9]+).*/\1/')
+        if [[ -n "$FIRST_TMUX_SESSION" ]]; then
+          tmux attach -t "$FIRST_TMUX_SESSION"; clear;
+        else
+          tmux; clear;
+        fi
     fi
 fi
