@@ -34,6 +34,6 @@ elif [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases; fi
 #bgblack='\e[40m'
 #export PS1="${fgwhite}${bgblack}\w${nocolor} "
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
