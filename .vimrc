@@ -166,10 +166,12 @@ call dein#add('editorconfig/editorconfig-vim')
 
 call dein#add('christoomey/vim-tmux-navigator')
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-w> h :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-w> j :TmuxNavigateDown<cr>
-nnoremap <silent> <C-w> k :TmuxNavigateUp<cr>
-nnoremap <silent> <C-w> l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+
+
 
 " =Languages specific, syntax
 "============================================================
@@ -260,7 +262,8 @@ call dein#add('bronson/vim-trailing-whitespace')
 "visual indent guides with bg color, toggle with <leader>ig
 "Plug 'nathanaelkane/vim-indent-guides'
 
-call dein#add('epage/vim-autohighlight')
+"call dein#add('epage/vim-autohighlight') " Disabled, 404
+call dein#add('obxhdx/vim-auto-highlight')
 
 " =Colorschemes, Colors
 "============================================================
@@ -344,10 +347,10 @@ else
 		let g:lucius_no_term_bg = 1
 	else " Linux
 		"colorscheme candy-crush-chronicle
-		colors seoul256-light
+		colors seoul256
 		" Make terminal bg color transparent (at 'Tail' anchor)
 
-		let g:lucius_no_term_bg = 1 " For lucius and candy-crush-chronicle themes
+		"let g:lucius_no_term_bg = 1 " For lucius and candy-crush-chronicle themes
 	endif
 endif
 
@@ -613,10 +616,10 @@ endif
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+"autocmd BufReadPost *
+"  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+"  \   exe "normal! g`\"" |
+"  \ endif
 
 "#######################################
 "###############Templates###############
@@ -686,19 +689,20 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 imap kj <Esc>
 
 " Backspace
-noremap <BS> <C-o>
-noremap <C-o> <C-i>
+nnoremap <BS> <C-o>
+"nnoremap <C-o> <C-i>
 
 " vim-tmux-navigator
-let g:tmux_navigator_no_mappings = 1 " Not working for some reason
-nnoremap <silent> <C-w-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-w-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-w-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-w-l> :TmuxNavigateRight<cr>
+"let g:tmux_navigator_no_mappings = 1 " Not working for some reason
+"nnoremap <silent> <C-w-h> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-w-j> :TmuxNavigateDown<cr>
+"nnoremap <silent> <C-w-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <C-w-l> :TmuxNavigateRight<cr>
 
 nmap <leader>t :tabnew<CR>
 
 nmap <leader>q :q<CR>
+nmap <leader>x :x<CR>
 
 "=======
 nnoremap gV `[v`] " Highlight last inserted text

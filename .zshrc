@@ -11,6 +11,7 @@ EDITOR=/usr/bin/vim; export EDITOR
 # time that oh-my-zsh is loaded.
 ZSH_THEME="ccaddy"
 
+test -r ~/.env && source ~/.env # Environement variables
 test -r ~/.termaliases && source ~/.termaliases
 
 # Uncomment the following line to use case-sensitive completion.
@@ -118,7 +119,8 @@ if [[ -o interactive ]]; then
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     if hash tmux 2>/dev/null; then
-        FIRST_TMUX_SESSION=$(tmux ls | sed -r 's/(^[0-9]+).*/\1/')
+        # Get first unattached session
+        FIRST_TMUX_SESSION=$(tmux ls | grep -v '\(attached\)' | sed -r 's/(^[0-9]+).*/\1/')
         if [[ -n "$FIRST_TMUX_SESSION" ]]; then
           tmux attach -t "$FIRST_TMUX_SESSION"; clear;
         else
