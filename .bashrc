@@ -1,6 +1,9 @@
 export TERM=xterm-256color
 
-if [[ -f ~/.env ]]; then source ~/.env; fi # Environement variables
+# Environment variables
+if [[ -f ~/.env ]]; then
+  set -o allexport; source ~/.env; set +o allexport;
+fi 
 
 #MinGW (Windows)
 if [[ $OSTYPE == "msys" ]]; then

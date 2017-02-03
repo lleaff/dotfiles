@@ -11,8 +11,13 @@ EDITOR=/usr/bin/vim; export EDITOR
 # time that oh-my-zsh is loaded.
 ZSH_THEME="ccaddy"
 
-test -r ~/.env && source ~/.env # Environement variables
-test -r ~/.termaliases && source ~/.termaliases
+# Environment variables
+if [[ -f ~/.env ]]; then
+  set -o allexport; source ~/.env; set +o allexport;
+fi 
+
+if [[ -f ~/.termaliases ]]; then source ~/.termaliases;
+elif [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases; fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
