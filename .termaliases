@@ -300,6 +300,11 @@ function psgrep {
     fi
 }
 
+#==========================================
+
+function crop {
+  "$@" | cut -c-"${COLUMNS}"
+}
 
 #==========================================
 #if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
