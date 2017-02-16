@@ -36,6 +36,9 @@ if [[ $(uname -s) == "MINGW"* ]]; then
 	#fi
 fi
 
+# Sudo
+#==========================================
+alias sudoe="sudo -E" # Preserve environment variables
 
 # Emacs
 #==========================================
@@ -310,6 +313,11 @@ function psgrep {
 function crop {
   "$@" | cut -c-"${COLUMNS}"
 }
+
+#==========================================
+
+# http://serverfault.com/questions/26474/unzipping-files-that-are-flying-in-through-a-pipe
+alias unzip-stream="python -c \"import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall(sys.argv[1] if len(sys.argv) == 2 else '.')\""
 
 #==========================================
 #if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then

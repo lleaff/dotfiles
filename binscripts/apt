@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Simple wrapper around 'apt'
+
+APT=$(whereis apt | cut -d ' ' -f 2)
+
+WRAPPERCOMMANDS="\n------------------------------\n
+Shorthands:\n
+i=install, s=search, sh=show, l=list, rm=remove, up=update."
+
+case $1 in
+    i) shift 1  ; command $APT install "$@" ;;
+    s) shift 1  ; command $APT search "$@" ;;
+    sh) shift 1 ; command $APT show "$@" ;;
+    l) shift 1  ; command $APT list "$@" ;;
+    rm) shift 1 ; command $APT remove "$@" ;;
+    up) shift 1 ; command $APT update "$@" ;;
+    upg*) shift 1 ; command $APT upgrade "$@" ;;
+    --help) shift 1;command $APT --help "$@"; echo -e $WRAPPERCOMMANDS ;;
+    * ) command $APT "$@" ;;
+esac

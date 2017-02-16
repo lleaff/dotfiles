@@ -170,6 +170,10 @@ nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
 nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
 nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+inoremap <silent> <C-w>h <Esc>:TmuxNavigateLeft<cr>
+inoremap <silent> <C-w>j <Esc>:TmuxNavigateDown<cr>
+inoremap <silent> <C-w>k <Esc>:TmuxNavigateUp<cr>
+inoremap <silent> <C-w>l <Esc>:TmuxNavigateRight<cr>
 
 
 
@@ -190,10 +194,10 @@ call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
 call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
 "=== JavaScript
 " JavaScript code-analysis engine (r: eslint (npm i -g),
-" 	cd ~/.vim/plugged/tern_for_vim && sudo npm install)
+" 	cd ~/.vim/{PLUGINS_DIR}/tern_for_vim && npm install)
 call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
-                                      \ 'if': 'executable("npm")',
-                                      \ 'on_ft': 'javascript'})
+                                         \ 'if': 'executable("npm")',
+                                         \ 'on_ft': 'javascript'})
 " For syntax checking:
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
@@ -284,7 +288,7 @@ call dein#add('junegunn/seoul256.vim')
 "call dein#add('kristiandupont/shades-of-teal') "GUI, dark, blueish, low-contrast
 "call dein#add('sandeepsinghmails/Dev_Delight') "GUI, Light, colorful
 "call dein#add('jonathanfilip/vim-lucius') "GUI/256Term
-"call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
+call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
 
 
 "____________________________________________________________

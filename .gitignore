@@ -17,6 +17,7 @@
 .emacs.d/backups
 .emacs.d/places
 loginname.el
+!.tmux/plugins/tpm
 
 !.atom/**
 .atom/packages
