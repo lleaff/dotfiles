@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tabs character are 4 spaces wide instead of 8
+# Make tabs character 4 spaces wide instead of 8
 tabs -4
 
 defaultTERM='xterm-256color'
@@ -312,6 +312,30 @@ function psgrep {
 
 function crop {
   "$@" | cut -c-"${COLUMNS}"
+}
+
+#==========================================
+
+# Upload file(s) to online pastebin service
+function pastebinup {
+  local text=""
+  if [ "$#" -ne 1 ]; then
+    for f in "$@"; do
+      echo "Text is: $text"
+      if [[ -n "$text" ]]; then
+         local text="${text}\n\n"
+      fi
+       local text="${text}============================================================\n"
+       local text="${text}  $(basename "$f")\n"
+       local text="${text}============================================================\n"
+       local text="${text}$(cat "$f")"
+    done
+  else
+    local text=$(cat "$1")
+  fi
+  local url="$(echo "$text" | curl -F 'sprunge=<-' http://sprunge.us)"
+  echo "$url" | xclip
+  echo "$url"
 }
 
 #==========================================
