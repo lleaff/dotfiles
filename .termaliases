@@ -334,7 +334,9 @@ function pastebinup {
     local text=$(cat "$1")
   fi
   local url="$(echo "$text" | curl -F 'sprunge=<-' http://sprunge.us)"
-  echo "$url" | xclip
+  if hash clipcopy 2>/dev/null; then local cliputil=clipcopy;
+  elif hash xclip 2>/dev/null; then local cliputil=xclip; fi
+  [[ -n "$cliputil" ]] && echo "$url" | "$cliputil";
   echo "$url"
 }
 
