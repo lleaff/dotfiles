@@ -252,6 +252,20 @@ function lso() {
 	command ls $*
 }
 
+###apt enhancement (debian/ubuntu)
+function apt() {
+	case $1 in
+		i ) shift 1; command apt install "$@" ;;
+		up ) shift 1; command apt upload "$@" ;;
+		upgr* ) shift 1; command apt upgrade "$@" ;;
+		rm ) shift 1; command apt remove "$@" ;;
+		autorm ) shift 1; command apt autoremove "$@" ;;
+		purge ) shift 1; command apt purge "$@" ;;
+    ppapurge ) shift 1; command ppa-purge "$@" ;;
+		* ) command apt "$@" ;;
+	esac
+}
+
 #==========================================
 function append() {
     if [[ -z "$1" ]] || [ -z "$2"]; then
