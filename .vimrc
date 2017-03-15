@@ -201,9 +201,11 @@ call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
 " For syntax checking:
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
+call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript', 'for': 'javascript'})
+"let g:javascript_conceal_arrow_function       = "⇒"
 " YAJS doesn't include indent so keep vim-js-indent
-call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
-call dein#add('gavocanov/vim-js-indent', {'on_ft': 'javascript'})
+" call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
+" call dein#add('gavocanov/vim-js-indent', {'on_ft': 'javascript'})
 " extends syntax for with jQuery,backbone,etc.
 call dein#add('othree/javascript-libraries-syntax.vim', {'on_ft': 'javascript'})
 
@@ -232,8 +234,9 @@ call dein#add('Quramy/tsuquyomi', {'on_ft': ['typescript']})
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 "=== HTML
 call dein#add('othree/html5.vim', {'on_ft': ['html']})
-"=Jade
+"=Jade/Pug
 call dein#add('digitaltoad/vim-jade', {'on_ft': ['jade']})
+call dein#add('digitaltoad/vim-pug', {'on_ft': ['pug']})
 "===CSS
 call dein#add('ap/vim-css-color') ", {'on_ft': ['css']}) "Highlight colors in CSS files
 call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
@@ -251,11 +254,13 @@ call dein#add('vim-scripts/cmake.vim', {'on_ft': 'cmake'}) "indent
 
 
 call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
-let g:indentLine_conceallevel = 0 " Default: 2
+let g:indentLine_conceallevel = 1 " Default: 2
 call dein#add('Raimondi/delimitMate') "Automatically add closing brackets and quotes
 
 " =Cosmetic
 "============================================================
+call dein#add('gcavallanti/vim-noscrollbar') " Horizontal scroll indicator
+
 call dein#add('junegunn/rainbow_parentheses.vim') "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [ 0 ]
@@ -361,7 +366,7 @@ endif
 
 "Highlight the nth column so you know when lines get too long
 autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift
-			\ set colorcolumn=78
+			\ set colorcolumn=81
 
 
 "set foldcolumn=2
@@ -542,6 +547,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "==============Status line
 "Default status line: set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline(20,'┄','━',['╼'],['╾'])}
 
 " tpope's status line
 "set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P

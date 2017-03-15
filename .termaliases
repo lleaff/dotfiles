@@ -61,6 +61,9 @@ alias v=vim
 #    alias vim=nvim
 #fi
 
+local VIM_SHARE_FOLDER="$(\find /usr/share/vim/ -name 'vim*' -type d | tail -n1)"
+alias vless="vim -u ${VIM_SHARE_FOLDER}/macros/less.vim"
+
 alias tm=tmux
 alias tmu=tmux
 
@@ -77,6 +80,7 @@ alias pl=swipl
 if hash 2>/dev/null ghci-ng; then GHCI=ghci-ng; else GHCI=ghci; fi
 alias ghci="$GHCI -v0" # No loading messages
 #==========================================
+
 # Keep aliases when using sudo
 alias sudo='sudo '
 
@@ -101,9 +105,15 @@ function mkexe() {
 	echo '#!/' >> "$1" && chmod +x "$1"
 }
 
-# Upload to sprunge.us
-function sprunge() {
-	cat "$@" | curl -F 'sprunge=<-' http://sprunge.us
+#==========================================
+
+# Yarn wrapper / shorthand
+function yr() {
+  if [[ $# -eq 0 ]]; then
+    yarn run start
+  else
+    yarn run "$@"
+  fi
 }
 
 #==========================================
@@ -215,6 +225,7 @@ function git() {
 		pull* ) shift 1; command git pull -v "$@" ;;
 		ls ) shift 1; command git ls-files "$@" ;;
 		logf* ) shift 1; command git log --stat --pretty=oneline "$@" ;; #log formatted
+		d ) shift 1; command git diff "$@" ;;
 		diffc ) shift 1; command git diff --cached "$@" ;;
     ci ) shift 1; command git commit --verbose "$@" ;;
     co ) shift 1; command git checkout "$@" ;;
@@ -353,6 +364,13 @@ function pastebinup {
   [[ -n "$cliputil" ]] && echo "$url" | "$cliputil";
   echo "$url"
 }
+
+# Upload to sprunge.us
+function sprunge() {
+	cat "$@" | curl -F 'sprunge=<-' 'http://sprunge.us'
+}
+
+alias sprungeup="curl -F 'sprunge=<-' 'http://sprunge.us'"
 
 #==========================================
 
