@@ -3,7 +3,10 @@ if 0 | endif
 
 set langmenu=en_US.UTF-8
 
-set nocompatible
+if &compatible
+  set nocompatible
+endif
+
 filetype off
 if has('win32')
 	set rtp+=~/.vim/ "for Windows
@@ -42,6 +45,7 @@ endif
 " sh ./dein_installer.sh {specify the installation directory}"
 
 set runtimepath^=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/bundle/dein.vim/')
 call dein#begin(expand('~/.vim/bundle/dein.vim'))
 
 " Let dein manage dein
@@ -301,6 +305,8 @@ call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
 "____________________________________________________________
 " Required:
 call dein#end()
+call dein#save_state()
+endif
 " Required:
 filetype plugin indent on
 
