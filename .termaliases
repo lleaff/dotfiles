@@ -238,6 +238,43 @@ function git() {
 	esac
 }
 
+#==========================================
+
+function random_filename() {
+  local length=${1:-10}
+  head -c $(( $length * 100 )) /dev/urandom | \
+    tr -dc 'a-zA-Z0-9-_' | \
+    head -c $length
+}
+
+function _cleanup-js-dependency-graph() {
+  if [[ -z "$1" ]]; then
+    return;
+  fi
+  local filename="$1"
+  sleep 50 && rm "$filename" 2>&1
+}
+
+# https://github.com/pahen/madge
+function js-dependency-graph() {
+  if ! hash xdg-open 2>/dev/null 1>&2; then
+    echo 1>&2 'madge and graphviz need to be installed. Aborting.'
+    return
+  fi
+
+  local filename="/tmp/js_depth_graph-$(random_filename 10).svg"
+  madge "$@" --image "$filename"
+  if hash xdg-open 2>/dev/null 1>&2; then
+    xdg-open "$filename";
+  else
+    open "$filename";
+  fi
+  _cleanup-js-depth-graph "$filename" &
+  disown
+}
+
+#==========================================
+
 alias l="ls"
 alias la="ls -A"
 
@@ -262,6 +299,8 @@ function lsms() {
 function lso() {
 	command ls $*
 }
+
+#==========================================
 
 ###apt enhancement (debian/ubuntu)
 function apt() {
