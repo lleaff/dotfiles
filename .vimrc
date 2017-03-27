@@ -38,35 +38,19 @@ endif
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-" =Neobundle configuration
-"____________________________________________________________
-"To install Dein:
-" curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_installer.sh
-" sh ./dein_installer.sh {specify the installation directory}"
 
-set runtimepath^=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.vim/bundle/dein.vim/')
-call dein#begin(expand('~/.vim/bundle/dein.vim'))
-
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+call plug#begin('~/.vim/plugged')
 
 " =Bundle list
 "____________________________________________________________
 
-call dein#add('tpope/vim-sensible') "Configurations everyone agree on
+Plug 'tpope/vim-sensible' "Configurations everyone agree on
 
-call dein#add('scrooloose/syntastic') "Syntax checking plugin (options at #syntastic)
+Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic
 
 if has("unix")
 	" :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
-call dein#add('tpope/vim-eunuch')
+Plug 'tpope/vim-eunuch'
 endif
 
 " "YouCompleteMe, YCM
@@ -74,7 +58,7 @@ endif
 " "	Plug $HOME . '/.vim/ycm_win64' "Code completion engine
 " "	"let g:yce_path_to_python_interpreter = 'C:/Python27/python.exe'
 " "elseif has("unix")
-" call dein#add('Valloric/YouCompleteMe')
+" Plug 'Valloric/YouCompleteMe'
 " "endif
 " autocmd FileType c let g:ycm_global_ycm_extra_conf =
 " 			\ '~/.vim/ycm_files/c/.ycm_extra_conf.py'
@@ -84,12 +68,12 @@ endif
 " let g:ycm_server_log_level = 'debug'
 
 " =Neocomplete
-call dein#add('Shougo/neocomplete.vim')
+Plug 'Shougo/neocomplete.vim'
 
 
-call dein#add('Konfekt/FastFold')
+Plug 'Konfekt/FastFold'
 
-call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+Plug 'Shougo/vimproc.vim', {'build' : 'make'}
 "call dein#add('Shougo/vimproc', {
 "      \ 'build' : {
 "      \     'windows' : 'tools\\update-dll-mingw',
@@ -100,10 +84,10 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 "      \    }
 "      \ })
 
-call dein#add('m2mdas/phpcomplete-extended', {'on_ft': 'php'}) " (r: Shougo/vimproc)
+Plug 'm2mdas/phpcomplete-extended', {'for': 'php'} " (r: Shougo/vimproc)
 autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
-call dein#add('junegunn/vim-easy-align')
+Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -111,24 +95,24 @@ nmap ga <Plug>(EasyAlign)
 
 " =File/Buffer management
 "============================================================
-call dein#add('scrooloose/nerdtree', {'on': 'NERDTreeToggle' }) "File browser
-"call dein#add('jistr/vim-nerdtree-tabs') "NERDTree independent of tabs
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle' } "File browser
+"Plug 'jistr/vim-nerdtree-tabs' "NERDTree independent of tabs
 "Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/)
 " :help ctrlp-mappings
-call dein#add('ctrlpvim/ctrlp.vim')
+Plug 'ctrlpvim/ctrlp.vim'
 command MRU CtrlPMRU
 
 " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
-call dein#add('tpope/vim-fugitive')
+Plug 'tpope/vim-fugitive'
 "
 "Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
 " etc) [v4.6, vim-scripts/ branch isn't updated]
-"call dein#add('ChoiZ/taglist.vim') { 'on': ['TlistOpen', 'TlistToggle'] }
+"Plug 'ChoiZ/taglist.vim' { 'on': ['TlistOpen', 'TlistToggle'] }
 
-call dein#add('tomtom/tcomment_vim') "Comment toggle, handles embedded filetypes
+Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 
 "buffer/file/command/tag/etc explorer with fuzzy matching :FufHelp
-"call dein#add('vim-scripts/FuzzyFinder')
+"Plug 'vim-scripts/FuzzyFinder'
 
 " call dein#add('wincent/command-t', {
 "     \   'build_commands': ['make', 'ruby'],
@@ -137,38 +121,38 @@ call dein#add('tomtom/tcomment_vim') "Comment toggle, handles embedded filetypes
 "     \   }
 "     \ })  "Fuzzy file finding
 
-call dein#add('kana/vim-gf-user') "Improvements to 'gf', open file under cursor
+Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 
-"call dein#add('sjl/gundo.vim') "Undo tree visualization
+"Plug 'sjl/gundo.vim' "Undo tree visualization
 "nnoremap <leader>u :GundoToggle<CR>
 
 "Delete surroundings: ds*, Change surroundings: cs**,
 " Surround: ys<move>*, Surround line: yss* (req: nocompatible)
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-repeat') "Enable repeating supported plugin maps with .
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
 
 "Easily search for, substitute, and abbreviate mutltiple variants of a word
 " foobar -> FooBAR ; Foobar x FooBAR
-call dein#add('tpope/vim-abolish')
+Plug 'tpope/vim-abolish'
 
-call dein#add('junegunn/vim-pseudocl') " Requirement for vim-oblique
-call dein#add('junegunn/vim-oblique') " Improved /-search, (r: vim-oblique)
+Plug 'junegunn/vim-pseudocl' " Requirement for vim-oblique
+Plug 'junegunn/vim-oblique' " Improved /-search, (r: vim-oblique)
 "Automatically clears search highlight
-"call dein#add('pgdouyon/vim-evanesco') "if no vim-oblique
+"Plug 'pgdouyon/vim-evanesco' "if no vim-oblique
 
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
 "More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
-call dein#add('bruno-/vim-husk')
+Plug 'bruno-/vim-husk'
 
-call dein#add('terryma/vim-multiple-cursors')
+Plug 'terryma/vim-multiple-cursors'
 
 " Editorconfig support, allows easily setting editor options on a
 "	per-project basis. Sample .editorconfig:
 "	root=true \n[*] \nindent_size = 4 \nindent_style = tab
-call dein#add('editorconfig/editorconfig-vim')
+Plug 'editorconfig/editorconfig-vim'
 
-call dein#add('christoomey/vim-tmux-navigator')
+Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
@@ -184,42 +168,43 @@ inoremap <silent> <C-w>l <Esc>:TmuxNavigateRight<cr>
 " =Languages specific, syntax
 "============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
-"call dein#add('WolfgangMehner/vim-plugins')
+"Plug 'WolfgangMehner/vim-plugins'
 "=== C & C++
 "Switch between source and header files in C/C++ code (:A, :AT (new tab))
-call dein#add('fanchangyong/a.vim', {'on_ft': ['c', 'cpp']})
+Plug 'fanchangyong/a.vim', {'for': ['c', 'cpp']}
 "if has("win32") " Add standard library headers to path on Windows
 "	let &path.='D:/Qt/Tools/mingw482_32/i686-w64-mingw32/include,'
 "endif
 "=== Haskell
-call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
+Plug 'eagletmt/ghcmod-vim', {'for': ['haskell']}
 "=== Rust
 "Support for Rust file detection and syntax highlighting
-call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
+Plug 'rust-lang/rust.vim', {'for': ['rust']}
 "=== JavaScript
 " JavaScript code-analysis engine (r: eslint (npm i -g),
 " 	cd ~/.vim/{PLUGINS_DIR}/tern_for_vim && npm install)
-call dein#add('marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
-                                         \ 'if': 'executable("npm")',
-                                         \ 'on_ft': 'javascript'})
+" Plug 'marijnh/tern_for_vim', { 'build': {'others': 'npm install'},
+"                                          \ 'if': 'executable("npm")',
+"                                          \ 'for': 'javascript'}
+Plug 'marijnh/tern_for_vim'
 " For syntax checking:
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
-call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript', 'for': 'javascript'})
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 "let g:javascript_conceal_arrow_function       = "⇒"
 " YAJS doesn't include indent so keep vim-js-indent
-" call dein#add('othree/yajs.vim', {'on_ft': 'javascript', 'for': 'javascript'})
-" call dein#add('gavocanov/vim-js-indent', {'on_ft': 'javascript'})
+" Plug 'othree/yajs.vim', {'for': 'javascript', 'for': 'javascript'}
+" Plug 'gavocanov/vim-js-indent', {'for': 'javascript'}
 " extends syntax for with jQuery,backbone,etc.
-call dein#add('othree/javascript-libraries-syntax.vim', {'on_ft': 'javascript'})
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 
-call dein#add('mxw/vim-jsx', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
+Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'html']}
 let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 
-call dein#add('beautify-web/js-beautify', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
+Plug 'beautify-web/js-beautify', {'for': ['javascript', 'javascript.jsx', 'html']}
 "beautify using js-beautify based on .editorconfig
 "(r: beautify-web/js-beautify)
-call dein#add('maksimr/vim-jsbeautify', {'on_ft': ['javascript', 'javascript.jsx', 'html']})
+Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'javascript.jsx', 'html']}
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -227,92 +212,87 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " =CoffeeScript syntax, indentating, compiling, and more.
-call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee', 'cson']})
+Plug 'kchmck/vim-coffee-script', {'for': ['coffee', 'cson']}
 
 " =TypeScript
-call dein#add('HerringtonDarkholme/yats', {'on_ft': ['typescript']})
-call dein#add('Quramy/tsuquyomi', {'on_ft': ['typescript']})
+Plug 'HerringtonDarkholme/yats', {'for': ['typescript']}
+Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
 
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
 "=== HTML
-call dein#add('othree/html5.vim', {'on_ft': ['html']})
+Plug 'othree/html5.vim', {'for': ['html']}
 "=Jade/Pug
-call dein#add('digitaltoad/vim-jade', {'on_ft': ['jade']})
-call dein#add('digitaltoad/vim-pug', {'on_ft': ['pug']})
+Plug 'digitaltoad/vim-jade', {'for': ['jade']}
+Plug 'digitaltoad/vim-pug', {'for': ['pug']}
 "===CSS
-call dein#add('ap/vim-css-color') ", {'on_ft': ['css']}) "Highlight colors in CSS files
-call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
+Plug 'ap/vim-css-color', {'for': ['css']} "Highlight colors in CSS files
+Plug 'hail2u/vim-css3-syntax', {'for': ['css']}
 "=SCSS
-call dein#add('cakebaker/scss-syntax.vim', {'on_ft': ['scss']})
+Plug 'cakebaker/scss-syntax.vim', {'for': ['scss']}
 "===C#, CSharp
-call dein#add('OmniSharp/omnisharp-vim', {'on_ft': 'cs'})
+Plug 'OmniSharp/omnisharp-vim', {'for': 'cs'}
 "===Swift
-call dein#add('keith/swift.vim', {'on_ft': 'swift'})
+Plug 'keith/swift.vim', {'for': 'swift'}
 "===Markdown
-call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 "===CMake
-call dein#add('vim-scripts/cmake', {'on_ft': 'cmake'}) "syntax update
-call dein#add('vim-scripts/cmake.vim', {'on_ft': 'cmake'}) "indent
+Plug 'vim-scripts/cmake', {'for': 'cmake'} "syntax update
+Plug 'vim-scripts/cmake.vim', {'for': 'cmake'} "indent
 
 
-call dein#add('Yggdroot/indentLine') "visual indent guides with thin vertical lines
+Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
 let g:indentLine_conceallevel = 1 " Default: 2
-call dein#add('Raimondi/delimitMate') "Automatically add closing brackets and quotes
+Plug 'Raimondi/delimitMate' "Automatically add closing brackets and quotes
 
 " =Cosmetic
 "============================================================
-call dein#add('gcavallanti/vim-noscrollbar') " Horizontal scroll indicator
+Plug 'gcavallanti/vim-noscrollbar' " Horizontal scroll indicator
 
-call dein#add('junegunn/rainbow_parentheses.vim') "Simpler Rainbow Parentheses
+Plug 'junegunn/rainbow_parentheses.vim' "Simpler Rainbow Parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 let g:rainbow#blacklist = [ 0 ]
 
 " :FixWhitespace
-call dein#add('bronson/vim-trailing-whitespace')
+Plug 'bronson/vim-trailing-whitespace'
 
 "visual indent guides with bg color, toggle with <leader>ig
 "Plug 'nathanaelkane/vim-indent-guides'
 
-"call dein#add('epage/vim-autohighlight') " Disabled, 404
-call dein#add('obxhdx/vim-auto-highlight')
+"Plug 'epage/vim-autohighlight' " Disabled, 404
+Plug 'obxhdx/vim-auto-highlight'
 
 " =Colorschemes, Colors
 "============================================================
-"call dein#add('xolox/vim-misc') " Dependency for vim-colorscheme-switcher
+"Plug 'xolox/vim-misc' " Dependency for vim-colorscheme-switcher
 "" Cycle through colorschemes with F8/Shift-F8
-"call dein#add('xolox/vim-colorscheme-switcher')
+"Plug 'xolox/vim-colorscheme-switcher'
 "------------------------------------------------------------
-call dein#add('tomasr/molokai')
-"call dein#add('altercation/vim-colors-solarized')
-"call dein#add('Lokaltog/vim-distinguished')
-"call dein#add('chriskempson/base16-vim') "Many great themes
-"call dein#add('atelierbram/vim-colors_atelier-schemes')
-"call dein#add('ciaranm/inkpot') "Plurple-pink-yellow
-call dein#add('junegunn/seoul256.vim')
-"call dein#add('Junza/Spink') "Low color contrast brownish theme
-"call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
-"call dein#add('fugalh/desert.vim') "Term/GUI, dark
-"call dein#add('kristiandupont/shades-of-teal') "GUI, dark, blueish, low-contrast
-"call dein#add('sandeepsinghmails/Dev_Delight') "GUI, Light, colorful
-"call dein#add('jonathanfilip/vim-lucius') "GUI/256Term
-call dein#add('lleaff/candy-crush-chronicle.vim') "GUI/256Term
+Plug 'tomasr/molokai'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'Lokaltog/vim-distinguished'
+"Plug 'chriskempson/base16-vim' "Many great themes
+"Plug 'atelierbram/vim-colors_atelier-schemes'
+"Plug 'ciaranm/inkpot' "Plurple-pink-yellow
+Plug 'junegunn/seoul256.vim'
+"Plug 'Junza/Spink' "Low color contrast brownish theme
+"Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+"Plug 'fugalh/desert.vim' "Term/GUI, dark
+"Plug 'kristiandupont/shades-of-teal' "GUI, dark, blueish, low-contrast
+"Plug 'sandeepsinghmails/Dev_Delight' "GUI, Light, colorful
+"Plug 'jonathanfilip/vim-lucius' "GUI/256Term
+Plug 'lleaff/candy-crush-chronicle.vim' "GUI/256Term
 
 
 "____________________________________________________________
-" END Dein configuration
+" END Plugin manager configuration
 "____________________________________________________________
 " Required:
-call dein#end()
-call dein#save_state()
-endif
+call plug#end()
+
 " Required:
 filetype plugin indent on
-
-if dein#check_install()
-  call dein#install()
-endif
 
 "____________________________________________________________
 

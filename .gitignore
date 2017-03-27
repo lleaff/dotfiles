@@ -8,6 +8,7 @@
 .vim/bundle
 .vim/plugged
 .vim/ycm_win64
+.vim/autoload/plug.vim
 .oh-my-zsh/**
 !.oh-my-zsh/themes/**.zsh-theme
 .emacs.d/
