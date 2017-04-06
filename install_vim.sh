@@ -38,6 +38,16 @@ else
   echo "Install npm and execute 'npm install' in '${PLUGINS_DIR}/tern_for_vim/' to install required packages for tern_for_vim."
 fi
 
+#------------------------------------------------------------
+
+if ! hash pt 1>/dev/null 2>&1; then
+  echo "_______________________________________"
+  echo "Platinum Searcher executable (pt) not detected, install at:"
+  echo "https://github.com/monochromegane/the_platinum_searcher/releases/latest"
+  echo "for faster file search in Vim."
+fi
+
+
 echo "Done!"
 
 cd "$STARTING_DIR"

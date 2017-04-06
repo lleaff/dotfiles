@@ -93,6 +93,12 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Session management
+" Use :Obsess (with optional file/directory name) to start recording to a
+" session file and :Obsess! to stop and throw it away. That's it. Load a session
+" in the usual manner: vim -S, or :source it.
+Plug 'tpope/vim-obsession'
+
 " =File/Buffer management
 "============================================================
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle' } "File browser
@@ -191,6 +197,8 @@ Plug 'marijnh/tern_for_vim'
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+" Support Flow-type
+let g:javascript_plugin_flow = 1
 "let g:javascript_conceal_arrow_function       = "⇒"
 " YAJS doesn't include indent so keep vim-js-indent
 " Plug 'othree/yajs.vim', {'for': 'javascript', 'for': 'javascript'}
@@ -200,6 +208,10 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
 
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'html']}
 let g:jsx_ext_required = 0 " use JSX syntax in .js files too
+
+" https://github.com/flowtype/vim-flow
+" r: flow-bin (npm install -g flow-bin | yarn global add flow-bin)
+Plug 'flowtype/vim-flow', {'for': 'javascript' }
 
 Plug 'beautify-web/js-beautify', {'for': ['javascript', 'javascript.jsx', 'html']}
 "beautify using js-beautify based on .editorconfig
@@ -464,6 +476,17 @@ set showmatch	" |
 
 set noerrorbells visualbell t_vb=		" Disable beeping
 autocmd GUIEnter * set visualbell t_vb= " Disable flashing
+
+" The Platinum Searcher
+" https://github.com/monochromegane/the_platinum_searcher/releases/latest
+if executable('pt')
+  " Use pt over grep
+  set grepprg=pt\ --nogroup\ --nocolor
+  " Use pt in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'pt %s -l --nocolor -g ""'
+  " pt is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 "========================
 "=Completion
