@@ -197,7 +197,7 @@ Plug 'marijnh/tern_for_vim'
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-" Support Flow-type
+" Support Flow-type syntax highlighting
 let g:javascript_plugin_flow = 1
 "let g:javascript_conceal_arrow_function       = "⇒"
 " YAJS doesn't include indent so keep vim-js-indent
@@ -212,16 +212,7 @@ let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 " https://github.com/flowtype/vim-flow
 " r: flow-bin (npm install -g flow-bin | yarn global add flow-bin)
 Plug 'flowtype/vim-flow', {'for': 'javascript' }
-
-Plug 'beautify-web/js-beautify', {'for': ['javascript', 'javascript.jsx', 'html']}
-"beautify using js-beautify based on .editorconfig
-"(r: beautify-web/js-beautify)
-Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'javascript.jsx', 'html']}
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+let g:flow#autoclose = 1 " Auto close |quickfix| window opened if no error
 
 " =CoffeeScript syntax, indentating, compiling, and more.
 Plug 'kchmck/vim-coffee-script', {'for': ['coffee', 'cson']}
