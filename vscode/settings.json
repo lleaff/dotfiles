@@ -1,0 +1,37 @@
+{
+    "workbench.colorTheme": "Solarized-light-fjs",
+    "workbench.iconTheme": "vs-seti",
+    "editor.fontFamily": "'DejaVu Sans Mono', monospace, 'Droid Sans Fallback'",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "node_modules": true
+    },
+    "vim.leader": ",",
+    "vim.insertModeKeyBindings": [
+        {"before": [ "k", "j" ], "after": [ "<Esc>" ]}
+    ],
+    "vim.otherModesKeyBindings": [
+        {"before": ["J"], "after": [ "7", "j"]},
+        {"before": ["K"], "after": [ "6", "k"]},
+        {"before": ["L"], "after": [ "$"]},
+        {"before": ["H"], "after": [ "^"]},
+        {"before": ["<C-k>"], "after": [ "J"]},
+        {"before": [";"], "after": [ ":"]}
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": [":"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        }
+    ]
+}

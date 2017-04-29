@@ -300,6 +300,11 @@ function lso() {
 	command ls $*
 }
 
+#=========================================
+
+# pip install pygments
+alias pat="pygmentize -g"
+
 #==========================================
 
 ###apt enhancement (debian/ubuntu)
@@ -326,6 +331,18 @@ function append() {
 }
 
 #==========================================
+
+# For node projects
+function showScripts() {
+  jq .scripts "${1:-package.json}" -C | sed 's/^  //' | sed '1,1d' | sed '$ d'
+}
+
+#==========================================
+
+alias tree="tree -I 'node_modules|.git' -F --noreport"
+
+#==========================================
+
 function ftree() {
 
     if [ "$#" -gt 0 ] ; then
