@@ -70,6 +70,8 @@ endif
 " =Neocomplete
 Plug 'Shougo/neocomplete.vim'
 
+" Makes . command work with more commands
+Plug 'tpope/vim-repeat'
 
 Plug 'Konfekt/FastFold'
 
@@ -110,6 +112,10 @@ command MRU CtrlPMRU
 
 " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
 Plug 'tpope/vim-fugitive'
+" Show diff in gutter
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_sign_column_always = 1
+
 "
 "Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
 " etc) [v4.6, vim-scripts/ branch isn't updated]
@@ -136,6 +142,9 @@ Plug 'kana/vim-gf-user' "Improvements to 'gf', open file under cursor
 " Surround: ys<move>*, Surround line: yss* (req: nocompatible)
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with .
+
+" <leader>c Rename tag
+Plug 'othree/xml.vim'
 
 "Easily search for, substitute, and abbreviate mutltiple variants of a word
 " foobar -> FooBAR ; Foobar x FooBAR
@@ -199,9 +208,11 @@ Plug 'marijnh/tern_for_vim'
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 " Support Flow-type syntax highlighting
 let g:javascript_plugin_flow = 1
-"let g:javascript_conceal_arrow_function       = "⇒"
-" YAJS doesn't include indent so keep vim-js-indent
-" Plug 'othree/yajs.vim', {'for': 'javascript', 'for': 'javascript'}
+" let g:javascript_conceal_arrow_function       = "⇒"
+
+" YAJS doesn't include indent so keep vim-js-indent on old Vim version
+" Plug 'othree/yajs.vim', {'for': 'javascript'}
+" Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 " Plug 'gavocanov/vim-js-indent', {'for': 'javascript'}
 " extends syntax for with jQuery,backbone,etc.
 Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
@@ -218,7 +229,7 @@ let g:flow#autoclose = 1 " Auto close |quickfix| window opened if no error
 Plug 'kchmck/vim-coffee-script', {'for': ['coffee', 'cson']}
 
 " =TypeScript
-Plug 'HerringtonDarkholme/yats', {'for': ['typescript']}
+Plug 'leafgarland/typescript-vim', {'for': ['typescript']}
 Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
 
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
@@ -230,8 +241,11 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'digitaltoad/vim-jade', {'for': ['jade']}
 Plug 'digitaltoad/vim-pug', {'for': ['pug']}
 "===CSS
-Plug 'ap/vim-css-color', {'for': ['css']} "Highlight colors in CSS files
+", {'for': ['css']} "Highlight colors in CSS files
+Plug 'ap/vim-css-color'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css']}
+" CSS syntax highlighting for CSS-in-JS npm module styled-components
+Plug 'fleischie/vim-styled-components', {'for': ['javascript']}
 "=SCSS
 Plug 'cakebaker/scss-syntax.vim', {'for': ['scss']}
 "===C#, CSharp
@@ -478,6 +492,9 @@ if executable('pt')
   " pt is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" :Grepper, :GrepperGit
+Plug 'mhinz/vim-grepper'
 
 "========================
 "=Completion
@@ -846,6 +863,19 @@ command Tn tabnew
 hi Normal ctermbg=none
 "hi IncSearch ctermbg=red
 hi Search ctermbg=153 ctermfg=0
+
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@                                                      @@@
+"@@@ =Command line abbreviations                          @@@
+"@@@                                                      @@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+" Use %% like $PWD, e.g.: :e %%/someFile
+cabbr <expr> %% expand('%:p:h')
 
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@ How to install Vim @@@@@@@@@@@@@@@@@@@@@@@@@@@
