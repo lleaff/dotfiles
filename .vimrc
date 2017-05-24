@@ -155,6 +155,9 @@ Plug 'junegunn/vim-oblique' " Improved /-search, (r: vim-oblique)
 "Automatically clears search highlight
 "Plug 'pgdouyon/vim-evanesco' "if no vim-oblique
 
+" Show "Match 123 of 456 /search term/" in Vim searches
+Plug 'henrik/vim-indexed-search'
+
 "Plug 'reedes/vim-pencil' "Rethinking Vim as a tool for writing
 
 "More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
@@ -206,6 +209,7 @@ Plug 'marijnh/tern_for_vim'
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+let g:javascript_opfirst = 0
 " Support Flow-type syntax highlighting
 let g:javascript_plugin_flow = 1
 " let g:javascript_conceal_arrow_function       = "⇒"
@@ -500,7 +504,7 @@ Plug 'mhinz/vim-grepper'
 "=Completion
 "========================
 "=== #syntastic
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': ['python', 'javascript'],
                             \ 'passive_filetypes': [] }
@@ -517,6 +521,12 @@ let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
 "This needs to be kept near the end or it gets overwritten by smth else
 highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D 
 highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+
+" Needs eslint and eslint_d to be installed (npm install -g eslint eslint_d)
+let g:syntastic_javascript_checkers = ['eslint']
+" eslint_d keeps a background eslint process running so it doesn't have to be
+"  restarted on each check.
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " =Neocomplete configuration
 "------------------------------------------------------------

@@ -5,6 +5,7 @@ module.exports = {
     "React": true,
     "ReactDOM": true,
     "$": true,
+    "_": true,
     "jQuery": true,
   },
 
@@ -27,7 +28,7 @@ module.exports = {
         "argsIgnorePattern": "^_",
         "args": "after-used", // "after-used": Allow unused params if they come before a used param in the arg list
       }], // Warn against unused variables
-    "comma-dangle": [0, "always-multiline"], // Disallow or enforce trailing comma in array literals, e.g.: "always-multiline"
+    "comma-dangle": [1, "always-multiline"], // Disallow or enforce trailing comma in array literals, e.g.: "always-multiline"
     "no-cond-assign": [1], // Disallow `if (myVar = smth())`
 
     // eslint-plugin-react
