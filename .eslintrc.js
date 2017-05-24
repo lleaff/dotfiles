@@ -45,7 +45,7 @@ module.exports = {
     "react/prop-types": 0, // Prevent missing props validation in a React component definition (propTypes)
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
-    "react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX
+    //"react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX // Disabled cause eslint doesn't find the rule (even tho it's documented)
 
   },
 
