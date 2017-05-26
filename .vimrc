@@ -504,7 +504,12 @@ Plug 'mhinz/vim-grepper'
 "=Completion
 "========================
 "=== #syntastic
-let g:syntastic_check_on_open = 1
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': ['python', 'javascript'],
                             \ 'passive_filetypes': [] }
@@ -518,9 +523,14 @@ let g:syntastic_cpp_compiler_options = ' -std=c++10' " -stdlib=libc++'
 let g:syntastic_error_symbol = '✗' 		"^sign interface symbols
 let g:syntastic_warning_symbol = '!'	"v
 let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
-"This needs to be kept near the end or it gets overwritten by smth else
-highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D 
-highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F 
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+" ctermbg=215 ctermfg=255
+highlight SyntasticErrorSign guifg=#cccccc guibg=#7D4D4D   ctermbg=088 ctermfg=015
+highlight SyntasticWarningSign guifg=#cccccc guibg=#976D4F ctermbg=130 ctermfg=255
+" highlight SyntasticError guifg=#cccccc guibg=#7D4D4D       ctermbg=124 ctermfg=255
+" highlight SyntasticWarning guifg=#cccccc guibg=#976D4F     ctermbg=130 ctermfg=255
+" highlight SpellBad guifg=#cccccc guibg=#7D4D4D             ctermbg=215 ctermfg=255
+" highlight SpellCap guifg=#cccccc guibg=#976D4F             ctermbg=215 ctermfg=255
 
 " Needs eslint and eslint_d to be installed (npm install -g eslint eslint_d)
 let g:syntastic_javascript_checkers = ['eslint']
@@ -576,6 +586,10 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "Default status line: set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline(20,'┄','━',['╼'],['╾'])}
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " tpope's status line
 "set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P

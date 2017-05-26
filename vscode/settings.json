@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Solarized-light-fjs",
+    "workbench.colorTheme": "Pond-light",
     "workbench.iconTheme": "vs-seti",
     "editor.fontFamily": "'DejaVu Sans Mono', monospace, 'Droid Sans Fallback'",
     "files.exclude": {
@@ -11,6 +11,11 @@
         "node_modules": true
     },
     "vim.leader": ",",
+    "vim.handleKeys": {
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-f>": false
+    },
     "vim.insertModeKeyBindings": [
         {"before": [ "k", "j" ], "after": [ "<Esc>" ]}
     ],

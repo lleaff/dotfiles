@@ -90,7 +90,7 @@ fi
 #==========================================
 
 function mkcd {
-	mkdir "$@" && cd "$@";
+	mkdir -p "$@" && cd "$@";
 }
 
 function cdls {
