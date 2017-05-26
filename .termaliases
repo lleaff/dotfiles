@@ -302,8 +302,11 @@ function lso() {
 
 #=========================================
 
+# Syntax highlight colored cat
 # pip install pygments
 alias pat="pygmentize -g"
+alias pcat="pygmentize -g"
+function pless() { pygmentize -g "$@" | less -R }
 
 #==========================================
 
