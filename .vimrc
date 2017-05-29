@@ -239,6 +239,12 @@ Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
+
+"===GraphQL
+Plug 'paulrosania/vim-graphql', { 'branch': 'tagged-template-literals' }
+" Highlight GraphQL in JavaScriptp template strings
+let g:graphql_tag_names = ['gql', 'graphql']
+
 "=== HTML
 Plug 'othree/html5.vim', {'for': ['html']}
 "=Jade/Pug
@@ -426,6 +432,12 @@ set directory=~/.vim/tmp
 
 "=== Activate mouse in terminal
 set mouse=a
+" Better mouse support https://stackoverflow.com/a/19253251/4718923
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+end
 
 if has("win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
