@@ -3,7 +3,7 @@
 # Stop on errors
 set -e
 
-NPM_PACKAGES="eslint eslint_d babel-eslint eslint-plugin-react"
+NPM_PACKAGES="eslint eslint_d babel-eslint eslint-plugin-react eslint-plugin-flux-standard-action"
 
 if hash yarn 2>/dev/null; then
   echo "Installing with yarn..."

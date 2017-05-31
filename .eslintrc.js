@@ -1,9 +1,44 @@
-module.exports = {
+// Utilities
+//------------------------------------------------------------
+
+const typeMismatch = (dst, src) => {
+  console.error('[deepMerge] Type mismatch: ', dst, '...and...', src);
+};
+const dedup = (arr) => [...new Set(arr)];
+const _deepMerge = (dest, source) => {
+  if (dest === undefined) {
+    return source;
+  } else if (Array.isArray(source)) {
+    if (!Array.isArray(dest)) {
+      typeMismatch(dest, source);
+      return dedup([ dest, ...source ]);
+    }
+    return [ ...dest, ...source ];
+  } else if (typeof source === 'object') {
+    if (!typeof dest === 'object') {
+      typeMismatch(dest, source);
+      return source;
+    }
+    let obj = Object.assign({}, dest);
+    for (const [key, val] of Object.entries(source)) {
+      obj[key] = deepMerge(obj[key], val);
+    }
+    return obj;
+  } else {
+    return source;
+  }
+}
+function deepMerge(dest, ...sources) {
+  return sources.reduce((p, source) => _deepMerge(p, source), dest);
+}
+
+// Config
+//------------------------------------------------------------
+
+const config = {
   "parser": "babel-eslint",
 
   "globals": {
-    "React": true,
-    "ReactDOM": true,
     "$": true,
     "_": true,
     "jQuery": true,
@@ -16,7 +51,9 @@ module.exports = {
     "mocha": true,
   },
 
-  "plugins": ["react"],
+  "extends": [
+    "eslint:recommended",
+  ],
 
   "rules": {
     // "indent": [2, 2],
@@ -30,9 +67,20 @@ module.exports = {
       }], // Warn against unused variables
     "comma-dangle": [1, "always-multiline"], // Disallow or enforce trailing comma in array literals, e.g.: "always-multiline"
     "no-cond-assign": [1], // Disallow `if (myVar = smth())`
+  },
+};
 
-    // eslint-plugin-react
-    //------------------------------------------------------------
+// React
+// eslint-plugin-react
+const react = {
+  "globals": {
+    "React": true,
+    "ReactDOM": true,
+  },
+  "plugins": [
+    "react",
+  ],
+  "rules": {
     "react/display-name": 0, // Prevent missing displayName in a React component definition
     "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
     "react/jsx-sort-props": 0, // Enforce props alphabetical sorting
@@ -46,8 +94,26 @@ module.exports = {
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
     //"react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX // Disabled cause eslint doesn't find the rule (even tho it's documented)
-
-  },
-
-  "extends": ["eslint:recommended"],
+    "react/jsx-no-bind": 2, // Prevent binding or declaring arrow functions in render
+    "react/jsx-no-target-blank": 2, // Prevent unsecure <a target="_blank"> links
+  }
 };
+
+// Flux-standard-actions
+// eslint-plugin-flux-standard-action
+const fluxStandardActions = {
+  "plugins": [ "flux-standard-actions" ],
+  "extends": [
+    "plugin:flux-standard-actions/recommended",
+  ],
+  "rules": {
+    "flux-standard-actions/plain-object": 2,
+    "flux-standard-actions/create-action-function": 0,
+  },
+};
+
+module.exports = deepMerge(
+  config,
+  react,
+  fluxStandardActions
+);
