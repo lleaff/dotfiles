@@ -110,6 +110,26 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle' } "File browser
 Plug 'ctrlpvim/ctrlp.vim'
 command MRU CtrlPMRU
 
+" Ctrl + f global search
+Plug 'dyng/ctrlsf.vim'
+" Input :CtrlSF in command line for you, just a handy shortcut.
+nmap     <C-f>f <Plug>CtrlSFPrompt
+" Input :CtrlSF foo in command line where foo is the current visual selected word, waiting for further input.
+"vmap     <C-f>f <Plug>CtrlSFVwordPath
+" Like <Plug>CtrlSFVwordPath, but execute it immediately.
+vmap     <C-f> <Plug>CtrlSFVwordExec
+" Input :CtrlSF foo in command line where foo is word under the cursor.
+nmap     <C-f>n <Plug>CtrlSFCwordPath
+" Like <Plug>CtrlSFCwordPath, but also add word boundary around searching word.
+"nmap     <C-f>n <Plug>CtrlSFCCwordPath
+" Input :CtrlSF foo in command line where foo is the last search pattern of vim.
+nmap     <C-f>p <Plug>CtrlSFPwordPath
+" Open/Toggle the global find window
+nnoremap <C-f>o :CtrlSFOpen<CR>
+nnoremap <C-f>t :CtrlSFToggle<CR>
+inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
+
+
 " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
 Plug 'tpope/vim-fugitive'
 " Show diff in gutter
@@ -239,6 +259,10 @@ Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
 " Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
+
+" =ES2015 template string
+" :JsPreTmpl {filetype}
+Plug 'Quramy/vim-js-pretty-template'
 
 "===GraphQL
 Plug 'paulrosania/vim-graphql', { 'branch': 'tagged-template-literals' }
