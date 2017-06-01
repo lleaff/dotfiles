@@ -9,13 +9,13 @@ const _deepMerge = (dest, source) => {
   if (dest === undefined) {
     return source;
   } else if (Array.isArray(source)) {
-    if (!Array.isArray(dest)) {
+    if (!(Array.isArray(dest))) {
       typeMismatch(dest, source);
       return dedup([ dest, ...source ]);
     }
     return [ ...dest, ...source ];
   } else if (typeof source === 'object') {
-    if (!typeof dest === 'object') {
+    if (!(typeof dest === 'object')) {
       typeMismatch(dest, source);
       return source;
     }
@@ -27,7 +27,7 @@ const _deepMerge = (dest, source) => {
   } else {
     return source;
   }
-}
+};
 function deepMerge(dest, ...sources) {
   return sources.reduce((p, source) => _deepMerge(p, source), dest);
 }
@@ -96,7 +96,7 @@ const react = {
     //"react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX // Disabled cause eslint doesn't find the rule (even tho it's documented)
     "react/jsx-no-bind": 2, // Prevent binding or declaring arrow functions in render
     "react/jsx-no-target-blank": 2, // Prevent unsecure <a target="_blank"> links
-  }
+  },
 };
 
 // Flux-standard-actions
