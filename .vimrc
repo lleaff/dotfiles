@@ -386,7 +386,7 @@ else
 endif
 
 "Highlight the nth column so you know when lines get too long
-autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift
+autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift,python
 			\ set colorcolumn=81
 
 
@@ -557,6 +557,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 " eslint_d keeps a background eslint process running so it doesn't have to be
 "  restarted on each check.
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
+" sudo -H pip3 install flake8
+let g:syntastic_python_checkers=['flake8', 'python3']
 
 " =Neocomplete configuration
 "------------------------------------------------------------
