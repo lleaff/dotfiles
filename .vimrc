@@ -110,25 +110,9 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle' } "File browser
 Plug 'ctrlpvim/ctrlp.vim'
 command MRU CtrlPMRU
 
-" Ctrl + f global search
+" Ctrl + f global search [https://github.com/dyng/ctrlsf.vim#arguments]
+" #CtrlSF config
 Plug 'dyng/ctrlsf.vim'
-" Input :CtrlSF in command line for you, just a handy shortcut.
-nmap     <C-f>f <Plug>CtrlSFPrompt
-" Input :CtrlSF foo in command line where foo is the current visual selected word, waiting for further input.
-"vmap     <C-f>f <Plug>CtrlSFVwordPath
-" Like <Plug>CtrlSFVwordPath, but execute it immediately.
-vmap     <C-f> <Plug>CtrlSFVwordExec
-" Input :CtrlSF foo in command line where foo is word under the cursor.
-nmap     <C-f>n <Plug>CtrlSFCwordPath
-" Like <Plug>CtrlSFCwordPath, but also add word boundary around searching word.
-"nmap     <C-f>n <Plug>CtrlSFCCwordPath
-" Input :CtrlSF foo in command line where foo is the last search pattern of vim.
-nmap     <C-f>p <Plug>CtrlSFPwordPath
-" Open/Toggle the global find window
-nnoremap <C-f>o :CtrlSFOpen<CR>
-nnoremap <C-f>t :CtrlSFToggle<CR>
-inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
-
 
 " Git wrapper (:Gwrite (=git add), :Gcommit, :Gpush, :Gstatus, :Gbrowse)
 Plug 'tpope/vim-fugitive'
@@ -792,6 +776,42 @@ nmap <leader>t :tabnew<CR>
 
 nmap <leader>q :q<CR>
 nmap <leader>x :x<CR>
+
+" #CtrlSF config
+"===============
+" search starting from project root (looks backward for .git, ...)
+" let g:ctrlsf_default_root = 'project'
+" --home-ptignore: use .ptignore file in $home
+let g:ctrlsf_extra_backend_args = {
+    \ 'pt': '--home-ptignore'
+    \ }
+" defines ctrlsf using literal pattern or regular expression pattern as default.
+"  default value is 0, which means literal pattern.
+let g:ctrlsf_regex_pattern = 1
+" left, right, top and bottom
+let g:ctrlsf_position = 'bottom'
+" window height/width, can be percent or absolute: '30%' or '200'
+" let g:ctrlsf_winsize = '30%'
+" input :ctrlsf in command line for you, just a handy shortcut.
+nmap <c-f>f <plug>CtrlSFPrompt
+" input :ctrlsf foo in command line where foo is the current visual selected
+"  word, waiting for further input.
+"vmap <c-f>f <plug>ctrlsfvwordpath
+" like <plug>ctrlsfvwordpath, but execute it immediately.
+vmap <c-f> <plug>CtrlSFVWordExec
+" input :ctrlsf foo in command line where foo is word under the cursor.
+nmap <c-f>n <plug>CtrlSFCWordPath
+" input :ctrlsf foo in command line where foo is word under the cursor, adding
+"  word boundary around searching word.
+nmap <c-f>b <plug>CtrlSFCCWordPath
+" Input :CtrlSF foo in command line where foo is the last search pattern of vim.
+nmap <C-f>p <Plug>CtrlSFPWordPath
+" Open/Toggle the global find window
+" nnoremap <C-f>o :CtrlSFOpen<CR>
+nnoremap <C-f>o :CtrlSFToggle<CR>
+nnoremap <C-f>t :CtrlSFToggle<CR>
+inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
+
 
 "=======
 nnoremap gV `[v`] " Highlight last inserted text
