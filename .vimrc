@@ -167,6 +167,7 @@ Plug 'henrik/vim-indexed-search'
 "More complete emacs-mode mappings for Vim command line (Alt-B, Alt-F, etc)
 Plug 'bruno-/vim-husk'
 
+" Config #multiple-cursors
 Plug 'terryma/vim-multiple-cursors'
 
 " Editorconfig support, allows easily setting editor options on a
@@ -202,6 +203,15 @@ Plug 'eagletmt/ghcmod-vim', {'for': ['haskell']}
 "=== Rust
 "Support for Rust file detection and syntax highlighting
 Plug 'rust-lang/rust.vim', {'for': ['rust']}
+"=== Python
+" https://github.com/python-mode/python-mode
+" <C-c>g for :RopeGotoDefinition
+Plug 'python-mode/python-mode'
+let g:pymode_doc_bind = "<C-h>"
+Plug 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview = 1
+
+
 "=== JavaScript
 " JavaScript code-analysis engine (r: eslint (npm i -g),
 " 	cd ~/.vim/{PLUGINS_DIR}/tern_for_vim && npm install)
@@ -297,6 +307,7 @@ Plug 'bronson/vim-trailing-whitespace'
 
 "Plug 'epage/vim-autohighlight' " Disabled, 404
 Plug 'obxhdx/vim-auto-highlight'
+" AutoHighlightWord
 
 " =Colorschemes, Colors
 "============================================================
@@ -389,6 +400,8 @@ endif
 autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift,python
 			\ set colorcolumn=81
 
+" Automatic word highlight plugin
+hi AutoHighlightWord ctermbg=238
 
 "set foldcolumn=2
 
@@ -601,6 +614,14 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+
+"#######################################################
+"############### =Filetypes              ###############
+"#######################################################
+" Map file extensions to filetype
+
+autocmd BufRead,BufNewFile .babelrc set filetype=json
+
 "============================================================
 
 
@@ -691,14 +712,14 @@ endif
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
-"autocmd BufReadPost *
-"  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-"  \   exe "normal! g`\"" |
-"  \ endif
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
-"#######################################
-"###############Templates###############
-"#######################################
+"#######################################################
+"############### =Templates              ###############
+"#######################################################
 
 autocmd BufNewFile *.html 0r $HOME/.vim/templates/html5_basic.txt
 
@@ -722,6 +743,9 @@ map! <kEnter> <Esc>
 map <kEnter> <Esc>
 " (works with $TERM=xterm)
 map <OM> <Esc>
+
+nmap > >>
+nmap < <<
 
 "======Movement
 nnoremap <silent> K 5gk
@@ -919,6 +943,29 @@ nnoremap <C-Down> :silent! let &guifont = substitute(
 			\ ':h\zs\d\+',
 			\ '\=eval(submatch(0)-1)',
 			\ '')<CR>
+
+" "#multiple-cursors config
+" https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
+" Allow quitting multi-cursors insert mode with kj
+" https://github.com/terryma/vim-multiple-cursors/issues/67#issuecomment-143547973
+inoremap kj <esc>
+let g:multi_cursor_exit_from_insert_mode=0
+let g:multi_cursor_quit_key='q'
+let g:multi_cursor_insert_maps={'k':1}
 
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
