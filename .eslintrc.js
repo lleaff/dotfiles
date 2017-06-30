@@ -112,8 +112,16 @@ const fluxStandardActions = {
   },
 };
 
+// eslint-plugin-graphql
+const graphql = {
+  "plugins": [
+    "graphql",
+  ],
+};
+
 module.exports = deepMerge(
   config,
   react,
-  fluxStandardActions
+  fluxStandardActions,
+  graphql,
 );

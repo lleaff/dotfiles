@@ -211,7 +211,6 @@ let g:pymode_doc_bind = "<C-h>"
 Plug 'tmhedberg/SimpylFold'
 let g:SimpylFold_docstring_preview = 1
 
-
 "=== JavaScript
 " JavaScript code-analysis engine (r: eslint (npm i -g),
 " 	cd ~/.vim/{PLUGINS_DIR}/tern_for_vim && npm install)
