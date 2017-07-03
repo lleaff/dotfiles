@@ -61,7 +61,7 @@ alias v=vim
 #    alias vim=nvim
 #fi
 
-local VIM_SHARE_FOLDER="$(\find /usr/share/vim/ -name 'vim*' -type d | tail -n1)"
+VIM_SHARE_FOLDER="$(\find /usr/share/vim/ -name 'vim*' -type d | tail -n1)"
 alias vless="vim -u ${VIM_SHARE_FOLDER}/macros/less.vim"
 
 alias tm=tmux
