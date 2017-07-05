@@ -10,6 +10,11 @@ defaultTERM='xterm-256color'
 test -r "$HOME/.locations" && source "$HOME/.locations"
 
 #==========================================
+# Internal utilities
+
+alias _throw_error="hash alkdjflkadsjflhgadsfadfsghadadsf >/dev/null 2>&1"
+
+#==========================================
 #if OSX
 if [[ $(uname -s) == "Darwin" ]]; then
 	alias xdg-open='open'
@@ -157,7 +162,7 @@ alias tpane=__tmuxnewpane
 ###rm verbose
 alias rm="rm -v"
 
-###grep 
+###grep
 alias grep="grep --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 
 ###grep case insensitive
@@ -257,8 +262,17 @@ function _cleanup-js-dependency-graph() {
 
 # https://github.com/pahen/madge
 function js-dependency-graph() {
-  if ! hash xdg-open 2>/dev/null 1>&2; then
+  if ! hash madge gvpr  2>/dev/null 1>&2; then
     echo 1>&2 'madge and graphviz need to be installed. Aborting.'
+    echo 1>&2 'npm i -g madge'
+    echo 1>&2 'apt install graphviz'
+    _throw_error
+    return
+  fi
+
+  if [[ -z "$1" ]]; then
+    echo 1>&2 "Usage: $0 ENTRYPOINT_JAVASCRIPT_FILE"
+    _throw_error
     return
   fi
 
@@ -269,7 +283,8 @@ function js-dependency-graph() {
   else
     open "$filename";
   fi
-  _cleanup-js-depth-graph "$filename" &
+  # v Dirty hack
+  _cleanup-js-dependency-graph "$filename" &
   disown
 }
 
@@ -300,13 +315,21 @@ function lso() {
 	command ls $*
 }
 
+#==========================================
+
+# Prefer python3, but don't alias "python" itself
+alias py="python3"
+alias pip="pip3"
+alias py2="python2"
+alias pip2="pip2"
+
 #=========================================
 
 # Syntax highlight colored cat
 # pip install pygments
 alias pat="pygmentize -g"
 alias pcat="pygmentize -g"
-function pless() { pygmentize -g "$@" | less -R }
+function pless() { pygmentize -g "$@" | less -R; }
 
 #==========================================
 
@@ -442,7 +465,7 @@ alias sprungeup="curl -F 'sprunge=<-' 'http://sprunge.us'"
 
 # Upload file to transfer.sh
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
 
 #==========================================
 

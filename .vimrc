@@ -461,7 +461,7 @@ end
 
 if has("win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
-elseif has("unix") 					
+elseif has("unix")
 	if s:uname != "Darwin" 		" =========Linux
 		source ~/.vim/mswin-partial.vim
 	endif
