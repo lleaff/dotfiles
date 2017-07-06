@@ -1,6 +1,8 @@
 git
 curl
-tree
-tmux
 zsh
+tmux
 htop
+tree
+httpie
+trash-cli
