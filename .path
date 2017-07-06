@@ -28,10 +28,13 @@ elif [[ $OSTYPE == darwin* ]]; then # OSX
 else
 # =Linux
 # ============================================================
-    # Haskell
-    export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.4/bin:"$PATH"
-    # Swift
-    export PATH=/opt/swift/usr/bin/:"$PATH"
+  # Haskell
+  export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.8.4/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.4/bin:"$PATH"
+  # Swift
+  export PATH=/opt/swift/usr/bin/:"$PATH"
+
+  # added by Miniconda3 4.3.21 installer
+  export PATH="$HOME/.miniconda3/bin:$PATH"
 fi
 
 #export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"

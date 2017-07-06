@@ -614,6 +614,10 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
+" NERDTree configuration
+let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$']
+
+
 "#######################################################
 "############### =Filetypes              ###############
 "#######################################################
