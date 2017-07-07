@@ -624,6 +624,7 @@ let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$']
 " Map file extensions to filetype
 
 autocmd BufRead,BufNewFile .babelrc set filetype=json
+autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
 
 "============================================================
 
