@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Functions and aliases shared by both bash and zsh config
+#------------------------------------------------------------
+
 # Make tabs character 4 spaces wide instead of 8
 tabs -4
 
@@ -7,7 +10,7 @@ defaultTERM='xterm-256color'
 #==========================================
 
 # Locations aliases
-test -r "$HOME/.locations" && source "$HOME/.locations"
+test -r "$HOME/.locations" && . "$HOME/.locations"
 
 #==========================================
 # Internal utilities
@@ -15,31 +18,32 @@ test -r "$HOME/.locations" && source "$HOME/.locations"
 alias _throw_error="hash alkdjflkadsjflhgadsfadfsghadadsf >/dev/null 2>&1"
 
 #==========================================
-#if OSX
-if [[ $(uname -s) == "Darwin" ]]; then
-	alias xdg-open='open'
-	if [[ -f "$HOME/Applications/MacVim.app/Contents/MacOS/Vim" ]]; then
-		alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
-	fi
-	alias gvim='open -a MacVim'
-	alias gemacs='open -a Emacs'
-fi
-
-#==========================================
-#if Windows (Cygwin)
-if [[ $(uname -s) == "CYGWIN_NT"* ]]; then
-	alias xdg-open='open'
-fi
-
-#==========================================
-#if Windows (Mingw (Git Bash)
-if [[ $(uname -s) == "MINGW"* ]]; then
-	alias xdg-open='start'
-  alias tree='cmd //c tree'
-	#if [[ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]]; then
-	#	alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
-	#fi
-fi
+case "$(uname -s)" in
+  #==============================
+  #if OSX
+  "Darwin" )
+    alias xdg-open='open'
+    if [ -f "$HOME/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+      alias vim="$HOME/Applications/MacVim.app/Contents/MacOS/Vim"
+    fi
+    alias gvim='open -a MacVim'
+    alias gemacs='open -a Emacs'
+  ;;
+  #==============================
+  #if Windows (Cygwin)
+  "CYGWIN_NT"* )
+    alias xdg-open='open'
+  ;;
+  #==============================
+  #if Windows (Mingw (Git Bash))
+  "MINGW"* )
+    alias xdg-open='start'
+    alias tree='cmd //c tree'
+    #if [ -f "/c/PortableProgramFiles/Vim/Vim.exe" ]; then
+    #	alias vim="/c/PortableProgramFiles/Vim/Vim.exe"
+    #fi
+  ;;
+esac
 
 # Sudo
 #==========================================
@@ -48,7 +52,7 @@ alias sudoe="sudo -E" # Preserve environment variables
 # Emacs
 #==========================================
 EMACSL="/opt/emacs24/bin/emacs"
-if [[ ! -e $EMACSL ]]; then
+if [ ! -e $EMACSL ]; then
 	EMACSL=$(whereis emacs | cut -d ' ' -f 2)
 fi
 alias emacsd="$EMACSL --daemon"
@@ -89,30 +93,30 @@ alias ghci="$GHCI -v0" # No loading messages
 # Keep aliases when using sudo
 alias sudo='sudo '
 
-if [[ -e "$HOME/bin/apt" ]]; then
+if [ -e "$HOME/bin/apt" ]; then
     alias apt="$HOME/bin/apt"
 fi
 #==========================================
 
-function mkcd {
+mkcd() {
 	mkdir -p "$@" && cd "$@";
 }
 
-function cdls {
+cdls() {
 	cd "$@" && ls --color=auto;
 }
 
-function cl {
+cl() {
 	cd "$@" && ls --color=auto;
 }
 
-function mkexe() {
+mkexe() {
 	echo '#!/' >> "$1" && chmod +x "$1"
 }
 
 #==========================================
 # Yarn run shorthand wrapper
-function y() {
+y() {
   local global=""
   if [ "$1" = "g" ]; then
     shift 1
@@ -128,8 +132,8 @@ function y() {
 }
 
 # Yarn run shorthand wrapper
-function yr() {
-  if [[ $# -eq 0 ]]; then
+yr() {
+  if [ $# -eq 0 ]; then
     yarn run start
   else
     yarn run "$@"
@@ -138,11 +142,11 @@ function yr() {
 
 #==========================================
 
-function __tmuxnewwindow() {
+__tmuxnewwindow() {
     local q='"'
-    if [[ -n $(hash "$1" 2>&1) ]] && [[ -e "$1" ]]; then
-        if [[ -d "$1" ]]; then
-            local execs="-c $(realpath $1)" 
+    if [ -n $(hash "$1" 2>&1) ] && [ -e "$1" ]; then
+        if [ -d "$1" ]; then
+            local execs="-c $(realpath $1)"
             local q=''
         else
             local execs="less $(echo "$@")"
@@ -155,11 +159,11 @@ function __tmuxnewwindow() {
 
 alias tnew=__tmuxnewwindow
 
-function __tmuxnewpane() {
+__tmuxnewpane() {
     local q='"'
-    if [[ -n $(hash "$1" 2>&1) ]] && [[ -e "$1" ]]; then
-        if [[ -d "$1" ]]; then
-            local execs="-c $(realpath "$1")" 
+    if [ -n $(hash "$1" 2>&1) ] && [ -e "$1" ]; then
+        if [ -d "$1" ]; then
+            local execs="-c $(realpath "$1")"
             local q=''
         else
             local execs="less $(echo "$@")"
@@ -181,12 +185,12 @@ alias rm="rm -v"
 alias grep="grep --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 
 ###grep case insensitive
-function grepi() {
+grepi() {
 	grep -i --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn "$@"
 }
 
 ###grep recursive
-function grepr() {
+grepr() {
 	grep -r --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn "$@"
 }
 
@@ -196,24 +200,25 @@ alias tmux="TERM=$defaultTERM tmux"
 
 #========================================== gcc
 ###autofill -o argument with first arg
-function gccs() {
+gccs() {
 	gcc "$@" -pedantic -Wall -o "${1%.*}"
 }
 
-function g++s() {
+__gpluspluss() {
 	g++ "$@" -pedantic -Wall -o "${1%.*}"
 }
+alias g++s=__gpluspluss
 
 ###default arguments to compile c programs
-function gccc99() {
+gccc99() {
 	gcc "$@" -std=c99 -pedantic -Wall -o "${1%.*}"
 }
 
-function gccc11() {
+gccc11() {
 	gcc "$@" -std=c11 -pedantic -Wall -o "${1%.*}"
 }
 #==========================================
-function __testc() {
+__testc() {
 	gccc11 "$@"
 	name="${1%.*}"
 	shift
@@ -224,7 +229,7 @@ alias testc=__testc
 #==========================================
 
 # C# build and run
-function cst() {
+cst() {
   local src="$1"
   local executable="${1%.*}.exe"
   shift
@@ -233,15 +238,15 @@ function cst() {
 
 #==========================================
 
-function random_filename() {
+random_filename() {
   local length=${1:-10}
   head -c $(( $length * 100 )) /dev/urandom | \
     tr -dc 'a-zA-Z0-9-_' | \
     head -c $length
 }
 
-function _cleanup-js-dependency-graph() {
-  if [[ -z "$1" ]]; then
+__cleanup_js_dependency_graph() {
+  if [ -z "$1" ]; then
     return;
   fi
   local filename="$1"
@@ -249,7 +254,7 @@ function _cleanup-js-dependency-graph() {
 }
 
 # https://github.com/pahen/madge
-function js-dependency-graph() {
+__js_dependency_graph() {
   if ! hash madge gvpr  2>/dev/null 1>&2; then
     echo 1>&2 'madge and graphviz need to be installed. Aborting.'
     echo 1>&2 'npm i -g madge'
@@ -258,7 +263,7 @@ function js-dependency-graph() {
     return
   fi
 
-  if [[ -z "$1" ]]; then
+  if [ -z "$1" ]; then
     echo 1>&2 "Usage: $0 ENTRYPOINT_JAVASCRIPT_FILE"
     _throw_error
     return
@@ -272,9 +277,10 @@ function js-dependency-graph() {
     open "$filename";
   fi
   # v Dirty hack
-  _cleanup-js-dependency-graph "$filename" &
+  __cleanup_js_dependency_graph "$filename" &
   disown
 }
+alias js-dependency-graph=__js_dependency_graph
 
 #==========================================
 
@@ -282,24 +288,24 @@ alias l="ls"
 alias la="ls -A"
 
 ###simulate improved ls output with find
-function lsm() {
+lsm() {
 	case $* in
 		-a ) shift 1; command find "$@" -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
 		* ) command find "$@" -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%-54.53f%Cd.%Cm.%CY   %s\n" ;;
 	esac
 }
-function lsma() {
+lsma() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
-function lsma() {
+lsma() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' -printf "%-54.53f%Cd.%Cm.%CY   %s\n"
 }
-function lsms() {
+lsms() {
 	find $1 -maxdepth "1" ! -name '.' ! -name '..' ! -name '.*' ! -name '~*' -printf "%f\n"
 }
 
 #original ls under "lso" alias
-function lso() {
+lso() {
 	command ls $*
 }
 
@@ -317,12 +323,12 @@ alias pip2="pip2"
 # pip install pygments
 alias pat="pygmentize -g"
 alias pcat="pygmentize -g"
-function pless() { pygmentize -g "$@" | less -R; }
+pless() { pygmentize -g "$@" | less -R; }
 
 #==========================================
 
 ###apt enhancement (debian/ubuntu)
-function apt() {
+apt() {
 	case $1 in
 		i ) shift 1; command apt install "$@" ;;
 		up ) shift 1; command apt upload "$@" ;;
@@ -336,8 +342,8 @@ function apt() {
 }
 
 #==========================================
-function append() {
-    if [[ -z "$1" ]] || [ -z "$2"]; then
+append() {
+    if [ -z "$1" ] || [ -z "$2"]; then
         echo "Usage: append TEXT DESTINATION"
     fi
 
@@ -347,7 +353,7 @@ function append() {
 #==========================================
 
 # For node projects
-function showScripts() {
+showScripts() {
   jq .scripts "${1:-package.json}" -C | sed 's/^  //' | sed '1,1d' | sed '$ d'
 }
 
@@ -357,7 +363,7 @@ alias tree="tree -I 'node_modules|.git' -F --noreport"
 
 #==========================================
 
-function ftree() {
+ftree() {
 
     if [ "$#" -gt 0 ] ; then
        dirlist="$@"
@@ -372,7 +378,7 @@ function ftree() {
 
 #==========================================
 # daemonize
-function __daemonize() {
+__daemonize() {
     if ! hash "$1" 2>/dev/null; then
         echo "Command doesn't exist: \"$1\""
         return
@@ -383,8 +389,8 @@ function __daemonize() {
 alias dm=__daemonize
 
 # open
-function __open() {
-	if [[ -z "$1" ]]; then
+__open() {
+	if [ -z "$1" ]; then
 		__daemonize xdg-open .
 	else
 		__daemonize xdg-open "$@"
@@ -394,18 +400,18 @@ alias o=__open
 
 #==========================================
 
-function psgrep {
+psgrep() {
     result=$(ps ax | grep "$@" | grep -v grep | awk '{print $1}') 2>/dev/null
-    if [[ -z $result ]]; then
+    if [ -z $result ]; then
         hash alkdjflkadsjflhgadsfadfsghadadsf >/dev/null 2>&1 # Return an error
     else
         echo $result;
     fi
 }
 
-function psauxgrep {
+psauxgrep() {
     result=$(ps aux | grep "$@" | grep -v grep) 2>/dev/null
-    if [[ -z $result ]]; then
+    if [ -z $result ]; then
         hash alkdjflkadsjflhgadsfadfsghadadsf >/dev/null 2>&1 # Return an error
     else
         echo $result;
@@ -414,19 +420,19 @@ function psauxgrep {
 
 #==========================================
 
-function crop {
+crop() {
   "$@" | cut -c-"${COLUMNS}"
 }
 
 #==========================================
 
 # Upload file(s) to online pastebin service
-function pastebinup {
+pastebinup() {
   local text=""
   if [ "$#" -ne 1 ]; then
     for f in "$@"; do
       echo "Text is: $text"
-      if [[ -n "$text" ]]; then
+      if [ -n "$text" ]; then
          local text="${text}\n\n"
       fi
        local text="${text}============================================================\n"
@@ -440,12 +446,12 @@ function pastebinup {
   local url="$(echo "$text" | curl -F 'sprunge=<-' http://sprunge.us)"
   if hash clipcopy 2>/dev/null; then local cliputil=clipcopy;
   elif hash xclip 2>/dev/null; then local cliputil=xclip; fi
-  [[ -n "$cliputil" ]] && echo "$url" | "$cliputil";
+  [ -n "$cliputil" ] && echo "$url" | "$cliputil";
   echo "$url"
 }
 
 # Upload to sprunge.us
-function sprunge() {
+sprunge() {
 	cat "$@" | curl -F 'sprunge=<-' 'http://sprunge.us'
 }
 
@@ -461,6 +467,6 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 alias unzip-stream="python -c \"import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall(sys.argv[1] if len(sys.argv) == 2 else '.')\""
 
 #==========================================
-#if [[ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]]; then
+#if [ -z $(ps aux | grep 'emacs --daemon' | grep -v grep) ]; then
 #	$EMACSL --daemon # Start emacs server
 #fi
