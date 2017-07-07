@@ -27,6 +27,8 @@
   b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
   br = branch
   ba = branch -a
+  # list each branch's last commit
+  brl = "! for branch in `git branch -r | grep -v HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
   # list aliases
   la = "!git config -l | grep alias | cut -c 7-"
 [core]
