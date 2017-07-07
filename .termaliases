@@ -111,8 +111,23 @@ function mkexe() {
 }
 
 #==========================================
+# Yarn run shorthand wrapper
+function y() {
+  local global=""
+  if [ "$1" = "g" ]; then
+    shift 1
+    global="global"
+  fi
+	case $1 in
+		a ) shift 1; command yarn ${global} add "$@" ;;
+    r ) shift 1; command yarn ${global} run "$@" ;;
+    i ) shift 1; command yarn ${global} install "$@" ;;
+    h ) shift 1; command yarn ${global} help "$@" ;;
+		* ) command yarn "$@" ;;
+	esac
+}
 
-# Yarn wrapper / shorthand
+# Yarn run shorthand wrapper
 function yr() {
   if [[ $# -eq 0 ]]; then
     yarn run start
