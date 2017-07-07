@@ -88,6 +88,8 @@ alias formtest="$HOME/tests/c/formtest.sh"
 alias pl=swipl
 if hash 2>/dev/null ghci-ng; then GHCI=ghci-ng; else GHCI=ghci; fi
 alias ghci="$GHCI -v0" # No loading messages
+
+alias dk=docker
 #==========================================
 
 # Keep aliases when using sudo

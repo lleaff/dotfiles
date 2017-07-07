@@ -103,7 +103,8 @@ Plug 'tpope/vim-obsession'
 
 " =File/Buffer management
 "============================================================
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle' } "File browser
+"File browser
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 "Plug 'jistr/vim-nerdtree-tabs' "NERDTree independent of tabs
 "Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/)
 " :help ctrlp-mappings
@@ -307,6 +308,16 @@ Plug 'bronson/vim-trailing-whitespace'
 "Plug 'epage/vim-autohighlight' " Disabled, 404
 Plug 'obxhdx/vim-auto-highlight'
 " AutoHighlightWord
+
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+" Highlight folders using exact match
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+Plug 'ryanoasis/vim-devicons'
 
 " =Colorschemes, Colors
 "============================================================
@@ -615,7 +626,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " NERDTree configuration
-let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$']
+let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$', '^.git$']
 
 
 "#######################################################
@@ -846,7 +857,21 @@ inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
 "=======
 nnoremap gV `[v`] " Highlight last inserted text
 
-map <leader>f :NERDTreeToggle<CR>
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! NERDTreeToggleFind()
+  if IsNERDTreeOpen()
+    NERDTreeToggle
+  else
+    NERDTreeFind
+  endif
+endfunc
+
+map <leader>f :call NERDTreeToggleFind()<CR>
+map <leader>F :NERDTreeToggle<CR>
 
 function MoveToPrevTab()
   "there is only one window
