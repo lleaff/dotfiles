@@ -3,6 +3,7 @@
 .vimrc
 .vim
 .zshrc
+.shrc
 .tmux.conf
 .tmux
 .gitconfig

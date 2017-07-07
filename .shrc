@@ -1,1 +1,3 @@
 . ~/.termaliases
+
+export PS1=`uname -n`:'$PWD'"> " ;
