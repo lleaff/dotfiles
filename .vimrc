@@ -109,7 +109,7 @@ Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 "Fuzzy file, buffer, mru, tag, etc finder (Active fork of kien/)
 " :help ctrlp-mappings
 Plug 'ctrlpvim/ctrlp.vim'
-command MRU CtrlPMRU
+command! MRU CtrlPMRU
 
 " Ctrl + f global search [https://github.com/dyng/ctrlsf.vim#arguments]
 " #CtrlSF config
@@ -134,7 +134,7 @@ Plug 'tomtom/tcomment_vim' "Comment toggle, handles embedded filetypes
 " call dein#add('wincent/command-t', {
 "     \   'build_commands': ['make', 'ruby'],
 "     \   'build': {
-"     \      'unix': 'cd ruby/command-t && { make clean; ruby extconf.rb && make }'
+"     \      'unix': 'cd ruby/command!-t && { make clean; ruby extconf.rb && make }'
 "     \   }
 "     \ })  "Fuzzy file finding
 
@@ -620,12 +620,13 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript,javascript.jsx setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
-" NERDTree configuration
+" =NERDTree configuration
+"------------------------------------------------------------
 let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$', '^.git$']
 
 
@@ -835,17 +836,17 @@ let g:ctrlsf_position = 'bottom'
 " window height/width, can be percent or absolute: '30%' or '200'
 " let g:ctrlsf_winsize = '30%'
 " input :ctrlsf in command line for you, just a handy shortcut.
-nmap <c-f>f <plug>CtrlSFPrompt
+nmap <C-f>f <plug>CtrlSFPrompt
 " input :ctrlsf foo in command line where foo is the current visual selected
 "  word, waiting for further input.
-"vmap <c-f>f <plug>ctrlsfvwordpath
+"vmap <C-f>f <plug>ctrlsfvwordpath
 " like <plug>ctrlsfvwordpath, but execute it immediately.
-vmap <c-f> <plug>CtrlSFVWordExec
+vmap <C-f> <plug>CtrlSFVWordExec
 " input :ctrlsf foo in command line where foo is word under the cursor.
-nmap <c-f>n <plug>CtrlSFCWordPath
+nmap <C-f>n <plug>CtrlSFCWordPath
 " input :ctrlsf foo in command line where foo is word under the cursor, adding
 "  word boundary around searching word.
-nmap <c-f>b <plug>CtrlSFCCWordPath
+nmap <C-f>b <plug>CtrlSFCCWordPath
 " Input :CtrlSF foo in command line where foo is the last search pattern of vim.
 nmap <C-f>p <Plug>CtrlSFPWordPath
 " Open/Toggle the global find window
@@ -874,7 +875,7 @@ endfunc
 map <leader>f :call NERDTreeToggleFind()<CR>
 map <leader>F :NERDTreeToggle<CR>
 
-function MoveToPrevTab()
+function! MoveToPrevTab()
   "there is only one window
   if tabpagenr('$') == 1 && winnr('$') == 1
     return
@@ -896,7 +897,7 @@ function MoveToPrevTab()
   exe "b".l:cur_buf
 endfunc
 
-function MoveToNextTab()
+function! MoveToNextTab()
   "there is only one window
   if tabpagenr('$') == 1 && winnr('$') == 1
     return
@@ -950,7 +951,7 @@ cmap w!! w !sudo tee > /dev/null %
 "=====Disable middle mouse click paste
 noremap <MiddleMouse> <LeftMouse> | noremap! <MiddleMouse> <LeftMouse> | map <2-MiddleMouse> <LeftMouse> | imap <2-MiddleMouse> <LeftMouse> | map <3-MiddleMouse> <LeftMouse> | imap <3-MiddleMouse> <LeftMouse> | map <4-MiddleMouse> <LeftMouse> | imap <4-MiddleMouse> <LeftMouse>
 
-command -nargs=0 -bar UpdateFileAndSave if &modified
+command! -nargs=0 -bar UpdateFileAndSave if &modified
 			\|    if empty(bufname('%'))
 				\|        browse confirm write
 				\|    else
@@ -1007,11 +1008,11 @@ let g:multi_cursor_insert_maps={'k':1}
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 " CDC = Change to Directory of Current file
-command CDC cd %:p:h
+command! CDC cd %:p:h
 
-command NT NERDTreeToggle
+command! NT NERDTreeToggle
 
-command Tn tabnew
+command! Tn tabnew
 
 "------------------------------------------------------------
 " =Tail
