@@ -127,6 +127,7 @@ y() {
 	case $1 in
 		a ) shift 1; command yarn ${global} add "$@" ;;
     r ) shift 1; command yarn ${global} run "$@" ;;
+    rm ) shift 1; command yarn ${global} remove "$@" ;;
     i ) shift 1; command yarn ${global} install "$@" ;;
     h ) shift 1; command yarn ${global} help "$@" ;;
 		* ) command yarn "$@" ;;
