@@ -147,8 +147,8 @@ yr() {
 
 __tmuxnewwindow() {
     local q='"'
-    if [ -n $(hash "$1" 2>&1) ] && [ -e "$1" ]; then
-        if [ -d "$1" ]; then
+    if [[ -n $(hash "$1" 2>&1) ]] && [[ -e "$1" ]]; then
+        if [[ -d "$1" ]]; then
             local execs="-c $(realpath $1)"
             local q=''
         else
@@ -266,8 +266,14 @@ __js_dependency_graph() {
     return
   fi
 
-  if [ -z "$1" ]; then
-    echo 1>&2 "Usage: $0 ENTRYPOINT_JAVASCRIPT_FILE"
+  skip_remove=""
+  if [[ "$1" = "-s" ]]; then
+    skip_remove="true"
+    shift
+  fi
+
+  if [[ -z "$1" ]]; then
+    echo 1>&2 "Usage: $0 [-s] ENTRYPOINT_JAVASCRIPT_FILE"
     _throw_error
     return
   fi
@@ -279,9 +285,11 @@ __js_dependency_graph() {
   else
     open "$filename";
   fi
-  # v Dirty hack
-  __cleanup_js_dependency_graph "$filename" &
-  disown
+  if [[ -z "$skip_remove" ]]; then
+    # v Dirty hack
+    __cleanup_js_dependency_graph "$filename" &
+    disown
+  fi
 }
 alias js-dependency-graph=__js_dependency_graph
 
