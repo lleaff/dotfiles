@@ -43,4 +43,4 @@ fi
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # Put user binaries folders in front of PATH
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.bin:$HOME/dotfiles/binscripts:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.bin:$HOME/dotfiles/bin:$PATH"
