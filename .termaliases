@@ -184,6 +184,9 @@ alias tpane=__tmuxnewpane
 ###rm verbose
 alias rm="rm -v"
 
+###trash verbose recursive
+alias trs="trash -vr"
+
 ###grep
 alias grep="grep --color=auto --exclude-dir=.bzr --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn"
 

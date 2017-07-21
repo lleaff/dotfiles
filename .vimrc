@@ -317,7 +317,7 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 
 " =Colorschemes, Colors
 "============================================================
@@ -819,6 +819,9 @@ nmap <leader>t :tabnew<CR>
 
 nmap <leader>q :q<CR>
 nmap <leader>x :x<CR>
+
+" Git fugitive shortcuts
+nmap <leader>gb :Gblame<CR>
 
 " #CtrlSF config
 "===============

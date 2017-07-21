@@ -4,5 +4,5 @@ set -o nounset
 set -e
 
 mkdir -p ~/dotfiles/.tmux/plugins/tpm
-if [[ ! -f ~/.tmux ]]; then ln -s ~/dotfiles/.tmux ~/.tmux; fi
+if [[ ! -d ~/.tmux ]]; then ln -s ~/dotfiles/.tmux ~/.tmux; fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
