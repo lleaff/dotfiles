@@ -62,10 +62,9 @@ alias emacsr="emacsk; emacsd"
 alias emacs="${EMACSL}client -nw -a ''"
 alias emacsn="${EMACSL}"
 alias e="emacs"
-alias v="vim"
 
 #==========================================
-alias v=vim
+alias v="vim -p"
 #if hash nvim 2>/dev/null; then
 #    alias vim=nvim
 #fi
@@ -370,6 +369,8 @@ append() {
 showScripts() {
   jq .scripts "${1:-package.json}" -C | sed 's/^  //' | sed '1,1d' | sed '$ d'
 }
+
+alias pkg="[ -f package.json ] && vim package.json"
 
 #==========================================
 

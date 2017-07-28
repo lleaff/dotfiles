@@ -777,6 +777,8 @@ map  L $
 nmap L $
 vmap L $
 
+map <C-b> gE
+
 nnoremap j gj	" ^ Move vertically by visual line
 vnoremap j gj	" |
 nnoremap k gk	" |
@@ -954,15 +956,15 @@ cmap w!! w !sudo tee > /dev/null %
 "=====Disable middle mouse click paste
 noremap <MiddleMouse> <LeftMouse> | noremap! <MiddleMouse> <LeftMouse> | map <2-MiddleMouse> <LeftMouse> | imap <2-MiddleMouse> <LeftMouse> | map <3-MiddleMouse> <LeftMouse> | imap <3-MiddleMouse> <LeftMouse> | map <4-MiddleMouse> <LeftMouse> | imap <4-MiddleMouse> <LeftMouse>
 
-command! -nargs=0 -bar UpdateFileAndSave if &modified
-			\|    if empty(bufname('%'))
-				\|        browse confirm write
-				\|    else
-					\|        confirm write
-					\|    endif
-					\|endif
-nnoremap <silent> <C-S> :<C-u>UpdateFileAndSave<CR>
-"inoremap <silent> <C-S> :<C-u>UpdateFileAndSave<CR> "TODO: Find how to call function in insert mode
+" command! -nargs=0 -bar UpdateFileAndSave if &modified
+" 			\|    if empty(bufname('%'))
+" 				\|        browse confirm write
+" 				\|    else
+" 					\|        confirm write
+" 					\|    endif
+" 					\|endif
+" nnoremap <silent> <C-S> :<C-u>UpdateFileAndSave<CR>
+" "inoremap <silent> <C-S> :<C-u>UpdateFileAndSave<CR> "TODO: Find how to call function in insert mode
 
 "nnoremap <silent> <C-W> :q<CR>
 
