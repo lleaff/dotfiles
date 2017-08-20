@@ -273,7 +273,7 @@ Plug 'digitaltoad/vim-pug', {'for': ['pug']}
 Plug 'ap/vim-css-color'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css']}
 " CSS syntax highlighting for CSS-in-JS npm module styled-components
-Plug 'fleischie/vim-styled-components', {'for': ['javascript']}
+Plug 'fleischie/vim-styled-components'
 "=SCSS
 Plug 'cakebaker/scss-syntax.vim', {'for': ['scss']}
 "===C#, CSharp
@@ -461,6 +461,9 @@ endif
 "=== Store swap (.swp, .swo) files in a central location
 set directory=~/.vim/tmp
 
+"=== For Create-React-App apps (slower saving but allows CRA watch to detect changes)
+set backupcopy=yes
+
 "=== Activate mouse in terminal
 set mouse=a
 " Better mouse support https://stackoverflow.com/a/19253251/4718923
@@ -637,7 +640,7 @@ let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$', '^.git$']
 
 autocmd BufRead,BufNewFile .babelrc set filetype=json
 autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
-autocmd BufRead,BufNewFile env-template set filetype=sh
+autocmd BufRead,BufNewFile env.template set filetype=sh
 
 "============================================================
 

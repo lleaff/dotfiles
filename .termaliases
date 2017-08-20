@@ -78,6 +78,8 @@ alias tmu=tmux
 alias g=git
 alias n=node
 
+alias t=tree
+
 alias yt=youtube-dl
 alias soundcloud-dl=scdl
 
@@ -114,6 +116,10 @@ cl() {
 mkexe() {
 	echo '#!/' >> "$1" && chmod +x "$1"
 }
+
+#==========================================
+
+alias dn='notify-send "Done"'
 
 #==========================================
 # Yarn run shorthand wrapper
@@ -326,9 +332,7 @@ lso() {
 
 # Prefer python3, but don't alias "python" itself
 alias py="python3"
-alias pip="pip3"
 alias py2="python2"
-alias pip2="pip2"
 
 #=========================================
 
