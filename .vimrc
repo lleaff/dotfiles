@@ -119,7 +119,8 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 " Show diff in gutter
 Plug 'airblade/vim-gitgutter'
-let g:gitgutter_sign_column_always = 1
+" let g:gitgutter_sign_column_always = 1 " old
+set signcolumn=yes
 
 "
 "Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
@@ -285,6 +286,9 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 "===CMake
 Plug 'vim-scripts/cmake', {'for': 'cmake'} "syntax update
 Plug 'vim-scripts/cmake.vim', {'for': 'cmake'} "indent
+"=== Solidity (Ethereum smart contracts)
+Plug 'tomlion/vim-solidity'
+
 
 
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines

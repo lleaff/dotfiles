@@ -13,9 +13,10 @@ if [[ $OSTYPE == "msys" ]]; then
 
 # =MacOS, OS X
 # ============================================================
-elif [[ $OSTYPE == darwin* ]]; then # OSX 
+elif [[ $OSTYPE == darwin* ]]; then
 	export PATH="$PATH:$HOME/Applications/nodejs-v4/bin"
 	export PATH="$PATH:$HOME/Applications/MacVim.app/Contents/MacOS"
+	export PATH="$PATH:$HOME/Library/Python/3.6/bin" # pip3 install path
 
 	# Haskell, Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
 	export GHC_DOT_APP=$HOME"/Applications/ghc-7.10.2.app"

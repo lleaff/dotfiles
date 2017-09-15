@@ -28,6 +28,11 @@ case "$(uname -s)" in
     fi
     alias gvim='open -a MacVim'
     alias gemacs='open -a Emacs'
+
+    notifySend() {
+      osascript -e "display notification \"$@\" with title \"Terminal\""
+    }
+    alias notify-send=notifySend
   ;;
   #==============================
   #if Windows (Cygwin)
