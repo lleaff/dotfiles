@@ -289,6 +289,9 @@ Plug 'vim-scripts/cmake.vim', {'for': 'cmake'} "indent
 "=== Solidity (Ethereum smart contracts)
 Plug 'tomlion/vim-solidity'
 
+"=== Nginx
+Plug 'chr4/nginx.vim'
+
 
 
 Plug 'Yggdroot/indentLine' "visual indent guides with thin vertical lines
