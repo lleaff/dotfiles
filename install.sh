@@ -15,13 +15,13 @@ cd "$(dirname "$0")"
 #     echo "Installing Spacemacs..."
 #     git clone "https://github.com/syl20bnr/spacemacs" "$SPACEMACS_TARGET"
 # fi
-# OHMYZSH_TARGET="$TARGET"/.oh-my-zsh
-# if [[ ! -e "$OHMYZSH_TARGET" ]]; then
-#     echo "Installing Oh My Zsh..."
-#     git clone "https://github.com/robbyrussell/oh-my-zsh" "$OHMYZSH_TARGET"
-# fi
-#
-# ./makesymlinks.sh "$TARGET"
+OHMYZSH_TARGET="$TARGET"/.oh-my-zsh
+if [[ ! -e "$OHMYZSH_TARGET" ]]; then
+    echo "Installing Oh My Zsh..."
+    git clone "https://github.com/robbyrussell/oh-my-zsh" "$OHMYZSH_TARGET"
+fi
+
+./makesymlinks.sh "$TARGET"
 
 RELATIVE_OHMYZSHTHEMEDIR=".oh-my-zsh/themes"
 REAL_OHMYZSHTHEMEDIR=$(realpath "$RELATIVE_OHMYZSHTHEMEDIR")

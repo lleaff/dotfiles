@@ -250,6 +250,7 @@ Plug 'kchmck/vim-coffee-script', {'for': ['coffee', 'cson']}
 " =TypeScript
 Plug 'leafgarland/typescript-vim', {'for': ['typescript']}
 Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
+let g:tsuquyomi_disable_quickfix = 1
 
 " Plug 'moll/vim-node' "Node.js tools and utilities						^
 " Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
@@ -411,7 +412,7 @@ else
 endif
 
 "Highlight the nth column so you know when lines get too long
-autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift,python
+autocmd Filetype vim,sh,c,cpp,c#,javascript,java,jade,css,scss,swift,python,typescript
 			\ set colorcolumn=81
 
 " Automatic word highlight plugin
@@ -561,9 +562,14 @@ set statusline+=%*
 
 
 let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['python', 'javascript'],
+                            \ 'active_filetypes': [
+                            \   'python',
+                            \   'javascript',
+                            \   'typescript'
+                            \   ],
                             \ 'passive_filetypes': [] }
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['eslint', 'tsuquyomi']
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -645,6 +651,7 @@ let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$', '^.git$']
 autocmd BufRead,BufNewFile .babelrc set filetype=json
 autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
 autocmd BufRead,BufNewFile env.template set filetype=sh
+autocmd BufRead,BufNewFile .gitignore set filetype=sh
 
 "============================================================
 

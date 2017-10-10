@@ -120,6 +120,11 @@ if [[ -f ~/.path ]]; then source ~/.path; fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# Enable completion (docker-compose)
+# https://docs.docker.com/compose/completion/#zsh
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/opt/google-cloud-sdk/path.zsh.inc'; fi
 

@@ -1,9 +1,10 @@
 vim-gtk
 git
 curl
+httpie
 zsh
 tmux
 htop
 tree
-httpie
 trash-cli
+python3-pip
