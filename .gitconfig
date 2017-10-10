@@ -31,5 +31,6 @@
   brl = "! for branch in `git branch -r | grep -v HEAD`;do echo `git show --format=\"%ai %ar by %an\" $branch | head -n 1` \t$branch; done | sort -r"
   # list aliases
   la = "!git config -l | grep alias | cut -c 7-"
+  logs = log --oneline --graph --decorate --abbrev-commit
 [core]
 	trustctime = false
