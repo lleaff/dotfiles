@@ -653,7 +653,7 @@ let NERDTreeIgnore=['.\.o$', '^__pycache__$', '.\.pyc$', '^.git$']
 
 autocmd BufRead,BufNewFile .babelrc set filetype=json
 autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
-autocmd BufRead,BufNewFile env.template set filetype=sh
+autocmd BufRead,BufNewFile env.template,.env.template set filetype=sh
 autocmd BufRead,BufNewFile .gitignore set filetype=sh
 
 "============================================================

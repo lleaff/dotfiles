@@ -12,10 +12,8 @@ defaultTERM='xterm-256color'
 # Locations aliases
 test -r "$HOME/.locations" && . "$HOME/.locations"
 
-#==========================================
-# Internal utilities
-
-alias _throw_error="hash alkdjflkadsjflhgadsfadfsghadadsf >/dev/null 2>&1"
+# Local aliases
+test -r "$HOME/.localaliases" && . "$HOME/.localaliases"
 
 #==========================================
 case "$(uname -s)" in
@@ -82,6 +80,9 @@ alias tmu=tmux
 
 alias g=git
 alias n=node
+
+# Node with global packages
+alias ng="NODE_PATH=$(npm root -g) node"
 
 alias t=tree
 
@@ -266,7 +267,7 @@ __cleanup_js_dependency_graph() {
     return;
   fi
   local filename="$1"
-  sleep 50 && rm "$filename" 2>&1
+  sleep 200 && rm "$filename" 2>&1
 }
 
 # https://github.com/pahen/madge
@@ -275,7 +276,7 @@ __js_dependency_graph() {
     echo 1>&2 'madge and graphviz need to be installed. Aborting.'
     echo 1>&2 'npm i -g madge'
     echo 1>&2 'apt install graphviz'
-    _throw_error
+    false
     return
   fi
 
@@ -287,7 +288,7 @@ __js_dependency_graph() {
 
   if [[ -z "$1" ]]; then
     echo 1>&2 "Usage: $0 [-s] ENTRYPOINT_JAVASCRIPT_FILE"
-    _throw_error
+    false
     return
   fi
 
@@ -338,6 +339,8 @@ lso() {
 # Prefer python3, but don't alias "python" itself
 alias py="python3"
 alias py2="python2"
+alias py3.6="python3.6"
+alias pip3.6="python3.6 -m pip"
 
 #=========================================
 
@@ -403,12 +406,16 @@ ftree() {
 #==========================================
 # daemonize
 __daemonize() {
-    if ! hash "$1" 2>/dev/null; then
-        echo "Command doesn't exist: \"$1\""
-        return
+  if ! hash "$1" 2>/dev/null; then
+    local ALIAS="$(alias "$1")"
+    if [[ -z "$ALIAS" ]]; then
+      echo "Command doesn't exist: \"$1\"" 2>&1
+      return
     fi
-	nohup "$@" < /dev/null >/dev/null 2>&1 &
-	disown > /dev/null 2>&1
+    1=$(echo "$ALIAS" | sed 's/^.*=//')
+  fi
+  nohup "$@" </dev/null >/dev/null 2>&1 &
+  disown > /dev/null 2>&1
 }
 alias dm=__daemonize
 
