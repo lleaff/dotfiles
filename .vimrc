@@ -188,8 +188,6 @@ inoremap <silent> <C-w>j <Esc>:TmuxNavigateDown<cr>
 inoremap <silent> <C-w>k <Esc>:TmuxNavigateUp<cr>
 inoremap <silent> <C-w>l <Esc>:TmuxNavigateRight<cr>
 
-
-
 " =Languages specific, syntax
 "============================================================
 "awk, bash, c, git, latex, lua, matlab, & perl support
@@ -223,8 +221,8 @@ Plug 'marijnh/tern_for_vim'
 " For syntax checking:
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-let g:javascript_opfirst = 0
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javacript.jsx', 'typescript']}
+" let g:javascript_opfirst = 0
 " Support Flow-type syntax highlighting
 let g:javascript_plugin_flow = 1
 " let g:javascript_conceal_arrow_function       = "⇒"
@@ -877,7 +875,6 @@ nnoremap <C-f>o :CtrlSFToggle<CR>
 nnoremap <C-f>t :CtrlSFToggle<CR>
 inoremap <C-f>t <Esc>:CtrlSFToggle<CR>
 
-
 "=======
 nnoremap gV `[v`] " Highlight last inserted text
 
@@ -1035,6 +1032,13 @@ command! CDC cd %:p:h
 command! NT NERDTreeToggle
 
 command! Tn tabnew
+
+function! FormatJSON()
+  %!python -c "import json, sys, collections; print json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), indent=4)"
+  %s/ $//
+endfunction
+
+command! FormatJSON call FormatJSON()
 
 "------------------------------------------------------------
 " =Tail
