@@ -36,6 +36,12 @@ else
 
   # added by Miniconda3 4.3.21 installer
   export PATH="$HOME/.miniconda3/bin:$PATH"
+
+  # Android Studio
+  export ANDROID_HOME=$HOME/Android/Sdk
+  export PATH=$PATH:$ANDROID_HOME/tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
 fi
 
 #export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
