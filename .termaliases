@@ -127,6 +127,9 @@ mkexe() {
 
 alias dn='notify-send "Done"'
 
+# npm install -g madge-watch-gui
+alias mw='madge-watch -d'
+
 #==========================================
 # Yarn run shorthand wrapper
 y() {
