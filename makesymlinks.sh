@@ -83,3 +83,6 @@ ln -s "$realdir"/oni/config.tsx "$HOME"/.config/oni/config.tsx
 ln -s "$realdir"/oni/tsconfig.json "$HOME"/.config/oni/init.vim
 ln -s "$realdir"/oni/plugins/theme-pond "$HOME"/.config/oni/plugins/theme-pond
 ln -s "$realdir"/oni/plugins/lleaff-default-config "$HOME"/.config/oni/plugins/lleaff-default-config
+
+mkdir -p "$HOME"/.config/Code/User/
+ln -s "$realdir"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json
