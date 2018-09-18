@@ -74,3 +74,12 @@ echo -e "${COLORGREEN}All done.${COLORRESET}"
 
 # create vim/tmp folder
 mkdir -p ~/.vim/tmp
+
+mkdir -p "$HOME"/.config/nvim/
+ln -s "$realdir/init.vim" "$HOME"/.config/nvim/init.vim
+
+mkdir -p "$HOME"/.config/oni/
+ln -s "$realdir"/oni/config.tsx "$HOME"/.config/oni/config.tsx
+ln -s "$realdir"/oni/tsconfig.json "$HOME"/.config/oni/init.vim
+ln -s "$realdir"/oni/plugins/theme-pond "$HOME"/.config/oni/plugins/theme-pond
+ln -s "$realdir"/oni/plugins/lleaff-default-config "$HOME"/.config/oni/plugins/lleaff-default-config

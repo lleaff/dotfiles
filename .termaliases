@@ -82,7 +82,9 @@ alias g=git
 alias n=node
 
 # Node with global packages
-alias ng="NODE_PATH=$(npm root -g) node"
+ng() {
+  NODE_PATH="$(npm root -g)" node
+}
 
 alias t=tree
 
@@ -97,6 +99,8 @@ if hash 2>/dev/null ghci-ng; then GHCI=ghci-ng; else GHCI=ghci; fi
 alias ghci="$GHCI -v0" # No loading messages
 
 alias dk=docker
+
+alias used-ports="netstat -tulpn"
 #==========================================
 
 # Keep aliases when using sudo
@@ -123,12 +127,21 @@ mkexe() {
 	echo '#!/' >> "$1" && chmod +x "$1"
 }
 
+rename_swap() {
+  mv "$1" "rename_swap-tmp-$1~"
+  mv "$2" "$1"
+  mv "rename_swap-tmp-$1~" "$2"
+}
+
 #==========================================
 
 alias dn='notify-send "Done"'
 
 # npm install -g madge-watch-gui
 alias mw='madge-watch -d'
+
+alias uhd=dualMonitors.sh
+alias p=preset
 
 #==========================================
 # Yarn run shorthand wrapper

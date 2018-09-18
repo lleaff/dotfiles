@@ -17,3 +17,4 @@
 .minttyrc
 .path
 .ptignore
+.config/nvim/

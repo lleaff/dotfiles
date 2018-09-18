@@ -1,6 +1,6 @@
 export TERM=xterm-256color
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH="$HOME"/.oh-my-zsh
 
 VISUAL=/usr/bin/vim; export VISUAL
 EDITOR=/usr/bin/vim; export EDITOR
@@ -14,7 +14,7 @@ ZSH_THEME="ccaddy"
 # Environment variables
 if [[ -f ~/.env ]]; then
   set -o allexport; source ~/.env; set +o allexport;
-fi 
+fi
 
 if [[ -f ~/.termaliases ]]; then source ~/.termaliases;
 elif [[ -f ~/dotfiles/.termaliases ]]; then source ~/dotfiles/.termaliases; fi
@@ -58,7 +58,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # KEEP zsh-syntax-highlighting LAST
-plugins=(svn zsh-syntax-highlighting)
+plugins=(zsh-syntax-highlighting zsh-completions)
 #plugins=(git zsh-syntax-highlighting)
 
 # User configuration

@@ -19,6 +19,9 @@ OHMYZSH_TARGET="$TARGET"/.oh-my-zsh
 if [[ ! -e "$OHMYZSH_TARGET" ]]; then
     echo "Installing Oh My Zsh..."
     git clone "https://github.com/robbyrussell/oh-my-zsh" "$OHMYZSH_TARGET"
+
+    # https://github.com/zsh-users/zsh-completions
+    git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 fi
 
 ./makesymlinks.sh "$TARGET"
