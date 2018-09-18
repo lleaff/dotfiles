@@ -1,0 +1,160 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "workbench.enableExperiments": false,
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+    },
+    
+    // Cosmetics
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "Base16 Eighties Dark",
+    "workbench.statusBar.visible": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#000000",
+        "statusBar.foreground": "#dddddd",
+        "statusBar.debuggingBackground":  "#007acc",
+        "statusBar.debuggingForeground": "#dddddd"
+    },
+    
+    // Editor
+    "editor.wordWrap": "on",
+    
+    // Vim
+    "vim.autoindent": true,
+    "vim.leader": ",",
+    "vim.visualstar": true,
+    "vim.hlsearch": true,
+    
+    // vim keybinds
+    "vim.handleKeys": {
+        "<C-f>": false,
+        "f6": false,
+    },
+    "vim.normalModeKeyBindings": [
+        // {
+        //     "before": [ "<leader>", "v" ],
+        //     "commands": [
+        //         {
+        //             "command": "vim.toggleVim",
+        //         }
+        //     ]
+        // },
+        {
+            "before": [ "=" ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.reindentlines",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [ ";" ],
+            "after": [ ":" ]
+        },
+        {
+            "before": [ "<tab>" ],
+            "after": [ "<C-w>" ]
+        },
+        {
+            "before": [ "J" ],
+            "after": [ "5", "j" ]
+        },
+        {
+            "before": [ "K" ],
+            "after": [ "5", "k" ]
+        },
+        {
+            "before": [ "<C-k>" ],
+            "after": [ "J" ],
+        },
+        {
+            "before": [ "H" ],
+            "after": [ "^" ],
+        },
+        {
+            "before": [ "L" ],
+            "after": [ "$" ],
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "j" ],
+            "after": [ "g", "j" ]
+        },
+        {
+            "before": [ "k" ],
+            "after": [ "g", "k" ]
+        },
+        {
+            "before": [ "<C-w>", "h" ],
+            "commands": [ "workbench.action.navigateLeft" ],
+        },
+        {
+            "before": [ "<C-w>", "j" ],
+            "commands": [ "workbench.action.navigateDown" ],
+        },
+        {
+            "before": [ "<C-w>", "k" ],
+            "commands": [ "workbench.action.navigateUp" ],
+        },
+        {
+            "before": [ "<C-w>", "l" ],
+            "commands": [ "workbench.action.navigateRight" ],
+        },
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "k",
+                "j",
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [ "J" ],
+            "after": [ "5", "j" ]
+        },
+        {
+            "before": [ "K" ],
+            "after": [ "5", "k" ]
+        },
+        {
+            "before": [ "H" ],
+            "after": [ "^" ],
+        },
+        {
+            "before": [ "L" ],
+            "after": [ "$" ],
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+    ],
+}
