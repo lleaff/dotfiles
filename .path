@@ -42,6 +42,11 @@ else
   export PATH=$PATH:$ANDROID_HOME/tools
   export PATH=$PATH:$ANDROID_HOME/tools/bin
   export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+  # Tilix
+  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    [[ -f /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh
+  fi
 fi
 
 #export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"

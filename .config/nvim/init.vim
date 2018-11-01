@@ -39,18 +39,18 @@ endif
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " =Bundle list
 "____________________________________________________________
 
 Plug 'tpope/vim-sensible' "Configurations everyone agree on
 
-Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic
+Plug 'scrooloose/syntastic' "Syntax checking plugin (options at #syntastic )
 
 if has("unix")
-	" :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
-Plug 'tpope/vim-eunuch'
+  " :Remove :Move :Rename :Chmod :SudoWrite :SudoEdit
+  Plug 'tpope/vim-eunuch'
 endif
 
 " "YouCompleteMe, YCM
@@ -66,9 +66,26 @@ endif
 " 			\ '~/.vim/ycm_files/cpp/.ycm_extra_conf.py'
 " let g:ycm_server_keep_logfiles = 1
 " let g:ycm_server_log_level = 'debug'
+"
+" =Deoplete (Auto completion)
+"------------------------------------------------------------
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+" Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh'}
+let g:nvim_typescript#diagnosticsEnable = 0
+let g:nvim_typescript#max_completion_detail=100
+" For async completion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" For Denite features
+Plug 'Shougo/denite.nvim'
 
-" =Neocomplete
-Plug 'Shougo/neocomplete.vim'
 
 " Makes . command work with more commands
 Plug 'tpope/vim-repeat'
@@ -119,8 +136,9 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 " Show diff in gutter
 Plug 'airblade/vim-gitgutter'
-" let g:gitgutter_sign_column_always = 1 " old
-set signcolumn=yes
+if !has('nvim')
+  set signcolumn=yes
+endif
 
 "
 "Source code browser (supports C/C++, java, perl, python, tcl, sql, php,
@@ -190,6 +208,32 @@ inoremap <silent> <C-w>l <Esc>:TmuxNavigateRight<cr>
 
 " =Languages specific, syntax
 "============================================================
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'reason': ['/home/elo/.opt/reason-language-server/reason-language-server.exe', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ }
+
+" LanguageClient keybindings
+nnoremap <F4> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> <F1> :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
 "awk, bash, c, git, latex, lua, matlab, & perl support
 "Plug 'WolfgangMehner/vim-plugins'
 "=== C & C++
@@ -221,7 +265,7 @@ Plug 'marijnh/tern_for_vim'
 " For syntax checking:
 " $ npm install -g eslint babel-eslint eslint-plugin-react
 
-Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javacript.jsx', 'typescript']}
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javacript.jsx']}
 " let g:javascript_opfirst = 0
 " Support Flow-type syntax highlighting
 let g:javascript_plugin_flow = 1
@@ -242,22 +286,27 @@ let g:jsx_ext_required = 0 " use JSX syntax in .js files too
 Plug 'flowtype/vim-flow', {'for': 'javascript' }
 let g:flow#autoclose = 1 " Auto close |quickfix| window opened if no error
 
+" Plug 'moll/vim-node' "Node.js tools and utilities						^
+" Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
+" Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
+
 " =CoffeeScript syntax, indentating, compiling, and more.
 Plug 'kchmck/vim-coffee-script', {'for': ['coffee', 'cson']}
 
 " =TypeScript
-Plug 'leafgarland/typescript-vim', {'for': ['typescript']}
-Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
-let g:tsuquyomi_disable_quickfix = 1
+if !has("nvim")
+  Plug 'leafgarland/typescript-vim', {'for': ['typescript']}
+  Plug 'Quramy/tsuquyomi', {'for': ['typescript']}
+  let g:tsuquyomi_disable_quickfix = 1
 
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
+  if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+  endif
+  let g:ycm_semantic_triggers['typescript'] = ['.']
 endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
 
-" Plug 'moll/vim-node' "Node.js tools and utilities						^
-" Plug 'guileen/vim-node-dict' "node.js dictionary 				 		|
-" Plug 'ahayman/vim-nodejs-complete' "node.js omnifunc function of vi	v
+" =ReasonML
+Plug 'reasonml-editor/vim-reason-plus'
 
 " =ES2015 template string
 " :JsPreTmpl {filetype}
@@ -292,9 +341,10 @@ Plug 'vim-scripts/cmake', {'for': 'cmake'} "syntax update
 Plug 'vim-scripts/cmake.vim', {'for': 'cmake'} "indent
 "=== Solidity (Ethereum smart contracts)
 Plug 'tomlion/vim-solidity'
-
 "=== Nginx
 Plug 'chr4/nginx.vim'
+"=== Godot Engine
+Plug 'quabug/vim-gdscript', {'for': 'gdscript'}
 
 
 
@@ -401,28 +451,33 @@ if has("gui_running")
 	elseif &background == 'light'
 		hi Search guibg=#708559 guifg=NONE
 	endif
+elseif has("g:gui_oni")
+
 else
   " Terminal
 	if s:uname == "Darwin" " OSX
-		" colorscheme lucius
 		" LuciusLight
+		" colorscheme lucius
+    let g:lucius_no_term_bg = 1
 		colors seoul256-light
-		let g:lucius_no_term_bg = 1
 	else " Linux
 		"colorscheme candy-crush-chronicle
-		colors seoul256
-		" Make terminal bg color transparent (at 'Tail' anchor)
-
-		"let g:lucius_no_term_bg = 1 " For lucius and candy-crush-chronicle themes
+    colors seoul256
+    hi Normal ctermbg=none
+    hi IncSearch ctermbg=red
+    hi Search ctermbg=153 ctermfg=0
 	endif
 endif
 
 "Highlight the nth column so you know when lines get too long
-autocmd Filetype vim,sh,c,cpp,c#,reason,javascript,java,jade,css,scss,swift,python,typescript
+autocmd Filetype vim,sh,c,cpp,rust,c#,reason,javascript,java,jade,css,scss,swift,python,typescript
 			\ set colorcolumn=81
 
 " Automatic word highlight plugin
 hi AutoHighlightWord ctermbg=238
+
+" Highlight current line
+set cursorline
 
 "set foldcolumn=2
 
@@ -478,11 +533,13 @@ set backupcopy=yes
 "=== Activate mouse in terminal
 set mouse=a
 " Better mouse support https://stackoverflow.com/a/19253251/4718923
-if has("mouse_sgr")
-  set ttymouse=sgr
-else
-  set ttymouse=xterm2
-end
+if !has("nvim")
+  if has("mouse_sgr")
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  end
+endif
 
 if has("win32")					" =========Windows
 	source ~/.vim/mswin-partial.vim
@@ -561,6 +618,7 @@ Plug 'mhinz/vim-grepper'
 "=Completion
 "========================
 "=== #syntastic
+" :SyntasticInfo
 "
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -604,37 +662,37 @@ let g:syntastic_python_checkers=['flake8', 'python3']
 
 " =Neocomplete configuration
 "------------------------------------------------------------
-let g:neocomplete#enable_at_startup = 1
-"let g:neocomplete#sources#syntax#min_keyword_length = 3 " Default: 4
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+" let g:neocomplete#enable_at_startup = 1
+" "let g:neocomplete#sources#syntax#min_keyword_length = 3 " Default: 4
+"
+" " Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"   " For no inserting <CR> key.
+"   return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" " Close popup by <Space>.
+" "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+"
+" " AutoComplPop like behavior.
+" "let g:neocomplete#enable_auto_select = 1
+"
+" " Shell like behavior(not recommended).
+" "set completeopt+=longest
+" "let g:neocomplete#enable_auto_select = 1
+" "let g:neocomplete#disable_auto_complete = 1
+" "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -642,6 +700,17 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript,javascript.jsx setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" tern
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pum = 1
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+
+
+" Auto-close preview window
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
 " =NERDTree configuration
@@ -658,13 +727,13 @@ autocmd BufRead,BufNewFile .babelrc set filetype=json
 autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
 autocmd BufRead,BufNewFile env.template,.env.template set filetype=sh
 autocmd BufRead,BufNewFile .gitignore set filetype=sh
+autocmd BufRead,BufNewFile *.godot set filetype=cfg
 
 "============================================================
 
 
 "==============Status line
 "Default status line: set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %{noscrollbar#statusline(20,'┄','━',['╼'],['╾'])}
 
 set statusline+=%#warningmsg#
@@ -681,7 +750,7 @@ set statusline+=%*
 "	winpos 0 0
 "endif
 
-"===========Restore window pos and curosr
+"===========Restore window pos and cursor
 
 if has("gui_running")
   function! ScreenFilename()
@@ -701,7 +770,7 @@ if has("gui_running")
     let f = ScreenFilename()
     if has("gui_running") && g:screen_size_restore_pos && filereadable(f)
       let vim_instance =
-		  \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
+            \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
       for line in readfile(f)
         let sizepos = split(line)
         if len(sizepos) == 5 && sizepos[0] == vim_instance
@@ -717,7 +786,7 @@ if has("gui_running")
     " Save window size and position.
     if has("gui_running") && g:screen_size_restore_pos
       let vim_instance =
-		  \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
+            \(g:screen_size_by_vim_instance==1?(v:servername):'GVIM')
       let data = vim_instance . ' ' . &columns . ' ' . &lines . ' ' .
             \ (getwinposx()<0?0:getwinposx()) . ' ' .
             \ (getwinposy()<0?0:getwinposy())
@@ -819,7 +888,6 @@ nnoremap <tab> <C-w>
 
 nmap <tab>e :tabn<CR>
 nmap <tab>w :tabp<CR>
-nmap <tab>z :tabp<CR>  "Azerty
 
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
@@ -1051,9 +1119,11 @@ command! FormatJSON call FormatJSON()
 "------------------------------------------------------------
 " =Cosmetics
 " Relegated to the end since themes seem to load asynchronously ?
-hi Normal ctermbg=none
-"hi IncSearch ctermbg=red
-hi Search ctermbg=153 ctermfg=0
+if ! has("g:gui_oni")
+  hi Normal ctermbg=none
+  hi IncSearch ctermbg=red
+  " hi Search ctermbg=153 ctermfg=0
+endif
 
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
