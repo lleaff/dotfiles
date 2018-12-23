@@ -83,8 +83,12 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-" For Denite features
+"For Denite features
 Plug 'Shougo/denite.nvim'
+
+" " ML-powered completion (YCM fork) https://tabnine.com/install
+" " https://github.com/zxqfl/tabnine-vim
+" Plug 'zxqfl/tabnine-vim'
 
 
 " Makes . command work with more commands
@@ -206,7 +210,7 @@ inoremap <silent> <C-w>j <Esc>:TmuxNavigateDown<cr>
 inoremap <silent> <C-w>k <Esc>:TmuxNavigateUp<cr>
 inoremap <silent> <C-w>l <Esc>:TmuxNavigateRight<cr>
 
-" =Languages specific, syntax
+" =Languages specific, language syntax
 "============================================================
 
 Plug 'autozimu/LanguageClient-neovim', {
@@ -247,6 +251,9 @@ Plug 'eagletmt/ghcmod-vim', {'for': ['haskell']}
 "=== Rust
 "Support for Rust file detection and syntax highlighting
 Plug 'rust-lang/rust.vim', {'for': ['rust']}
+" Syntastic check with clippy (https://github.com/rust-lang-nursery/rust-clippy)
+" (to install clippy as cargo submodule: `rustup component add clippy-preview`)
+" Plug 'vtavernier/rust-clippy.vim'
 "=== Python
 " https://github.com/python-mode/python-mode
 " <C-c>g for :RopeGotoDefinition
@@ -345,6 +352,8 @@ Plug 'tomlion/vim-solidity'
 Plug 'chr4/nginx.vim'
 "=== Godot Engine
 Plug 'quabug/vim-gdscript', {'for': 'gdscript'}
+"=== Kotlin
+Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 
 
 
@@ -368,7 +377,7 @@ Plug 'bronson/vim-trailing-whitespace'
 
 "Plug 'epage/vim-autohighlight' " Disabled, 404
 Plug 'obxhdx/vim-auto-highlight'
-" AutoHighlightWord
+" hi AutoHighlightWord
 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeFileExtensionHighlightFullName = 1
@@ -393,6 +402,7 @@ Plug 'tomasr/molokai'
 "Plug 'atelierbram/vim-colors_atelier-schemes'
 "Plug 'ciaranm/inkpot' "Plurple-pink-yellow
 Plug 'junegunn/seoul256.vim'
+Plug 'lleaff/seoul256.vim', { 'dir': '~/dotfiles/vimplugs/seoul256-lleaff.vim' }
 "Plug 'Junza/Spink' "Low color contrast brownish theme
 "Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 "Plug 'fugalh/desert.vim' "Term/GUI, dark
@@ -462,7 +472,7 @@ else
 		colors seoul256-light
 	else " Linux
 		"colorscheme candy-crush-chronicle
-    colors seoul256
+    colors seoul256-lleaff-light
     hi Normal ctermbg=none
     hi IncSearch ctermbg=red
     hi Search ctermbg=153 ctermfg=0
@@ -470,11 +480,13 @@ else
 endif
 
 "Highlight the nth column so you know when lines get too long
-autocmd Filetype vim,sh,c,cpp,rust,c#,reason,javascript,java,jade,css,scss,swift,python,typescript
+autocmd Filetype vim,sh,c,cpp,rust,c#,reason,javascript,jade,css,scss,swift,python,typescript
 			\ set colorcolumn=81
+autocmd Filetype kotlin,java
+			\ set colorcolumn=121
 
 " Automatic word highlight plugin
-hi AutoHighlightWord ctermbg=238
+" hi AutoHighlightWord ctermbg=238
 
 " Highlight current line
 set cursorline
@@ -660,6 +672,9 @@ let g:syntastic_javascript_eslint_exec = 'eslint_d'
 " sudo -H pip3 install flake8
 let g:syntastic_python_checkers=['flake8', 'python3']
 
+" let g:syntastic_rust_checkers=['cargo', 'clippy']
+let g:syntastic_rust_checkers=['cargo']
+
 " =Neocomplete configuration
 "------------------------------------------------------------
 " let g:neocomplete#enable_at_startup = 1
@@ -727,7 +742,8 @@ autocmd BufRead,BufNewFile .babelrc set filetype=json
 autocmd BufRead,BufNewFile Dockerfile[-^][^.]* set filetype=dockerfile
 autocmd BufRead,BufNewFile env.template,.env.template set filetype=sh
 autocmd BufRead,BufNewFile .gitignore set filetype=sh
-autocmd BufRead,BufNewFile *.godot set filetype=cfg
+autocmd BufRead,BufNewFile *.conf,*.godot set filetype=cfg
+autocmd BufRead,BufNewFile tsconfig.json set filetype=javascript
 
 "============================================================
 
@@ -912,6 +928,13 @@ nmap <leader>x :x<CR>
 
 " Git fugitive shortcuts
 nmap <leader>gb :Gblame<CR>
+
+nmap <leader>w :set wrap!<CR>
+
+map <leader>h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
 " #CtrlSF config
 "===============

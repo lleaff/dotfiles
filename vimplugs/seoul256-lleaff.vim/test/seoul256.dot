@@ -1,0 +1,48 @@
+digraph G {
+  rankdir = LR;
+  nodesep = 0.1;
+  ranksep = 0.1;
+
+  graph [fontname = "Gill Sans", fontsize = 12];
+  node  [fontname = "Gill Sans", fontsize = 12];
+  edge  [fontname = "Gill Sans", fontsize = 12];
+
+  dbg [label="g:seoul256_lleaff_background = dark", shape=record];
+  lbg [label="g:seoul256_lleaff_background = light", shape=record];
+  xbg [label="g:seoul256_lleaff_background = invalid", shape=record];
+
+  default  [label="dark default", shape=record];
+  defaultl [label="light default", shape=record];
+
+  seoul256-lleaff  [label="dark seoul256-lleaff"];
+  seoul256-lleaffl [label="light seoul256-lleaff"];
+  seoul256_lleaff_light [label="seoul256-lleaff-light"];
+
+  defaultl -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  defaultl -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+
+  default  -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  default  -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+
+  seoul256-lleaff -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  seoul256-lleaff -> seoul256-lleaff [label="set background=dark"];
+  seoul256-lleaff -> seoul256-lleaffl [label="set background=light"];
+  seoul256-lleaff -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+
+  seoul256-lleaffl -> seoul256-lleaffl [label="colo seoul256-lleaff"];
+  seoul256-lleaffl -> seoul256-lleaffl [label="set background=light"];
+  seoul256-lleaffl -> seoul256-lleaff [label="set background=dark"];
+  seoul256-lleaffl -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+
+  seoul256_lleaff_light -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  seoul256_lleaff_light -> seoul256-lleaff [label="set background=dark"];
+  seoul256_lleaff_light -> seoul256_lleaff_light [label="set background=light"];
+  seoul256_lleaff_light -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+
+  dbg -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  dbg -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+  lbg -> seoul256-lleaffl [label="colo seoul256-lleaff"];
+  lbg -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+  xbg -> seoul256-lleaff [label="colo seoul256-lleaff"];
+  xbg -> seoul256_lleaff_light [label="colo seoul256-lleaff-light"];
+}
